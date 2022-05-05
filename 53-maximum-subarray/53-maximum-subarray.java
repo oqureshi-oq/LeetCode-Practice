@@ -12,3 +12,11 @@ class Solution {
         return max; 
     }
 }
+
+/*
+maxSubarrayEndingAt(i) = nums[i] if i == 0
+                       = max(nums[i], nums[i] + maxSubarrayEndingAt(i-1))
+                       
+ans is max of all maxSubarrayEndingAt(i) from i = 0 to nums.length-1 (inclusive) 
+                         
+*/ 
