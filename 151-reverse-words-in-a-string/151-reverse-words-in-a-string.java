@@ -24,7 +24,7 @@ class Solution {
         return i; 
     }
     
-        public int getEndingIndex(char[] arr){
+    public int getEndingIndex(char[] arr){
         int i = arr.length-1; 
         while(i >= 0 && arr[i] == ' ')
             i--; 
