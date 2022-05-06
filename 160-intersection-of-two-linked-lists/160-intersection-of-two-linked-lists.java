@@ -11,48 +11,37 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if(headA == null || headB == null) return null; 
+        int lengthA = getLength(headA);
+        int lengthB = getLength(headB); 
+        ListNode iterA = headA; 
+        ListNode iterB = headB; 
         
-        createCycle(headA); 
-        
-        ListNode fast = headB;
-        ListNode slow = headB; 
-        ListNode intersection = null; 
-        
-        while(fast != null && fast.next != null){
-            fast = fast.next.next; 
-            slow = slow.next; 
-            
-            if(fast == slow){
-                intersection = headB; 
-                while(intersection != slow){
-                    intersection = intersection.next; 
-                    slow = slow.next; 
-                }
-                break; 
+        while(lengthA != lengthB){
+            if(lengthA > lengthB){
+                iterA = iterA.next; 
+                lengthA--; 
+            } else {
+                iterB = iterB.next;
+                lengthB--; 
             }
         }
         
-        deleteCycle(headA);
+        while(iterA != iterB){
+            iterA = iterA.next;
+            iterB = iterB.next; 
+        }
         
-        return intersection; 
+        return iterA; 
     }
     
-    public void createCycle(ListNode head){
-        if(head == null) return;
-        
+    public int getLength(ListNode head){
+        int length = 0;  
         ListNode iter = head; 
-        while(iter.next != null)
+        while(iter != null){
+            length++; 
             iter = iter.next; 
-        iter.next = head; 
-    }
-    
-    public void deleteCycle(ListNode head){
-        if(head == null) return; 
+        }
         
-        ListNode iter = head; 
-        while(iter != null && iter.next != head)
-            iter = iter.next; 
-        iter.next = null; 
+        return length; 
     }
 }
