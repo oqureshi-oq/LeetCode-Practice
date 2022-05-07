@@ -15,21 +15,24 @@ public class Solution {
         
         ListNode fast = head; 
         ListNode slow = head; 
+        ListNode meetingNode = null; 
+        ListNode cycleEntryNode = null; 
         
         while(fast != null && fast.next != null){
             fast = fast.next.next; 
             slow = slow.next; 
             
             if(fast == slow){
-                fast = head; 
-                while(fast != slow){
-                    fast = fast.next; 
-                    slow = slow.next;
+                meetingNode = fast; 
+                cycleEntryNode = head; 
+                while(cycleEntryNode != meetingNode){
+                    cycleEntryNode = cycleEntryNode.next;
+                    meetingNode = meetingNode.next; 
                 }
-                return fast; 
+                break; 
             }
         }
         
-        return null; 
+        return cycleEntryNode; 
     }
 }
