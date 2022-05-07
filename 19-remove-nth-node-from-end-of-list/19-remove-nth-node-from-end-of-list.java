@@ -26,8 +26,10 @@ class Solution {
         
         ListNode temp = slow.next; 
         slow.next = slow.next.next;
+        
         if(temp == head)
             head = head.next;
+        
         return head; 
     }
 }
