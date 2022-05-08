@@ -12,21 +12,23 @@ class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null) return null; 
         
-        ListNode prev = new ListNode(0, head);
+        ListNode sentinel = new ListNode(-1, head); 
         ListNode end = head; 
+        ListNode prev = sentinel; 
         
         for(int i = 0; i < n; i++){
             end = end.next; 
         }
         
         while(end != null){
-            end = end.next; 
+            end = end.next;
             prev = prev.next; 
         }
         
-        ListNode temp = prev.next; 
+        ListNode deletedNode = prev.next; 
         prev.next = prev.next.next; 
-        if(temp == head)
+        
+        if(deletedNode == head)
             head = prev.next; 
         
         return head; 
