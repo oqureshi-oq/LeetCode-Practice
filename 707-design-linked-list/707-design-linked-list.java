@@ -42,13 +42,13 @@ class MyLinkedList {
     }
     
     public void addAtTail(int val) {
-        addAtIndex(length, val);
+        addAtIndex(length, val); 
     }
     
     public void addAtIndex(int index, int val) {
         if(index < 0 || index > length) return;
         
-        Node node = new Node(val);
+        Node node = new Node(val); 
         length++; 
         
         if(index == 0){
@@ -57,7 +57,7 @@ class MyLinkedList {
             return;
         }
         
-        Node iter = head; 
+        Node iter = head;
         int count = 0; 
         
         while(count != index-1){
@@ -70,17 +70,17 @@ class MyLinkedList {
     }
     
     public void deleteAtIndex(int index) {
-        if(index < 0 || index >= length) return; 
+        if(index < 0 || index >= length) return;
         
         length--; 
         
         if(index == 0){
             head = head.next; 
-            return;
+            return; 
         }
         
-        Node iter = head;
-        int count = 0; 
+        Node iter = head; 
+        int count = 0;
         
         while(count != index-1){
             iter = iter.next; 
