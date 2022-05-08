@@ -14,9 +14,10 @@ class Solution {
         
         ListNode prev = null; 
         ListNode iter = head; 
+        ListNode next = null; 
         
         while(iter != null){
-            ListNode next = iter.next; 
+            next = iter.next; 
             iter.next = prev; 
             prev = iter; 
             iter = next; 
