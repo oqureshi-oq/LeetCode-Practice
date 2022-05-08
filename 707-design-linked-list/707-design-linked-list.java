@@ -19,12 +19,12 @@ class MyLinkedList {
     int length; 
 
     public MyLinkedList() {
-        head = null;
+        head = null; 
         length = 0; 
     }
     
     public int get(int index) {
-        if(index < 0 || index >= length) return -1;
+        if(index < 0 || index >= length) return -1; 
         
         Node iter = head; 
         int count = 0; 
@@ -42,27 +42,27 @@ class MyLinkedList {
     }
     
     public void addAtTail(int val) {
-        addAtIndex(length, val); 
+        addAtIndex(length, val);
     }
     
     public void addAtIndex(int index, int val) {
         if(index < 0 || index > length) return;
         
-        Node node = new Node(val); 
+        Node node = new Node(val);
         length++; 
         
         if(index == 0){
             node.next = head; 
-            head = node;
-            return; 
+            head = node; 
+            return;
         }
         
         Node iter = head; 
-        int count = 0;
+        int count = 0; 
         
         while(count != index-1){
             iter = iter.next; 
-            count++;  
+            count++; 
         }
         
         node.next = iter.next; 
@@ -70,17 +70,17 @@ class MyLinkedList {
     }
     
     public void deleteAtIndex(int index) {
-        if(index < 0 || index >= length) return;
+        if(index < 0 || index >= length) return; 
         
         length--; 
         
         if(index == 0){
-            head = head.next;
+            head = head.next; 
             return;
         }
         
         Node iter = head;
-        int count = 0;
+        int count = 0; 
         
         while(count != index-1){
             iter = iter.next; 
