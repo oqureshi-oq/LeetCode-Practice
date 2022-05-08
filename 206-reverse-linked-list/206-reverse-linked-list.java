@@ -13,16 +13,17 @@ class Solution {
         if(head == null) return null; 
         
         ListNode prev = null; 
-        ListNode iter = head; 
+        ListNode current = head; 
         ListNode next = null; 
         
-        while(iter != null){
-            next = iter.next; 
-            iter.next = prev; 
-            prev = iter; 
-            iter = next; 
-            head = prev; 
+        while(current != null){
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
         }
+        
+        head = prev; 
         
         return head; 
     }
