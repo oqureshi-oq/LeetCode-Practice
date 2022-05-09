@@ -43,17 +43,11 @@ class Solution {
             iter = iter.next; 
         }
         
-        while(list1 != null){
+        if(list1 != null)
             iter.next = list1; 
-            iter = iter.next; 
-            list1 = list1.next; 
-        }
         
-        while(list2 != null){
+        if(list2 != null)
             iter.next = list2;
-            iter = iter.next; 
-            list2 = list2.next; 
-        }
         
         
         return head; 
