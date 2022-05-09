@@ -2,24 +2,21 @@ class MyLinkedList {
     
     class Node {
         private int val; 
+        private Node prev; 
         private Node next; 
         
         Node(int val){
             this.val = val; 
+            this.prev = null; 
             this.next = null; 
-        }
-        
-        Node(int val, Node next){
-            this.val = val; 
-            this.next = next; 
-        }
+        }   
     }
     
-    Node head; 
-    int length; 
+    private Node head; 
+    private int length; 
 
     public MyLinkedList() {
-        head = null; 
+        head = null;
         length = 0; 
     }
     
@@ -46,18 +43,19 @@ class MyLinkedList {
     }
     
     public void addAtIndex(int index, int val) {
-        if(index < 0 || index > length) return;
+        if(index < 0 || index > length) return; 
         
         Node node = new Node(val); 
         length++; 
         
         if(index == 0){
             node.next = head; 
+            node.prev = null; 
             head = node; 
-            return;
+            return; 
         }
         
-        Node iter = head;
+        Node iter = head; 
         int count = 0; 
         
         while(count != index-1){
@@ -66,28 +64,37 @@ class MyLinkedList {
         }
         
         node.next = iter.next; 
+        if(iter.next !=null)
+            iter.next.prev = node; 
         iter.next = node; 
+        node.prev = iter; 
     }
     
     public void deleteAtIndex(int index) {
-        if(index < 0 || index >= length) return;
+        if(index < 0 || index >= length) return; 
         
         length--; 
         
         if(index == 0){
             head = head.next; 
+            if(head != null)
+                head.prev = null; 
             return; 
         }
         
         Node iter = head; 
-        int count = 0;
+        int count = 0; 
         
         while(count != index-1){
             iter = iter.next; 
             count++; 
         }
         
-        iter.next = iter.next.next; 
+        if(iter.next != null)
+            iter.next = iter.next.next; 
+        
+        if(iter.next != null)
+            iter.next.prev = iter; 
     }
 }
 
