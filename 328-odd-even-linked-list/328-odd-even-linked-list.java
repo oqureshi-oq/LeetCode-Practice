@@ -12,22 +12,19 @@ class Solution {
     public ListNode oddEvenList(ListNode head) {
         if(head == null) return null; 
         
-        ListNode firstEvenNode = head.next; 
-        ListNode lastOddNode = head; 
-        ListNode iter = head; 
-        boolean oddNode = true; 
+        ListNode odd = head; 
+        ListNode even = head.next; 
+        ListNode firstEven = head.next; 
         
-        while(iter != null){
-            ListNode temp = iter.next; 
-            if(iter.next != null)
-                iter.next = iter.next.next; 
-            if(oddNode)
-                lastOddNode = iter; 
-            iter = temp; 
-            oddNode = !oddNode; 
+        while(even != null && even.next != null){
+            odd.next = even.next; 
+            odd = odd.next; 
+            even.next = odd.next; 
+            even = even.next; 
         }
         
-        lastOddNode.next = firstEvenNode; 
+        odd.next = firstEven; 
+        
         return head; 
     }
 }
