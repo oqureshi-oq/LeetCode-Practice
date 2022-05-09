@@ -35,13 +35,7 @@ class Solution {
                 mapSecret.put(s, mapSecret.get(s)-1); 
             }
         }
-        
-        StringBuilder str = new StringBuilder(); 
-        str.append(bulls);
-        str.append('A');
-        str.append(cows);
-        str.append('B'); 
 
-        return str.toString(); 
+        return bulls + "A" + cows + "B"; 
     }
 }
