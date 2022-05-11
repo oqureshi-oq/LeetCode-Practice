@@ -13,14 +13,14 @@ public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if(headA == null || headB == null) return null; 
         
-        ListNode node1 = headA; 
-        ListNode node2 = headB; 
+        ListNode pointerA = headA; 
+        ListNode pointerB = headB; 
         
-        while(node1 != node2){
-            node1 = node1 == null ? headB: node1.next; 
-            node2 = node2 == null ? headA: node2.next;
+        while(pointerA != pointerB){
+            pointerA = pointerA == null ? headB: pointerA.next; 
+            pointerB = pointerB == null ? headA: pointerB.next; 
         }
         
-        return node1; 
+        return pointerA; 
     }
 }
