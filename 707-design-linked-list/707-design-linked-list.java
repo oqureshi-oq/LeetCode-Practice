@@ -2,16 +2,16 @@ class MyLinkedList {
     
     class Node {
         private int val; 
-        private Node next;
+        private Node next; 
         
         Node(int val){
             this.val = val; 
-            this.next = null; 
+            next = null; 
         }
     }
     
-    private Node head; 
     private int length; 
+    private Node head; 
 
     public MyLinkedList() {
         head = null; 
@@ -21,8 +21,8 @@ class MyLinkedList {
     public int get(int index) {
         if(index < 0 || index >= length) return -1;
         
-        int count = 0; 
         Node iter = head; 
+        int count = 0; 
         
         while(count != index){
             iter = iter.next; 
@@ -43,7 +43,7 @@ class MyLinkedList {
     public void addAtIndex(int index, int val) {
         if(index < 0 || index > length) return; 
         
-        Node node = new Node(val);
+        Node node = new Node(val); 
         length++; 
         
         if(index == 0){
@@ -55,7 +55,7 @@ class MyLinkedList {
         Node iter = head; 
         int count = 0; 
         
-        while(count != index-1){
+        while(count != index - 1){
             iter = iter.next; 
             count++; 
         }
@@ -65,17 +65,17 @@ class MyLinkedList {
     }
     
     public void deleteAtIndex(int index) {
-        if(index < 0 || index >= length) return; 
+        if(index < 0 || index >= length) return;
         
         length--; 
         
         if(index == 0){
             head = head.next; 
-            return; 
+            return;
         }
         
         Node iter = head; 
-        int count = 0;
+        int count = 0; 
         
         while(count != index-1){
             iter = iter.next; 
