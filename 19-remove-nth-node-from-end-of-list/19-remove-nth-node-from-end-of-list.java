@@ -13,25 +13,21 @@ class Solution {
         if(head == null) return null; 
         
         ListNode sentinel = new ListNode(0, head);
-        int length = getLength(sentinel);  
-        ListNode iter = sentinel; 
         
-        while(length != n+1){
-            iter = iter.next; 
-            length--; 
+        ListNode fast = sentinel; 
+        ListNode slow = sentinel;
+        
+        for(int i = 0; i < n; i++){
+            fast = fast.next; 
         }
         
-        iter.next = iter.next.next; 
+        while(fast.next != null){
+            fast = fast.next; 
+            slow = slow.next; 
+        }
+        
+        slow.next = slow.next.next; 
         
         return sentinel.next; 
-    }
-    
-    public int getLength(ListNode node){
-        int length = 0; 
-        while(node != null){
-            length++; 
-            node = node.next; 
-        }
-        return length; 
     }
 }
