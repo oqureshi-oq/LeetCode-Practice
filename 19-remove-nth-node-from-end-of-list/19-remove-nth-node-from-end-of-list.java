@@ -17,7 +17,7 @@ class Solution {
         ListNode fast = sentinel; 
         ListNode slow = sentinel;
         
-        for(int i = 0; i <= n; i++){
+        for(int i = 0; i < n+1; i++){
             fast = fast.next; 
         }
         
