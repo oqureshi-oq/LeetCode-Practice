@@ -12,20 +12,13 @@ class Solution {
     public int getDecimalValue(ListNode head) {
         if(head == null) return -1; 
         
-        int length = 0; 
         ListNode iter = head; 
-        while(iter != null){
-            length++; 
-            iter = iter.next; 
-        }
-        
         int sum = 0; 
-        iter = head; 
         
         while(iter != null){
-            sum += iter.val * (int) Math.pow(2, length-1); 
+            sum *= 2; 
+            sum += iter.val; 
             iter = iter.next; 
-            length--; 
         }
         
         return sum; 
