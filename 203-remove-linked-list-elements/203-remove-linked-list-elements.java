@@ -13,17 +13,13 @@ class Solution {
         if(head == null) return null; 
         
         ListNode sentinel = new ListNode(0, head); 
-        ListNode prev = sentinel; 
-        ListNode current = head;
+        ListNode iter = sentinel; 
         
-        while(current != null){
-            if(current.val == val){
-                current = current.next; 
-                prev.next = current; 
-            } else {
-                prev = current; 
-                current = current.next; 
-            }
+        while(iter.next != null){
+            if(iter.next.val == val)
+                iter.next = iter.next.next; 
+            else
+                iter = iter.next; 
         }
         
         return sentinel.next; 
