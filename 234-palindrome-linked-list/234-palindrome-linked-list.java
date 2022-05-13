@@ -19,14 +19,24 @@ class Solution {
             fast = fast.next.next; 
             slow = slow.next; 
         }
-        
+         
         ListNode end = reverse(slow, null);
-        ListNode start = head;
         
-        while(start != null && end != null){
-            if(start.val != end.val) return false;
-            start = start.next; 
-            end = end.next; 
+        ListNode foward = head;
+        ListNode backward = end; 
+        
+        while(foward != null && backward != null){
+            if(foward.val != backward.val) return false;
+            foward = foward.next; 
+            backward = backward.next; 
+        }
+        
+        reverse(end, null); 
+        
+        ListNode iter = head; 
+        while(iter != null){
+            System.out.println(iter.val);
+            iter = iter.next; 
         }
         
         return true; 
