@@ -24,22 +24,20 @@ class Solution {
         
         ListNode foward = head;
         ListNode backward = end; 
+        boolean isPalidromic = true; 
         
         while(foward != null && backward != null){
-            if(foward.val != backward.val) return false;
+            if(foward.val != backward.val){
+                isPalidromic = false; 
+                break; 
+            }
             foward = foward.next; 
             backward = backward.next; 
         }
         
         reverse(end, null); 
         
-        ListNode iter = head; 
-        while(iter != null){
-            System.out.println(iter.val);
-            iter = iter.next; 
-        }
-        
-        return true; 
+        return isPalidromic; 
     }
     
     public ListNode reverse(ListNode current, ListNode prev){
