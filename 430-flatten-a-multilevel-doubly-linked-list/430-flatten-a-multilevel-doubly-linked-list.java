@@ -12,49 +12,24 @@ class Solution {
     public Node flatten(Node head) {
         if(head == null) return null; 
         
-        Node iter = head;
+        Node iter = head; 
         
-        while(iter != null){
-            Node next = iter.next; 
-            Node immediateChild = iter.child; 
-            Node lastChild = getLastChild(iter.child); 
-            if(lastChild != null){
-                iter.next = immediateChild; 
-                immediateChild.prev = iter; 
-                lastChild.next = next; 
+        while(iter != null){ 
+            if(iter.child != null){
+                Node next = iter.next; 
+                Node child = iter.child;
+                iter.next = child;
+                child.prev = iter; 
+                iter.child = null; 
+                while(child.next != null)
+                    child = child.next; 
+                child.next = next; 
                 if(next != null)
-                    next.prev = lastChild; 
+                    next.prev = child; 
             }
-            iter.child = null; 
-            iter = next; 
+            iter = iter.next; 
         }
         
         return head; 
-    }
-    
-    public Node getLastChild(Node child){
-        if(child == null) return null; 
-        
-        Node iter = child; 
-        
-        while(iter.next != null || iter.child != null){
-            Node next = iter.next; 
-            Node immediateChild = iter.child; 
-            Node lastChild = getLastChild(iter.child); 
-            if(lastChild != null){
-                iter.next = immediateChild; 
-                immediateChild.prev = iter; 
-                lastChild.next = next;
-                if(next != null)
-                    next.prev = lastChild; 
-            }
-            iter.child = null; 
-            if(next != null)
-                iter = next;
-            else
-                iter = lastChild; 
-        }
-        
-        return iter; 
     }
 }
