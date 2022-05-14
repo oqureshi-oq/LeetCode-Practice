@@ -15,7 +15,7 @@ class Solution {
         int length = getLength(head); 
         k %= length; 
         
-        ListNode fast = head; 
+        ListNode fast = head;  
         ListNode slow = head; 
         
         for(int i = 0; i < k; i++){
@@ -23,24 +23,25 @@ class Solution {
         }
         
         while(fast.next != null){
-            fast = fast.next; 
+            fast = fast.next;
             slow = slow.next; 
         }
         
         fast.next = head; 
-        head = slow.next; 
+        ListNode newHead = slow.next; 
         slow.next = null; 
         
-        return head; 
+        return newHead; 
     }
     
-    public int getLength(ListNode head){
-        ListNode iter = head; 
+    public int getLength(ListNode node){
         int length = 0; 
-        while(iter != null){
+        
+        while(node != null){
             length++; 
-            iter = iter.next; 
+            node = node.next; 
         }
+        
         return length; 
     }
 }
