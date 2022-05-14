@@ -1,17 +1,16 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        if(nums == null) return 0; 
+        if(nums == null) return -1; 
         
-        Map<Integer, Integer> map = new HashMap(); 
+        Set<Integer> set = new HashSet(); 
         
         for(int n: nums){
-            map.put(n, map.getOrDefault(n,0)+1); 
+            if(set.contains(n))
+                set. remove(n);
+            else
+                set.add(n); 
         }
         
-        for(Map.Entry entry: map.entrySet()){
-            if((int)entry.getValue() == 1) return (int) entry.getKey(); 
-        }
-        
-        return 0; 
+        return (int)set.toArray()[0]; 
     }
 }
