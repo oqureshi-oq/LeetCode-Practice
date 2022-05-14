@@ -22,31 +22,30 @@ class Solution {
         while(iter != null){
             Node node = new Node(iter.val); 
             node.next = iter.next; 
-            iter.next = node; 
+            iter.next = node;
+            iter = node.next; 
+        }
+        
+        iter = head; 
+        
+        while(iter != null){
+            Node node = iter.next; 
+            if(iter.random != null)
+                node.random = iter.random.next; 
+            else
+                node.random = null; 
             iter = node.next; 
         }
         
         iter = head; 
         Node newHead = head.next; 
         
-        while(iter != null){
-            Node copy = iter.next; 
-            copy.random = iter.random; 
-            if(copy.random != null){
-                copy.random = copy.random.next;  
-            }
-            iter = iter.next.next; 
+        while(iter.next != null){
+            Node next = iter.next;
+            iter.next = iter.next.next; 
+            iter = next; 
         }
         
-        iter = head; 
-        while(iter != null){
-            Node next = iter.next; 
-            iter.next = next.next; 
-            if(next.next != null)
-                next.next = next.next.next; 
-            iter = iter.next; 
-        }
-     
         return newHead; 
     }
 }
