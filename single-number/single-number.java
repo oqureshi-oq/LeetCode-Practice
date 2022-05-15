@@ -1,19 +1,12 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        if(nums == null) return -1;
+        if(nums == null || nums.length == 0) return 0; 
+        int x = 0; 
         
-        Set<Integer> set = new HashSet(); 
-        int sum = 0; 
         for(int n: nums){
-            set.add(n); 
-            sum += n; 
+            x ^= n; 
         }
         
-        int doubleSum = 0; 
-        for(int n: set){
-            doubleSum += n + n; 
-        }
-        
-        return doubleSum - sum;  
+        return x; 
     }
 }
