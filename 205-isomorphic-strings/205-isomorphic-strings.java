@@ -1,24 +1,21 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        if(s == null || t == null || s.length() != t.length()) 
-            return false; 
+        if(s == null || t == null) return false; 
+        return transformString(s).compareTo(transformString(t)) == 0; 
+    }
+    
+    public String transformString(String str){
+        if(str == null || str.length() == 0) return str;
         
-        Map<Character, Character> StoT = new HashMap(); 
-        Map<Character, Character> TtoS = new HashMap(); 
+        Map<Character, Character> map = new HashMap(); 
+        StringBuilder transformedString = new StringBuilder(); 
         
-        for(int i = 0; i < s.length(); i++){
-            char sChar = s.charAt(i); 
-            char tChar = t.charAt(i); 
-            if(StoT.containsKey(sChar) && StoT.get(sChar) == tChar && TtoS.containsKey(tChar) && TtoS.get(tChar) == sChar)
-                continue; 
-            else if(!StoT.containsKey(sChar) && !TtoS.containsKey(tChar)){
-                StoT.put(sChar, tChar);
-                TtoS.put(tChar, sChar); 
-            } else {
-                return false; 
-            }
+        for(int i = 0; i < str.length(); i++){
+            if(!map.containsKey(str.charAt(i)))
+                map.put(str.charAt(i), (char)i); 
+            transformedString.append(map.get(str.charAt(i))); 
         }
         
-        return true; 
+        return transformedString.toString(); 
     }
 }
