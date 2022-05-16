@@ -16,6 +16,8 @@ class Solution {
             }
         }
         
+        if(min == list1.length + list2.length) return null; 
+        
         return map.get(min).toArray(new String[map.get(min).size()]); 
     }
 }
