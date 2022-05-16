@@ -11,13 +11,10 @@ class Solution {
                 
                 char n = board[row][col]; 
             
-                if(seen.contains(row+"row"+n) || seen.contains(col+"col"+n)
-                  || seen.contains(row/3+":"+col/3+":"+n))
-                    return false; 
-                
-                seen.add(row+"row"+n);
-                seen.add(col+"col"+n);
-                seen.add(row/3+":"+col/3+":"+n); 
+                if(!seen.add(n + " in row " + row) || 
+                   !seen.add(n + " in col " + col) ||
+                   !seen.add(n + " in square "+ row/3 + "-" + col/3))
+                    return false;  
             }
         }
         
