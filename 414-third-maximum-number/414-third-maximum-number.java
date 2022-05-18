@@ -1,8 +1,8 @@
 class Solution {
     public int thirdMax(int[] nums) {
-        if(nums == null) return Integer.MIN_VALUE;
+        if(nums == null) return -1;
         
-        Integer first = null;
+        Integer first = null; 
         Integer second = null; 
         Integer third = null; 
         
@@ -12,10 +12,10 @@ class Solution {
             
             if(first == null || n > first){
                 third = second;
-                second = first;
+                second = first; 
                 first = n; 
             } else if(second == null || n > second){
-                third = second;
+                third = second; 
                 second = n; 
             } else if(third == null || n > third){
                 third = n; 
