@@ -8,10 +8,9 @@ class Solution {
             if(nums[right] == 0)
                 k--; 
             
-            while(k < 0){
+            while(k < 0)
                 if(nums[left++] == 0)
                     k++; 
-            }
             
             max = Math.max(max, right - left + 1); 
         }
