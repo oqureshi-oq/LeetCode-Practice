@@ -14,6 +14,6 @@ class Solution {
     
     public boolean hasEvenNumDigits(int n){
         int numDigits = (int) Math.log10(Math.abs(n)) + 1; 
-        return numDigits % 2 == 0 ? true: false; 
+        return numDigits % 2 == 0;  
     }
 }
