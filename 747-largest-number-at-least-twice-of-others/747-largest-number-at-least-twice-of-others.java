@@ -1,9 +1,9 @@
 class Solution {
     public int dominantIndex(int[] nums) {
-        if(nums == null) return -1;
+        if(nums == null) return -1; 
         
-        Integer first = null;
-        Integer second = null; 
+        Integer first = null; 
+        Integer second = null;
         int index = -1; 
         
         for(int i = 0; i < nums.length; i++){
@@ -16,9 +16,9 @@ class Solution {
             }
         }
         
-        if(first == null) return -1;
-        if(first != null && second == null) return index; 
+        if(first == null) return -1; 
+        if(second == null) return index; 
         
-        return first >= second * 2 ? index: -1; 
+        return first >= 2*second ? index: -1; 
     }
 }
