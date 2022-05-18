@@ -1,20 +1,17 @@
 class Solution {
     public int heightChecker(int[] heights) {
-        if(heights == null) return -1;
+        if(heights == null) return -1; 
         
         int[] hMap = new int[101]; 
-        
-        for(int h: heights){
-            hMap[h]++; 
+        for(int n: heights){
+            hMap[n]++; 
         }
         
         int count = 0; 
-        
-        for(int i = 0, h = 1; i < heights.length; i++){
+        for(int i = 0, h = 0; i < heights.length; i++){
             while(hMap[h] == 0) h++; 
             
-            if(heights[i] != h)
-                count++; 
+            if(heights[i] != h) count++; 
             
             hMap[h]--; 
         }
