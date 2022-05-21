@@ -1,22 +1,24 @@
 class Solution {
     public List<Integer> getRow(int rowIndex) {
-        if(rowIndex < 0) return null; 
-        
-        Integer[] row = new Integer[rowIndex+1];  
+        int[] arr = new int[rowIndex+1]; 
         
         for(int i = 0; i <= rowIndex; i++){
             int prev = 1; 
             for(int j = 0; j <= i; j++){
-                if(j == 0 || j == i){ 
-                    row[j] = 1; 
-                } else{
-                    int temp = row[j]; 
-                    row[j] += prev; 
+                if(j == 0 || j == i)
+                    arr[j] = 1; 
+                else{
+                    int temp = arr[j];
+                    arr[j] += prev;
                     prev = temp; 
                 }
             }
         }
         
-        return Arrays.asList(row); 
+        List<Integer> list = new ArrayList(); 
+        for(int n: arr){
+            list.add(n);
+        }
+        return list;  
     }
 }
