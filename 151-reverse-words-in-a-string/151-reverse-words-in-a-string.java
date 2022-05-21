@@ -2,38 +2,33 @@ class Solution {
     public String reverseWords(String s) {
         if(s == null) return null; 
         
+        int startIndex = getStartIndex(s);
+        int endIndex = getEndIndex(s);
+        
         char[] arr = s.toCharArray(); 
         
-        //reverse the whole string 
-        reverse(arr, 0, arr.length-1); 
-        
-        //get rid of leading and trailing spaces 
-        int start = getStartingIndex(arr); 
-        int end = getEndingIndex(arr); 
-        
-        //reverse each word so that it reads properly
-        reverseWords(arr, start, end); 
-        
-        return cleanedString(arr, start, end); 
+        reverse(arr, startIndex, endIndex);
+        reverseWords(arr, startIndex, endIndex); 
+        return cleanSpaces(arr, startIndex, endIndex); 
     }
     
-    public int getStartingIndex(char[] arr){
+    public int getStartIndex(String s){
         int i = 0; 
-        while(i < arr.length && arr[i] == ' ')
-            i++; 
-        return i; 
+        while(i < s.length() && s.charAt(i) == ' ')
+            i++;    
+        return i;
     }
     
-    public int getEndingIndex(char[] arr){
-        int i = arr.length-1; 
-        while(i >= 0 && arr[i] == ' ')
+    public int getEndIndex(String s){
+        int i = s.length()-1; 
+        while(i >= 0 && s.charAt(i) == ' ')
             i--; 
         return i; 
     }
     
     public void reverse(char[] arr, int left, int right){
         while(left < right){
-            char temp = arr[left]; 
+            char temp = arr[left];
             arr[left] = arr[right];
             arr[right] = temp; 
             left++; 
@@ -42,35 +37,33 @@ class Solution {
     }
     
     public void reverseWords(char[] arr, int start, int end){
-        int left = start; 
-        int right = start; 
-        while(right <= end){
-            while(right <= end && arr[right] != ' ')
-                right++; 
+        int i = start; 
+        
+        while(i <= end){
+            while(i <= end && arr[i] == ' ')
+                i++; 
+            int j = i; 
             
-            reverse(arr, left, right-1); 
+            while(j <= end && arr[j] != ' ')
+                j++; 
             
-            while(right <= end && arr[right] == ' ')
-                right++; 
+            reverse(arr, i, j-1);
             
-            left = right; 
+            i = j; 
         }
     }
     
-    public String cleanedString(char[] arr, int start, int end){
+    public String cleanSpaces(char[] arr, int start, int end){
         StringBuilder str = new StringBuilder(); 
-        
         int i = start; 
         while(i <= end){
-            if(arr[i] != ' '){
+            while(i <= end && arr[i] != ' ')
                 str.append(arr[i++]); 
-            } else {
-                str.append(' ');
-                while(i <= end && arr[i] == ' ')
-                    i++; 
-            }
+            str.append(' '); 
+            while(i <= end && arr[i] == ' ')
+                i++; 
         }
         
-        return str.toString(); 
+        return str.toString().substring(0, str.length()-1); 
     }
 }
