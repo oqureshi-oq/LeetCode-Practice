@@ -12,7 +12,8 @@ class Solution {
     public ListNode removeElements(ListNode head, int val) {
         if(head == null) return null; 
         
-        ListNode sentinel = new ListNode(0, head); 
+        ListNode sentinel = new ListNode(0, head);
+        
         ListNode iter = sentinel; 
         
         while(iter.next != null){
