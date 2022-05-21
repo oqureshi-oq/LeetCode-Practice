@@ -1,30 +1,29 @@
 class MyLinkedList {
     
-    class Node{
-        private int val; 
-        private Node prev; 
-        private Node next; 
+    class Node {
+        int val; 
+        Node next; 
         
         Node(int val){
             this.val = val; 
-            prev = null; 
             next = null; 
         }
     }
     
-    private Node head;
-    private int length; 
+    Node head;
+    int length; 
 
     public MyLinkedList() {
         head = null; 
-        length = 0; 
+        length = 0;
     }
     
     public int get(int index) {
-        if(index < 0 || index >= length) return -1;
+        if(index < 0 || index >= length)
+            return -1;
         
         Node iter = head; 
-        int count = 0; 
+        int count = 0;
         
         while(count != index){
             iter = iter.next; 
@@ -35,64 +34,56 @@ class MyLinkedList {
     }
     
     public void addAtHead(int val) {
-        addAtIndex(0, val); 
+        addAtIndex(0, val);
     }
     
     public void addAtTail(int val) {
-        addAtIndex(length, val); 
+        addAtIndex(length, val);
     }
     
     public void addAtIndex(int index, int val) {
         if(index < 0 || index > length) return;
         
-        Node node = new Node(val); 
+        Node node = new Node(val);
         length++; 
         
         if(index == 0){
-            node.prev = null; 
             node.next = head; 
-            head = node; 
-            return; 
+            head = node;
+            return;
         }
         
         Node iter = head; 
-        int count = 0; 
+        int count = 0;
         
         while(count != index-1){
             iter = iter.next; 
             count++; 
         }
         
-        node.next = iter.next; 
-        node.prev = iter; 
-        iter.next = node;
-        if(node.next != null)
-            node.next.prev = node; 
+        node.next = iter.next;
+        iter.next = node; 
     }
     
     public void deleteAtIndex(int index) {
-        if(index < 0 || index >= length) return; 
+        if(index < 0 || index >= length) return;
         
-        length--; 
+        length--;
         
         if(index == 0){
             head = head.next; 
-            if(head != null)
-                head.prev = null; 
-            return; 
+            return;
         }
         
         Node iter = head; 
-        int count = 0; 
+        int count = 0;
         
         while(count != index-1){
             iter = iter.next; 
             count++; 
         }
         
-        iter.next = iter.next.next; 
-        if(iter.next != null)
-            iter.next.prev = iter; 
+        iter.next= iter.next.next; 
     }
 }
 
