@@ -4,31 +4,29 @@ class Solution {
         
         char[] arr = s.toCharArray(); 
         
-        int left = 0;
-        int right = 0; 
+        int start = 0; 
+        int end = 0;
         
-        while(right < arr.length){
-            while(right < arr.length && arr[right] != ' ')
-                right++; 
+        while(end < arr.length){
+            while(end < arr.length && arr[end] != ' ') 
+                end++; 
             
-            reverse(arr, left, right-1); 
+            reverse(arr, start, end-1); 
             
-            while(right < arr.length && arr[right] == ' ')
-                right++; 
-            
-            left = right; 
+            end++; 
+            start = end; 
         }
         
         return new String(arr); 
     }
     
-    public void reverse(char[] arr, int left, int right){
-        while(left < right){
-            char temp = arr[left]; 
-            arr[left] = arr[right];
-            arr[right] = temp;
-            left++; 
-            right--; 
+    public void reverse(char[] arr, int start, int end){
+        while(start < end){
+            char temp = arr[start]; 
+            arr[start] = arr[end]; 
+            arr[end] = temp; 
+            start++;
+            end--; 
         }
     }
 }
