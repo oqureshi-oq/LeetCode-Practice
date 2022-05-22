@@ -36,6 +36,8 @@ class Solution {
             iter = iter.next; 
         }
         
+        iter.next = null; 
+        
         return sentinel.next; 
     }
 }
