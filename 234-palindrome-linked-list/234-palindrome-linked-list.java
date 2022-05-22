@@ -19,35 +19,29 @@ class Solution {
             fast = fast.next.next; 
             slow = slow.next; 
         }
-         
-        ListNode end = reverse(slow, null);
         
-        ListNode foward = head;
-        ListNode backward = end; 
-        boolean isPalidromic = true; 
+        ListNode end = reverse(slow, null); 
+        ListNode endIter = end; 
+        ListNode start = head; 
         
-        while(foward != null && backward != null){
-            if(foward.val != backward.val){
-                isPalidromic = false; 
-                break; 
-            }
-            foward = foward.next; 
-            backward = backward.next; 
+        while(start != null && endIter != null){
+            if(start.val != endIter.val)
+                return false; 
+            start = start.next; 
+            endIter = endIter.next; 
         }
         
         reverse(end, null); 
         
-        return isPalidromic; 
+        return true; 
     }
     
-    public ListNode reverse(ListNode current, ListNode prev){
-        if(current == null) return prev;
-        
-        while(current != null){
-            ListNode next = current.next; 
-            current.next = prev; 
-            prev = current; 
-            current = next; 
+    public ListNode reverse(ListNode node, ListNode prev){
+        while(node != null){
+            ListNode next = node.next;
+            node.next = prev; 
+            prev = node; 
+            node = next; 
         }
         
         return prev; 
