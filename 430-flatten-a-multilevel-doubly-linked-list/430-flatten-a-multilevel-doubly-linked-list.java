@@ -10,30 +10,35 @@ class Node {
 
 class Solution {
     public Node flatten(Node head) {
-        if(head == null) return null; 
+        if(head == null) return null;
+        flattenHelper(head); 
+        return head; 
+    }
+    
+    public Node flattenHelper(Node node){
+        if(node == null) return null; 
         
-        Node iter = head; 
+        Node iter = node; 
         
-        while(iter != null){
-            if(iter.child != null){
-                Node next = iter.next; 
-                Node child = iter.child;
-                
-                iter.child = null; 
+        while(iter.child != null || iter.next != null){
+            Node child = iter.child;
+            Node next = iter.next;
+            
+            if(child != null){
                 iter.next = child;
                 child.prev = iter; 
+                iter.child = null; 
                 
-                while(child.next != null)
-                    child = child.next; 
-                
-                child.next = next; 
+                Node endOfChildLink = flattenHelper(child);
+                endOfChildLink.next = next; 
                 if(next != null)
-                    next.prev = child;
+                    next.prev = endOfChildLink; 
             }
             
-            iter = iter.next; 
+            if(next != null)
+                iter = iter.next; 
         }
         
-        return head; 
+        return iter; 
     }
 }
