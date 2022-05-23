@@ -4,16 +4,16 @@ class Solution {
         return transformString(s).compareTo(transformString(t)) == 0; 
     }
     
-    public String transformString(String str){
-        if(str == null || str.length() == 0) return str;
-        
-        Map<Character, Character> map = new HashMap(); 
+    public String transformString(String s){
         StringBuilder transformedString = new StringBuilder(); 
+        Map<Character, Integer> map = new HashMap(); 
         
-        for(int i = 0; i < str.length(); i++){
-            if(!map.containsKey(str.charAt(i)))
-                map.put(str.charAt(i), (char)i); 
-            transformedString.append(map.get(str.charAt(i))); 
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(!map.containsKey(c))
+                map.put(c, i); 
+            transformedString.append(map.get(c));
+            transformedString.append(' '); 
         }
         
         return transformedString.toString(); 
