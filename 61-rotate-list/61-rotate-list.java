@@ -15,30 +15,30 @@ class Solution {
         int length = getLength(head); 
         k %= length; 
         
-        ListNode fast = head;  
-        ListNode slow = head; 
+        ListNode fast = head;
+        ListNode slow = head;
         
         for(int i = 0; i < k; i++){
             fast = fast.next; 
         }
         
         while(fast.next != null){
-            fast = fast.next;
+            fast = fast.next; 
             slow = slow.next; 
         }
         
         fast.next = head; 
-        ListNode newHead = slow.next; 
-        slow.next = null; 
+        ListNode newHead = slow.next;
+        slow.next = null;
         
         return newHead; 
     }
     
     public int getLength(ListNode node){
-        int length = 0; 
+        int length = 0;
         
         while(node != null){
-            length++; 
+            length++;
             node = node.next; 
         }
         
