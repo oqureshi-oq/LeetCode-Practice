@@ -1,21 +1,24 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         if(s == null || t == null) return false; 
-        return transformString(s).compareTo(transformString(t)) == 0; 
-    }
-    
-    public String transformString(String s){
-        StringBuilder transformedString = new StringBuilder(); 
-        Map<Character, Integer> map = new HashMap(); 
+        if(s.length() != t.length()) return false; 
+        
+        int[] mapStoT = new int[256]; 
+        Arrays.fill(mapStoT, -1); 
+        int[] mapTtoS = new int[256]; 
+        Arrays.fill(mapTtoS, -1); 
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
-            if(!map.containsKey(c))
-                map.put(c, i); 
-            transformedString.append(map.get(c));
-            transformedString.append(' '); 
+            char d = t.charAt(i); 
+            
+            if(mapStoT[c] == -1 && mapTtoS[d] == -1){
+                mapStoT[c] = d;
+                mapTtoS[d] = c; 
+            } else if(mapStoT[c] != d || mapTtoS[d] != c)
+                return false; 
         }
         
-        return transformedString.toString(); 
+        return true; 
     }
 }
