@@ -1,29 +1,24 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        if(board == null || board.length != 9) return false; 
+        if(board == null) return false; 
         
-        Set<String> seen = new HashSet(); 
+        Set<String> set = new HashSet(); 
         
-        for(int row = 0; row < board.length; row++){
-            if(board[row].length != 9) return false; 
-            for(int col = 0; col < board[row].length; col++){
-                if(board[row][col] == '.') continue; 
-                
-                char n = board[row][col]; 
-            
-                if(!seen.add(n + " in row " + row) || 
-                   !seen.add(n + " in col " + col) ||
-                   !seen.add(n + " in square "+ row/3 + "-" + col/3))
-                    return false;  
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                if(board[i][j] != '.'){
+                    if(set.contains(board[i][j] + "row:" + i) ||
+                      set.contains(board[i][j] + "col:" + j) ||
+                        set.contains(board[i][j] + String.valueOf(i/3) + String.valueOf(j/3)))
+                        return false;
+                    
+                    set.add(board[i][j] + "row:" + i); 
+                    set.add(board[i][j] + "col:" + j); 
+                    set.add(board[i][j] + String.valueOf(i/3) + String.valueOf(j/3)); 
+                }
             }
         }
         
         return true; 
     }
 }
-/*
-         row/col
-0,1,2 / 3 = 0 -> top/left
-3,4,5 / 3 = 1 -> middle/middle
-6,7,8 / 3 = 2 -> bottom/right
-*/
