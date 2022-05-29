@@ -1,25 +1,22 @@
 class Solution {
     public int mySqrt(int x) {
         if(x == 0) return 0;
+        
         int left = 1;
-        int right = x; 
+        int right = x;
         
         while(left <= right){
             int mid = left + (right-left)/2; 
             
-            if(mid <= x/mid){
-                if(mid+1 > x/(mid+1)) {
-                    return mid; 
-                } else {
-                    left = mid+1;
-                }
-            } else{
+            if(x/mid < mid){
                 right = mid-1; 
+            } else {
+                if(x/(mid+1) < (mid+1))
+                    return mid;
+                else
+                    left = mid+1; 
             }
         }
-        
-        System.out.println(left);
-        System.out.println(right); 
         
         return -1; 
     }
