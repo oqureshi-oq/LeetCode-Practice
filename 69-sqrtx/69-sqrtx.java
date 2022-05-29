@@ -7,13 +7,26 @@ class Solution {
         while(left <= right){
             int mid = left + (right-left)/2; 
             
-            if(mid > x/mid)
+            if(mid > x/mid){
                 right = mid-1;
-            else if(mid+1 > x/(mid+1))
-                return mid;
-            else
-                left = mid+1;
+            } else {
+                if(mid+1 > x/(mid+1)) return mid;
+                left = mid+1; 
+            }
+            
+            // if(mid < x/mid){
+            //     if(mid+1 > x/(mid+1)) {
+            //         return mid; 
+            //     } else {
+            //         left = mid+1;
+            //     }
+            // } else{
+            //     right = mid-1; 
+            // }
         }
+        
+        System.out.println(left);
+        System.out.println(right); 
         
         return -1; 
     }
