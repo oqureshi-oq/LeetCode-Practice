@@ -5,19 +5,22 @@ class Solution {
         int left = 0;
         int right = nums.length - 1; 
         
-        while(right - left > 1){
-            int mid = left + (right - left) / 2; 
+        while(left <= right){
+            int mid = left + (right - left)/2; 
             
-            if(nums[left] < nums[mid]){
-                if(nums[left] > nums[right])
-                    left = mid;
+            if(left == right) return nums[left]; 
+            
+            if(nums[left] <= nums[mid]){
+                if(nums[left] < nums[right])
+                    return nums[left]; 
                 else
-                    right = mid; 
+                    left = mid+1; 
             } else {
-                right = mid;
+                if(nums[mid] <= nums[left])
+                    right = mid; 
             }
         }
         
-        return Math.min(nums[left], nums[right]); 
+        return -1; 
     }
 }
