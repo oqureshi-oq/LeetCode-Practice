@@ -25,7 +25,7 @@ class Solution {
             else
                 right = mid-1; 
         }
-        
+        System.out.println(left == right); 
         return nums[left] == target ? left: -1; 
     }
     
