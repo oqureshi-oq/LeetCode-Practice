@@ -9,16 +9,16 @@
 
 public class Solution extends GuessGame {
     public int guessNumber(int n) {
-        int left = 1; 
-        int right = n; 
+        int left = 1;
+        int right = n;
         
         while(left <= right){
-            int mid = left + (right - left)/2; 
+            int mid = left + ((right - left) >> 2); 
             
-            int feedback = guess(mid); 
+            int feedback = guess(mid);
             
             if(feedback == 0)
-                return mid; 
+                return mid;
             else if(feedback == -1)
                 right = mid-1; 
             else
