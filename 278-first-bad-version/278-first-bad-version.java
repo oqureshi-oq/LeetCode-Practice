@@ -9,10 +9,8 @@ public class Solution extends VersionControl {
         while(left < right){
             int mid = left + (right - left)/2; 
             
-            boolean feedback = isBadVersion(mid); 
-            
-            if(feedback)
-                right = mid;
+            if(isBadVersion(mid))
+                right = mid; 
             else
                 left = mid+1; 
         }
