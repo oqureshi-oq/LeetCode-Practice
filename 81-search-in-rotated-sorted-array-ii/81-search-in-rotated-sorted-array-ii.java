@@ -13,9 +13,8 @@ class Solution {
             if(nums[mid] == target)
                 return true; 
             else if(nums[left] == nums[mid] && nums[mid] == nums[right]){
-                if(search(nums, left, mid-1, target)) return true;
-                if(search(nums, mid+1, right, target)) return true;
-                return false; 
+                left++;
+                right--; 
             } else if(nums[left] <= nums[mid]){
                 if(nums[left] <= target && target < nums[mid])
                     right = mid-1;
