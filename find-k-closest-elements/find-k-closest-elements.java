@@ -3,17 +3,17 @@ class Solution {
         if(arr == null || arr.length == 0) return new ArrayList(); 
         
         int left = 0;
-        int right = arr.length - 1; 
+        int right = arr.length - 1;
         int closestIndex = 0;
         
         while(left <= right){
             int mid = left + ((right - left) >> 1);
             
-            int midDiff = Math.abs(arr[mid] - x);
-            int currDiff = Math.abs(arr[closestIndex] - x); 
+            int currDiff = Math.abs(arr[closestIndex] - x);
+            int midDiff = Math.abs(arr[mid] - x); 
             
-            if(midDiff < currDiff || (midDiff == currDiff && mid < closestIndex))
-                closestIndex = mid; 
+            if(midDiff < currDiff || (currDiff == midDiff && mid < closestIndex))
+                closestIndex = mid;
             
             if(arr[mid] == x)
                 break;
@@ -23,7 +23,7 @@ class Solution {
                 right = mid-1;
         }
         
-        left = closestIndex; 
+        left = closestIndex;
         right = closestIndex;
         
         while(right - left + 1 < k){
@@ -37,6 +37,7 @@ class Solution {
             else
                 right++; 
         }
+        
         
         List<Integer> list = new ArrayList(); 
         
