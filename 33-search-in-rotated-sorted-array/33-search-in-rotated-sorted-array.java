@@ -6,11 +6,14 @@ class Solution {
         int right = nums.length - 1;
         
         while(left <= right){
-            int mid = left + ((right - left) >> 1); 
+            int mid = left + ((right - left) >> 1);
             
-            if(nums[mid] == target)
+            if(nums[mid] == target){
                 return mid;
-            else if(nums[left] <= nums[mid]){
+            } else if(nums[left] == nums[mid] && nums[mid] == nums[right]){
+                left++;
+                right--;
+            } else if(nums[left] <= nums[mid]){
                 if(nums[left] <= target && target < nums[mid])
                     right = mid-1;
                 else
@@ -23,6 +26,6 @@ class Solution {
             }
         }
         
-        return -1; 
+        return -1;
     }
 }
