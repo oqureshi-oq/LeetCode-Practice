@@ -3,7 +3,7 @@
 
 public class Solution extends VersionControl {
     public int firstBadVersion(int n) {
-        if(n < 1)
+        if(n <= 0)
             return -1;
         
         int left = 1;
@@ -13,11 +13,11 @@ public class Solution extends VersionControl {
             int mid = left + ((right - left) >> 1);
             
             if(isBadVersion(mid))
-                right = mid;
+                right = mid; 
             else
                 left = mid+1; 
         }
         
-        return isBadVersion(left) ? left: -1; 
+        return isBadVersion(left) ? left: -1;
     }
 }
