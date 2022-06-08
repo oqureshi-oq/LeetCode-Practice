@@ -9,10 +9,9 @@
 
 public class Solution extends GuessGame {
     public int guessNumber(int n) {
-        if(n < 1)
-            return -1;
+        if(n <= 0) return -1;
         
-        int left = 1; 
+        int left = 1;
         int right = n;
         
         while(left <= right){
@@ -25,9 +24,9 @@ public class Solution extends GuessGame {
             else if(feedback == -1)
                 right = mid-1;
             else
-                left = mid+1; 
+                left = mid+1;
         }
         
-        return -1; 
+        return -1;
     }
 }
