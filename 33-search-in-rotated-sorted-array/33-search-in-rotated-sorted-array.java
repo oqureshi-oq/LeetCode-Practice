@@ -10,9 +10,6 @@ class Solution {
             
             if(nums[mid] == target){
                 return mid;
-            } else if(nums[left] == nums[mid] && nums[mid] == nums[right]){
-                left++;
-                right--;
             } else if(nums[left] <= nums[mid]){
                 if(nums[left] <= target && target < nums[mid])
                     right = mid-1;
@@ -22,7 +19,7 @@ class Solution {
                 if(nums[mid] < target && target <= nums[right])
                     left = mid+1;
                 else
-                    right = mid-1; 
+                    right = mid-1;
             }
         }
         
