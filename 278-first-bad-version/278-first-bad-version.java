@@ -6,7 +6,7 @@ public class Solution extends VersionControl {
         if(n <= 0) return -1;
         
         int left = 1;
-        int right = n;
+        int right = n; 
         
         while(left < right){
             int mid = left + ((right - left) >> 1);
@@ -17,6 +17,6 @@ public class Solution extends VersionControl {
                 left = mid+1;
         }
         
-        return isBadVersion(left) ? left : -1; 
+        return isBadVersion(left) ? left: -1; 
     }
 }
