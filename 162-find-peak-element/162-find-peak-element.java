@@ -1,7 +1,6 @@
 class Solution {
     public int findPeakElement(int[] nums) {
-        if(nums == null)
-            return -1;
+        if(nums == null) return -1;
         
         int left = 0;
         int right = nums.length - 1;
@@ -12,7 +11,7 @@ class Solution {
             if(nums[mid] < nums[mid+1])
                 left = mid+1;
             else
-                right = mid;
+                right = mid; 
         }
         
         return left; 
