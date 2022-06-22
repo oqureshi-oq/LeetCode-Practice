@@ -10,7 +10,7 @@ class Solution {
             if(write < arr.length)
                 arr[write] = arr[read];
             
-            write--;
+            write--; 
             
             if(arr[read] == 0){
                 if(write < arr.length)
