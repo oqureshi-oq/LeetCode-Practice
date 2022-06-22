@@ -8,10 +8,8 @@ class Solution {
         for(int n: nums){
             if(n == 1)
                 max = Math.max(max, ++count);
-            else if(n == 0)
-                count = 0;
             else
-                return -1;
+                count = 0;
         }
         
         return max; 
