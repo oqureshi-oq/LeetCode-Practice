@@ -5,15 +5,15 @@ class Solution {
         int count = 0;
         
         for(int n: nums){
-            if(hasEvenNumDigits(n))
-                count++;
+            if(hasEvenNumDigits(n)) 
+                count++; 
         }
         
         return count; 
     }
     
     public boolean hasEvenNumDigits(int n){
-        int numDigits = (int) Math.log10(Math.abs(n)) + 1; 
-        return numDigits % 2 == 0 ? true: false; 
+        int numDigits = (int) Math.log10(Math.abs(n)) + 1;
+        return numDigits % 2 == 0; 
     }
 }
