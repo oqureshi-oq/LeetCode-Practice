@@ -13,6 +13,11 @@ class Solution {
     }
     
     public boolean hasEvenNumDigits(int n){
+        int numDigits = (int) Math.log10(Math.abs(n)) + 1; 
+        return numDigits % 2 == 0; 
+    }
+    
+    public boolean hasEvenNumDigits2(int n){
         return (10 <= n && n <= 99) || (1000 <= n && n <= 9999) || n == 100000; 
     }
     
