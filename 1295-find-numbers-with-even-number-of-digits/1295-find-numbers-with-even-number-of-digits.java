@@ -13,6 +13,10 @@ class Solution {
     }
     
     public boolean hasEvenNumDigits(int n){
+        return (10 <= n && n <= 99) || (1000 <= n && n <= 9999) || n == 100000; 
+    }
+    
+    public boolean hasEvenNumDigits1(int n){
         if(n == 0) return false;
         
         int numDigits = 0; 
