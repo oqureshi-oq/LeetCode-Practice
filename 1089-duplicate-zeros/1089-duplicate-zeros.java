@@ -2,6 +2,33 @@ class Solution {
     public void duplicateZeros(int[] arr) {
         if(arr == null) return;
         
+        int count = 0;
+        int read = 0;
+        int write = arr.length - 1; 
+        
+        while(count < arr.length){
+            count++;
+            if(arr[read] == 0)
+                count++;
+            read++; 
+        }
+        
+        read--;
+        
+        if(count > arr.length)
+            arr[write--] = arr[read--];
+        
+        while(read >= 0){
+            arr[write--] = arr[read];
+            if(arr[read] == 0)
+                arr[write--] = 0;
+            read--; 
+        }
+    }
+    
+    public void duplicateZeros2(int[] arr) {
+        if(arr == null) return;
+        
         int[] ans = new int[arr.length];
         
         int read = 0;
