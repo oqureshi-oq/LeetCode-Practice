@@ -3,13 +3,16 @@ class Solution {
         if(arr == null || arr.length < 3) return false; 
         
         int i = 0; 
-        while(i+1 < arr.length-1 && arr[i] < arr[i+1])
+        
+        while(i+1 < arr.length && arr[i] < arr[i+1])
+            i++;
+        
+        if(i == 0 || i == arr.length-1)
+            return false;
+        
+        while(i+1 < arr.length && arr[i] > arr[i+1])
             i++; 
         
-        int j = arr.length-1; 
-        while(j-1 > 0 && arr[j-1] > arr[j])
-            j--;
-        
-        return i == j; 
+        return i == arr.length - 1; 
     }
 }
