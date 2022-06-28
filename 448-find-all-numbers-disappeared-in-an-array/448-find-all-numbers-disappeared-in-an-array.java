@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        if(nums == null) return null; 
+        if(nums == null) return new ArrayList<Integer>(); 
         
         for(int i = 0; i < nums.length; i++){
             if(nums[Math.abs(nums[i])-1] > 0)
@@ -12,8 +12,6 @@ class Solution {
         for(int i = 0; i < nums.length; i++){
             if(nums[i] > 0)
                 list.add(i+1); 
-            else
-                nums[i] *= -1; 
         }
         
         return list; 
