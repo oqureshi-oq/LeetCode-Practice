@@ -2,23 +2,23 @@ class Solution {
     public int heightChecker(int[] heights) {
         if(heights == null) return -1;
         
-        int[] freq = new int[101];
+        int[] map = new int[101];
         
         for(int h: heights){
-            freq[h]++; 
+            map[h]++; 
         }
         
         int count = 0;
-        int expected = 1;
+        int expectedHeight = 1; 
         
-        for(int actual: heights){
-            while(freq[expected] == 0)
-                expected++; 
+        for(int i = 0; i < heights.length; i++){
+            while(map[expectedHeight] == 0)
+                expectedHeight++; 
             
-            if(actual != expected)
+            if(expectedHeight != heights[i])
                 count++;
             
-            freq[expected]--; 
+            map[expectedHeight]--; 
         }
         
         return count; 
