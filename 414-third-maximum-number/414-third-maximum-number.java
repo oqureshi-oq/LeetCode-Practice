@@ -2,7 +2,7 @@ class Solution {
     public int thirdMax(int[] nums) {
         if(nums == null) return -1;
         
-        Integer first = null;
+        Integer first = null; 
         Integer second = null; 
         Integer third = null; 
         
@@ -16,9 +16,9 @@ class Solution {
                 first = n;
             } else if(second == null || n > second){
                 third = second;
-                second = n; 
+                second = n;
             } else if(third == null || n > third){
-                third = n;
+                third = n; 
             }
         }
         
