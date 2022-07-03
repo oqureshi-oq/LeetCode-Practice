@@ -7,7 +7,7 @@ class Solution {
         int index = -1; 
         
         for(int i = 0; i < nums.length; i++){
-            if(first == null || nums[i] > first){
+            if(first == null || nums[i] >= first){
                 second = first;
                 first = nums[i]; 
                 index = i; 
