@@ -1,98 +1,29 @@
 class Solution {
     public void duplicateZeros(int[] arr) {
-        if(arr == null) return;
+        if(arr == null) return; 
         
-        int zeroCount = getZeroCount(arr);
-        int read = arr.length - 1;
-        int write = arr.length + zeroCount - 1;
-        
-        while(read >= 0){
-            if(write < arr.length)
-                arr[write] = arr[read];
-            
-            write--;
-            
-            if(arr[read] == 0){
-                if(write < arr.length)
-                    arr[write] = 0;
-                write--;
-            }
-            
-            read--; 
-        }
-    }
-    
-    public int getZeroCount(int[] arr){
-        if(arr == null) return -1;
-        
-        int zeroCount = 0;
-        
-        for(int n: arr){
-            if(n == 0)
-                zeroCount++;
-        }
-        
-        return zeroCount; 
-    }
-    
-    public void duplicateZeros3(int[] arr) {
-        if(arr == null) return;
-        
+        int read = 0; 
         int count = 0;
-        int read = 0;
-        int write = arr.length - 1; 
         
         while(count < arr.length){
-            count++;
+            count++; 
             if(arr[read] == 0)
-                count++;
+                count++; 
             read++; 
         }
         
         read--;
+        int write = arr.length - 1; 
         
-        if(count > arr.length)
-            arr[write--] = arr[read--];
+        if(count > arr.length){
+            arr[write--] = arr[read--]; 
+        }
         
         while(read >= 0){
             arr[write--] = arr[read];
             if(arr[read] == 0)
                 arr[write--] = 0;
             read--; 
-        }
-    }
-    
-    public void duplicateZeros2(int[] arr) {
-        if(arr == null) return;
-        
-        int[] ans = new int[arr.length];
-        
-        int read = 0;
-        int write = 0;
-        
-        while(write < arr.length){
-            ans[write++] = arr[read];
-            if(arr[read] == 0 && write < arr.length)
-                ans[write++] = arr[read];
-            read++; 
-        }
-        
-        for(int i = 0; i < arr.length; i++){
-            arr[i] = ans[i];
-        }
-    }
-    
-    public void duplicateZeros1(int[] arr) {
-        if(arr == null) return;
-        
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] != 0) continue;
-            
-            for(int j = arr.length - 2; i <= j; j--){
-                arr[j+1] = arr[j];
-            }
-            
-            i++; 
         }
     }
 }
