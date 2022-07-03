@@ -1,38 +1,38 @@
 class Solution {
     public int[] findDiagonalOrder(int[][] mat) {
-        if(mat == null) return null;
+        if(mat == null) return new int[0];
         
         int m = mat.length; 
         int n = mat[0].length; 
-        int[] ans = new int[m*n];
-        int row = 0; 
+        int row = 0;
         int col = 0; 
-        boolean up = true; 
+        boolean goingUp = true; 
+        int[] ans = new int[m*n];
         
         for(int i = 0; i < m*n; i++){
             ans[i] = mat[row][col];
             
-            if(up){                
-                if(row-1 >= 0 && col+1 < n){
-                    row--; 
+            if(goingUp){
+                if(row-1 < 0 && col+1 < n){
                     col++; 
-                } else if(col+1 < n){
-                    col++; 
-                    up = false; 
-                } else {
+                    goingUp = false; 
+                } else if(col+1 >= n){
                     row++; 
-                    up = false; 
+                    goingUp = false; 
+                } else {
+                    row--;
+                    col++; 
                 }
             } else {
-                if(row+1 < m && col-1 >= 0){
+                if(col-1 < 0 && row+1 < m){
+                    row++;
+                    goingUp = true; 
+                } else if(row+1 >= m){
+                    col++; 
+                    goingUp = true; 
+                } else {
                     row++; 
                     col--; 
-                } else if(row+1 < m){
-                    row++;
-                    up = true;
-                } else {
-                    col++; 
-                    up = true; 
                 }
             }
         }
@@ -40,3 +40,4 @@ class Solution {
         return ans; 
     }
 }
+
