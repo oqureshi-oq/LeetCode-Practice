@@ -6,29 +6,29 @@ class Solution {
         int n = mat[0].length; 
         int row = 0;
         int col = 0; 
-        boolean goingUp = true; 
         int[] ans = new int[m*n];
+        boolean goingUp = true; 
         
         for(int i = 0; i < m*n; i++){
             ans[i] = mat[row][col];
             
             if(goingUp){
-                if(row-1 < 0 && col+1 < n){
+                if(row == 0 && col+1 < n){
                     col++; 
                     goingUp = false; 
-                } else if(col+1 >= n){
+                } else if(col == n-1 && row+1 < m){
                     row++; 
-                    goingUp = false; 
+                    goingUp = false;
                 } else {
                     row--;
                     col++; 
                 }
             } else {
-                if(col-1 < 0 && row+1 < m){
-                    row++;
-                    goingUp = true; 
-                } else if(row+1 >= m){
-                    col++; 
+                if(col == 0 && row+1 < m){
+                    row++; 
+                    goingUp = true;
+                } else if(row == m-1 && col+1 < n){
+                    col++;
                     goingUp = true; 
                 } else {
                     row++; 
@@ -40,4 +40,3 @@ class Solution {
         return ans; 
     }
 }
-
