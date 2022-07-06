@@ -10,18 +10,17 @@
  */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-        if(head == null) return null;
+        if(head == null) return null; 
         
-        ListNode oddIter = head;
-        ListNode evenIter = head.next; 
+        ListNode oddIter = head; 
         ListNode evenHead = head.next; 
+        ListNode evenIter = evenHead;
         
-        while(evenIter != null){
-            oddIter.next = evenIter.next; 
-            if(oddIter.next != null)
-                evenIter.next = oddIter.next.next;
-            if(oddIter.next != null)
-                oddIter = oddIter.next; 
+        while(evenIter != null && evenIter.next != null){
+            oddIter.next = oddIter.next.next; 
+            evenIter.next = evenIter.next.next; 
+            
+            oddIter = oddIter.next; 
             evenIter = evenIter.next; 
         }
         
