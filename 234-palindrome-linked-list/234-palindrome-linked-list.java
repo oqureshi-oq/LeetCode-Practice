@@ -16,32 +16,37 @@ class Solution {
         ListNode slow = head; 
         
         while(fast != null && fast.next != null){
-            fast = fast.next.next; 
+            fast = fast.next.next;
             slow = slow.next; 
         }
         
-        ListNode end = reverse(slow, null); 
-        ListNode endIter = end; 
-        ListNode start = head; 
+        ListNode head2 = reverse(slow);
         
-        while(start != null && endIter != null){
-            if(start.val != endIter.val)
+        ListNode iter1 = head; 
+        ListNode iter2 = head2;
+        
+        while(iter1 != null && iter2 != null){
+            if(iter1.val != iter2.val)
                 return false; 
-            start = start.next; 
-            endIter = endIter.next; 
+            
+            iter1 = iter1.next;
+            iter2 = iter2.next; 
         }
-        
-        reverse(end, null); 
         
         return true; 
     }
     
-    public ListNode reverse(ListNode node, ListNode prev){
-        while(node != null){
-            ListNode next = node.next;
-            node.next = prev; 
-            prev = node; 
-            node = next; 
+    public ListNode reverse(ListNode head){
+        if(head == null) return null; 
+        
+        ListNode current = head; 
+        ListNode prev = null; 
+        
+        while(current != null){
+            ListNode next = current.next;
+            current.next = prev; 
+            prev = current; 
+            current = next; 
         }
         
         return prev; 
