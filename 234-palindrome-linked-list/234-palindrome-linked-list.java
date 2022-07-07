@@ -22,16 +22,20 @@ class Solution {
         
         ListNode head2 = reverse(slow);
         
-        ListNode iter1 = head; 
+        ListNode iter1 = head;
+        ListNode tail = iter1; 
         ListNode iter2 = head2;
         
         while(iter1 != null && iter2 != null){
             if(iter1.val != iter2.val)
                 return false; 
             
+            tail = iter1; 
             iter1 = iter1.next;
             iter2 = iter2.next; 
         }
+        
+        tail.next = reverse(head2); 
         
         return true; 
     }
