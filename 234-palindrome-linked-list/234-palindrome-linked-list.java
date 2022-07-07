@@ -21,23 +21,24 @@ class Solution {
         }
         
         ListNode head2 = reverse(slow);
-        
-        ListNode iter1 = head;
-        ListNode tail = iter1; 
+                
+        ListNode iter1 = head; 
         ListNode iter2 = head2;
+        boolean isPalindrome = true; 
         
         while(iter1 != null && iter2 != null){
-            if(iter1.val != iter2.val)
-                return false; 
+            if(iter1.val != iter2.val){
+                isPalindrome = false; 
+                break;  
+            }
             
-            tail = iter1; 
             iter1 = iter1.next;
             iter2 = iter2.next; 
         }
-        
-        tail.next = reverse(head2); 
-        
-        return true; 
+
+        reverse(head2); 
+    
+        return isPalindrome; 
     }
     
     public ListNode reverse(ListNode head){
