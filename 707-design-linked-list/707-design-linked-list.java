@@ -1,22 +1,19 @@
 class MyLinkedList {
     
-    private class Node {
+    private class Node{
         int val; 
         Node next; 
+        Node prev;
         
         Node(int val){
-            this.val = val; 
-            next = null; 
-        }
-        
-        Node(int val, Node next){
-            this.val = val; 
-            this.next = next; 
+            this.val = val;
+            next = null;
+            prev = null; 
         }
     }
     
-    private Node head; 
-    private int length; 
+    Node head; 
+    int length; 
 
     public MyLinkedList() {
         head = null; 
@@ -30,7 +27,7 @@ class MyLinkedList {
         int count = 0;
         
         while(count != index){
-            iter = iter.next; 
+            iter = iter.next;
             count++; 
         }
         
@@ -52,42 +49,50 @@ class MyLinkedList {
         length++; 
         
         if(index == 0){
-            node.next = head; 
+            node.next = head;
+            node.prev = null;
             head = node; 
-            return; 
-        }
-        
-        Node iter = head; 
-        int count = 0; 
-        
-        while(count != index-1){
-            iter = iter.next; 
-            count++; 
-        }
-        
-        node.next = iter.next; 
-        iter.next = node; 
-    }
-    
-    public void deleteAtIndex(int index) {
-        if(index < 0 || index >= length) return;
-        
-        length--;
-        
-        if(index == 0){
-            head = head.next; 
             return; 
         }
         
         Node iter = head; 
         int count = 0;
         
-        while(count != index - 1){
+        while(count != index-1){
             iter = iter.next; 
             count++; 
         }
         
-        iter.next = iter.next.next; 
+        node.next = iter.next;
+        node.prev = iter; 
+        if(iter.next != null)
+            iter.next.prev = node;
+        iter.next = node; 
+    }
+    
+    public void deleteAtIndex(int index) {
+        if(index < 0 || index >= length) return;
+        
+        length--; 
+        
+        if(index == 0){
+            head = head.next; 
+            if(head != null)
+                head.prev = null; 
+            return; 
+        }
+        
+        Node iter = head;
+        int count = 0;
+        
+        while(count != index-1){
+            iter = iter.next; 
+            count++; 
+        }
+        
+        iter.next = iter.next.next;
+        if(iter.next != null)
+            iter.next.prev = iter; 
     }
 }
 
