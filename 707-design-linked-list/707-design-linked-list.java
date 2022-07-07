@@ -50,6 +50,8 @@ class MyLinkedList {
         
         if(index == 0){
             node.next = head;
+            if(head != null)
+                head.prev = node; 
             node.prev = null;
             head = node; 
             return; 
