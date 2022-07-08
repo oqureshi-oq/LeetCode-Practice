@@ -1,13 +1,21 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        if(nums == null) return 0;
+        if(nums == null || nums.length == 0)
+            return -1; 
         
-        int singleNumber = 0;
+        Set<Integer> set = new HashSet(); 
         
         for(int n: nums){
-            singleNumber ^= n; 
+            if(set.contains(n))
+                set.remove(n);
+            else
+                set.add(n); 
         }
         
-        return singleNumber; 
+        for(int n: set){
+            return n; 
+        }
+        
+        return -1; 
     }
 }
