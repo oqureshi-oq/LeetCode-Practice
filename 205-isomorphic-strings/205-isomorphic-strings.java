@@ -1,39 +1,23 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        if(s == null || t == null || s.length() != t.length())
-            return false; 
-        
-        return isEqual(transform(s), transform(t));
+        return transformString(s).compareTo(transformString(t)) == 0; 
     }
     
-    public int[] transform(String s){
-        if(s == null) return null; 
+    public String transformString(String s){
+        if(s == null) return new String(); 
         
-        int[] map = new int[256]; 
-        int[] arr = new int[s.length()]; 
-        Arrays.fill(map, -1); 
+        StringBuilder str = new StringBuilder(); 
+        Map<Character, Integer> map = new HashMap(); 
         
         for(int i = 0; i < s.length(); i++){
-            char c = s.charAt(i);
+            char c = s.charAt(i); 
             
-            if(map[c] == -1)
-                map[c] = i;
+            if(!map.containsKey(c))
+                map.put(c, i); 
             
-            arr[i] = map[c]; 
+            str.append(map.get(c) + ' '); 
         }
         
-        return arr; 
-    }
-    
-    public boolean isEqual(int[] s, int[] t){
-        if(s == null || t == null || s.length != t.length)
-            return false; 
-        
-        for(int i = 0; i < s.length; i++){
-            if(s[i] != t[i])
-                return false; 
-        }
-        
-        return true; 
+        return str.toString(); 
     }
 }
