@@ -11,27 +11,28 @@ class Solution {
         }
         
         int min = list1.length + list2.length; 
-        Map<Integer, List<String>> indexSum = new HashMap(); 
+        List<String> list = new ArrayList(); 
         
         for(int i = 0; i < list2.length; i++){
             if(list1Map.containsKey(list2[i])){
                 int sum = i + list1Map.get(list2[i]); 
                 
-                if(!indexSum.containsKey(sum)){
-                    indexSum.put(sum, new ArrayList()); 
-                    min = Math.min(min, sum); 
+                if(sum < min){
+                    list.clear();
+                    min = sum; 
                 }
                 
-                indexSum.get(sum).add(list2[i]); 
+                if(sum == min)
+                    list.add(list2[i]); 
             }
         }
         
         if(min == list1.length + list2.length)
             return new String[0]; 
         
-        String[] ans = new String[indexSum.get(min).size()];
-        for(int i = 0; i < indexSum.get(min).size(); i++){
-            ans[i] = indexSum.get(min).get(i); 
+        String[] ans = new String[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            ans[i] = list.get(i); 
         }
         
         return ans; 
