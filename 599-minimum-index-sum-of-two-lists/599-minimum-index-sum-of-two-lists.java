@@ -1,31 +1,39 @@
 class Solution {
     public String[] findRestaurant(String[] list1, String[] list2) {
-        if(list1 == null || list2 == null) return null; 
+        if(list1 == null || list2 == null || list1.length == 0 || list2.length == 0)
+            return new String[0]; 
         
-        Map<String, Integer> map1 = new HashMap(); 
+        Map<String, Integer> list1Map = new HashMap(); 
         
         for(int i = 0; i < list1.length; i++){
-            map1.put(list1[i], i); 
+            if(!list1Map.containsKey(list1[i]))
+                list1Map.put(list1[i], i); 
         }
         
         int min = list1.length + list2.length; 
-        Map<Integer, List<String>> map2 = new HashMap(); 
+        Map<Integer, List<String>> indexSum = new HashMap(); 
         
         for(int i = 0; i < list2.length; i++){
-            if(map1.containsKey(list2[i])){
-                int indexSum = map1.get(list2[i]) + i; 
+            if(list1Map.containsKey(list2[i])){
+                int sum = i + list1Map.get(list2[i]); 
                 
-                if(!map2.containsKey(indexSum))
-                    map2.put(indexSum, new ArrayList()); 
+                if(!indexSum.containsKey(sum)){
+                    indexSum.put(sum, new ArrayList()); 
+                    min = Math.min(min, sum); 
+                }
                 
-                map2.get(indexSum).add(list2[i]);
-                
-                min = Math.min(min, indexSum); 
+                indexSum.get(sum).add(list2[i]); 
             }
         }
         
-        if(min == list1.length + list2.length) return null; 
+        if(min == list1.length + list2.length)
+            return new String[0]; 
         
-        return map2.get(min).toArray(new String[map2.get(min).size()]); 
+        String[] ans = new String[indexSum.get(min).size()];
+        for(int i = 0; i < indexSum.get(min).size(); i++){
+            ans[i] = indexSum.get(min).get(i); 
+        }
+        
+        return ans; 
     }
 }
