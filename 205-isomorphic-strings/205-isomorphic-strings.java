@@ -1,6 +1,6 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        return transformString(s).compareTo(transformString(t)) == 0; 
+        return transformString(s).equals(transformString(t)); 
     }
     
     public String transformString(String s){
