@@ -2,20 +2,19 @@ class Solution {
     public boolean isValidSudoku(char[][] board) {
         if(board == null) return false; 
         
-        Set<String> set = new HashSet(); 
+        Set<String> seen = new HashSet(); 
         
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j < board[i].length; j++){
-                if(board[i][j] != '.'){
-                    if(set.contains(board[i][j] + "row:" + i) ||
-                      set.contains(board[i][j] + "col:" + j) ||
-                        set.contains(board[i][j] + String.valueOf(i/3) + String.valueOf(j/3)))
-                        return false;
-                    
-                    set.add(board[i][j] + "row:" + i); 
-                    set.add(board[i][j] + "col:" + j); 
-                    set.add(board[i][j] + String.valueOf(i/3) + String.valueOf(j/3)); 
-                }
+        for(int row = 0; row < board.length; row++){
+            for(int col = 0; col < board[row].length; col++){
+                char value = board[row][col]; 
+                
+                if(value == '.') 
+                    continue; 
+                
+                if(!seen.add("row" + row + "v" + value) || 
+                   !seen.add("col" + col + "v" + value) ||
+                   !seen.add("rowSquare" + row / 3 + "colSquare" + col / 3 + "v" + value))
+                    return false; 
             }
         }
         
