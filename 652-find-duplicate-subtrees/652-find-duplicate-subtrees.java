@@ -17,24 +17,27 @@ class Solution {
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         if(root == null) return null; 
         
+        List<TreeNode> ans = new ArrayList(); 
         Map<String, Integer> freq = new HashMap(); 
-        List<TreeNode> res = new ArrayList(); 
         
-        duplicateSubtrees(root, freq, res); 
+        findDuplicateSubtrees(root, ans, freq);
         
-        return res; 
+        return ans; 
     }
     
-    public String duplicateSubtrees(TreeNode node, Map<String, Integer> freq, List<TreeNode> res){
-        if(node == null) return "null";
+    public String findDuplicateSubtrees(TreeNode node, List<TreeNode> ans, Map<String, Integer> freq){
+        if(node == null)
+            return "null";
         
-        String key = "left:" + duplicateSubtrees(node.left, freq, res) + ", root:" + node.val + "right:" + duplicateSubtrees(node.right, freq, res); 
-    
-        freq.put(key, freq.getOrDefault(key, 0) + 1);
+        String leftSubTree = findDuplicateSubtrees(node.left, ans, freq);
+        String rightSubTree = findDuplicateSubtrees(node.right, ans, freq);
+        String currentSubTree = node.val + ", " + leftSubTree + ", " + rightSubTree; 
         
-        if(freq.containsKey(key) && freq.get(key) == 2)
-            res.add(node); 
-     
-        return key; 
+        freq.put(currentSubTree, freq.getOrDefault(currentSubTree, 0) + 1); 
+        
+        if(freq.get(currentSubTree) == 2)
+            ans.add(node); 
+        
+        return currentSubTree; 
     }
 }
