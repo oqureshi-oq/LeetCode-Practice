@@ -1,23 +1,18 @@
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        if(arr == null || k > arr.length || k <= 0) 
-            return new ArrayList(); 
+        if(arr == null || k <= 0 || k > arr.length) return new ArrayList(); 
         
-        int xIndex = binarySearch(arr, x); 
+        int closestIndex = findClosestIndex(arr, x);
+        int left = closestIndex;
+        int right = closestIndex; 
         
-        if(xIndex == -1)
-            return new ArrayList(); 
-        
-        int left = xIndex;
-        int right = xIndex;
-        
-        while(right - left + 1 != k){
+        while(right - left + 1 < k){
             if(right + 1 < arr.length && left - 1 >= 0){
                 if(Math.abs(arr[left-1] - x) <= Math.abs(arr[right+1] - x))
                     left--;
                 else
-                    right++; 
-            } else if(right+1 < arr.length)
+                    right++;
+            } else if (right + 1 < arr.length)
                 right++;
             else
                 left--; 
@@ -32,31 +27,31 @@ class Solution {
         return list; 
     }
     
-    public int binarySearch(int[] arr, int x){
+    public int findClosestIndex(int[] arr, int x){
         if(arr == null) return -1;
         
         int left = 0;
-        int right = arr.length-1;
+        int right = arr.length - 1;
+        int index = 0;
         
         while(left <= right){
-            int mid = left + (right - left)/2;
+            int mid = left + (right - left)/2; 
             
             if(arr[mid] == x)
                 return mid; 
-            else if(arr[mid] < x)
+            
+            int midDiff = Math.abs(arr[mid] - x);
+            int indexDiff = Math.abs(arr[index] - x); 
+            
+            if(midDiff < indexDiff || midDiff == indexDiff && mid < index)
+                index = mid;
+            
+            if(arr[mid] < x)
                 left = mid+1;
             else
-                right = mid-1; 
+                right = mid-1;
         }
         
-        if(left < arr.length && right >= 0){
-            if(Math.abs(arr[right] - x) <= Math.abs(arr[left] - x))
-                return right;
-            else
-                return left; 
-        }
-        
-        if(left >= arr.length) return right;
-        return left; 
+        return index; 
     }
 }
