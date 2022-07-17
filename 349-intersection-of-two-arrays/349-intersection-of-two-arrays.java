@@ -1,28 +1,27 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        if(nums1 == null || nums2 == null) return null; 
+        if(nums1 == null || nums2 == null) return new int[0];
         
-        Set<Integer> set = new HashSet(); 
+        Set<Integer> set_nums1 = new HashSet(); 
+        Set<Integer> intersectionSet = new HashSet(); 
+        int[] intersectionArray; 
         
-        int[] minArr = nums1.length < nums2.length ? nums1: nums2; 
-        int[] otherArr = minArr == nums1 ? nums2: nums1; 
-        
-        for(int n: minArr){
-            set.add(n);
+        for(int n: nums1){
+            set_nums1.add(n);
         }
         
-        Set<Integer> intersection = new HashSet(); 
-        for(int n: otherArr){
-            if(set.contains(n))
-                intersection.add(n);
+        for(int n: nums2){
+            if(set_nums1.contains(n))
+                intersectionSet.add(n);
         }
         
-        int[] ans = new int[intersection.size()];
+        intersectionArray = new int[intersectionSet.size()]; 
         int i = 0; 
-        for(int n: intersection){
-            ans[i++] = n; 
+        
+        for(int n: intersectionSet){
+            intersectionArray[i++] = n;
         }
         
-        return ans; 
+        return intersectionArray; 
     }
 }
