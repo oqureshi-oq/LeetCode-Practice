@@ -10,8 +10,6 @@
  */
 class Solution {
     public ListNode swapPairs(ListNode head) {
-        if(head == null || head.next == null) return head; 
-        
         ListNode sentinel = new ListNode(0, head);
         ListNode prev = sentinel; 
         ListNode iter = head; 
