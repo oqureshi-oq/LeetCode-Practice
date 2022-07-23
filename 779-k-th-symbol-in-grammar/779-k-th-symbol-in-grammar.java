@@ -16,7 +16,3 @@ class Solution {
         return kthGrammar(n-1, k, prev, length); 
     }
 }
-
-//         0
-//        0 1
-//      0 1 1 0
