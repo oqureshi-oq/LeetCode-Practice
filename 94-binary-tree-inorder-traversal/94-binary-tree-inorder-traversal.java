@@ -15,17 +15,28 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
+        TreeNode current = root; 
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
         List<Integer> list = new ArrayList(); 
-        inorderTraversal(root, list);
-        return list; 
-    }
-    
-    public void inorderTraversal(TreeNode node, List<Integer> list){
-        if(node == null)
-            return;
         
-        inorderTraversal(node.left, list);
-        list.add(node.val);
-        inorderTraversal(node.right, list);
+        while(current != null || stack.size() > 0){
+            if(current == null){
+                current = stack.pop(); 
+                list.add(current.val);
+                current = current.right; 
+            }
+            
+            while(current != null){
+                stack.push(current);
+                current = current.left; 
+            }
+            
+            if(current != null)
+                list.add(current.val);
+            
+            current = null; 
+        }
+        
+        return list; 
     }
 }
