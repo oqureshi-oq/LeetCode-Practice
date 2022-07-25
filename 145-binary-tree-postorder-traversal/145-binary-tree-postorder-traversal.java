@@ -14,17 +14,36 @@
  * }
  */
 class Solution {
-    public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList(); 
-        postorderTraversal(root, list);
+    public List<Integer> postorderTraversal(TreeNode root){
+        LinkedList<Integer> list = new LinkedList(); 
+        Deque<TreeNode> stack = new ArrayDeque(); 
+        
+        if(root != null)
+            stack.push(root); 
+        
+        while(!stack.isEmpty()){
+            TreeNode node = stack.pop(); 
+            list.addFirst(node.val);
+            if(node.left != null)
+                stack.push(node.left);
+            if(node.right != null)
+                stack.push(node.right); 
+        }
+        
         return list; 
     }
     
-    public void postorderTraversal(TreeNode node, List<Integer> list){
-        if(node == null)
-            return;
-        postorderTraversal(node.left, list);
-        postorderTraversal(node.right, list); 
-        list.add(node.val);
-    }
+//     public List<Integer> postorderTraversal(TreeNode root) {
+//         List<Integer> list = new ArrayList(); 
+//         postorderTraversal(root, list);
+//         return list; 
+//     }
+    
+//     public void postorderTraversal(TreeNode node, List<Integer> list){
+//         if(node == null)
+//             return;
+//         postorderTraversal(node.left, list);
+//         postorderTraversal(node.right, list); 
+//         list.add(node.val);
+//     }
 }
