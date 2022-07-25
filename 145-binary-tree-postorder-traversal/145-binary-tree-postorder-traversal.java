@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class Solution {
+class Solution {    
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList(); 
         postorderTraversal(root, list);
