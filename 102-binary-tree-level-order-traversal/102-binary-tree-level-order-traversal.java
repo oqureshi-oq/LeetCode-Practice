@@ -26,15 +26,12 @@ class Solution {
             List<Integer> level = new ArrayList(); 
             
             for(int i = 0; i < length; i++){
-                TreeNode node = queue.poll(); 
-                
+                TreeNode node = queue.poll();
                 level.add(node.val);
-                
                 if(node.left != null)
                     queue.add(node.left);
-                
                 if(node.right != null)
-                    queue.add(node.right);
+                    queue.add(node.right); 
             }
             
             list.add(level); 
