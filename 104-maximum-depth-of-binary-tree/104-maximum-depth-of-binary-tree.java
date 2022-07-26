@@ -16,28 +16,59 @@
 class Solution {
     public int maxDepth(TreeNode root){
         Deque<TreeNode> stack = new ArrayDeque(); 
-        TreeNode current = root; 
-        TreeNode prev = null; 
-        int max = 0;  
+        Deque<Integer> depths = new ArrayDeque(); 
+        int max = 0; 
+    
+        if(root != null){
+            stack.push(root);
+            depths.push(1); 
+            max = 1; 
+        }
         
-        while(current != null || !stack.isEmpty()){
-            while(current != null){
-                stack.push(current);
-                prev = current; 
-                current = current.left; 
-                max = Math.max(max, stack.size()); 
+        while(!stack.isEmpty()){
+            TreeNode current = stack.pop(); 
+            int currentDepth = depths.pop(); 
+            max = Math.max(currentDepth, max); 
+            
+            if(current.right != null){
+                stack.push(current.right);
+                depths.push(currentDepth+1); 
             }
             
-            if(stack.peek().right != null && stack.peek().right != prev){
-                prev = current; 
-                current = stack.peek().right;
-            } else { 
-                prev = stack.pop();
+            if(current.left != null){
+                stack.push(current.left);
+                depths.push(currentDepth+1); 
             }
         }
         
         return max; 
     }
+    
+//     public int maxDepth(TreeNode root){
+//         Deque<TreeNode> stack = new ArrayDeque(); 
+//         TreeNode current = root; 
+//         TreeNode prev = null; 
+//         int max = 0;  
+        
+//         while(current != null || !stack.isEmpty()){
+//             while(current != null){
+//                 stack.push(current);
+//                 prev = current; 
+//                 current = current.left; 
+//                 max = Math.max(max, stack.size()); 
+//             }
+            
+//             if(stack.peek().right != null && stack.peek().right != prev){
+//                 prev = current; 
+//                 current = stack.peek().right;
+//             } else { 
+//                 prev = stack.pop();
+//                 System.out.println(prev.val); 
+//             }
+//         }
+        
+//         return max; 
+//     }
     
 //     public int maxDepth(TreeNode root) {
 //         int max = 0; 
