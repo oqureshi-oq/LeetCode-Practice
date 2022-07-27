@@ -1,10 +1,9 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> list = new ArrayList(); 
-        Map<String, List<String>> map = new HashMap(); 
-        
         if(strs == null)
-            return list; 
+            return new ArrayList(); 
+        
+        Map<String, List<String>> map = new HashMap();
         
         for(String s: strs){
             char[] ca = new char[26];
@@ -18,10 +17,6 @@ class Solution {
             map.get(keyStr).add(s); 
         }
         
-        for(String key: map.keySet()){
-            list.add(map.get(key)); 
-        }
-        
-        return list; 
+        return new ArrayList(map.values()); 
     }
 }
