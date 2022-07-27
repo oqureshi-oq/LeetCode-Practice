@@ -10,7 +10,7 @@ class Solution {
             char[] ca = new char[26];
             for (char c : s.toCharArray()) 
                 ca[c - 'a']++;
-            String keyStr = String.valueOf(ca);
+            String keyStr = new String(ca);
             
             if(!map.containsKey(keyStr))
                 map.put(keyStr, new ArrayList());
