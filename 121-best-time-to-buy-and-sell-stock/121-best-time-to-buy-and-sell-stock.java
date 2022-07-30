@@ -3,15 +3,17 @@ class Solution {
         if(prices == null)
             return 0;
         
-        int buy = prices[0];
-        int maxProfit = 0; 
+        int left = 0;
+        int right = 1; 
+        int maxProfit = 0;
         
-        for(int i = 1; i < prices.length; i++){
-            maxProfit = Math.max(maxProfit, prices[i] - buy); 
-            if(buy > prices[i])
-                buy = prices[i]; 
+        while(right < prices.length){
+            maxProfit = Math.max(prices[right] - prices[left], maxProfit);
+            if(prices[right] < prices[left])
+                left = right; 
+            right++; 
         }
         
-        return maxProfit; 
+        return maxProfit;
     }
 }
