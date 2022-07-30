@@ -3,33 +3,25 @@ class Solution {
         if(s == null)
             return 0; 
         
-        Set<Character> set = new HashSet(); 
+        int left = 0;
+        int right = 0;
+        Map<Character, Integer> map = new HashMap(); 
         int max = 0; 
+        int maxFreq = 0; 
         
-        for(int i = 0; i < s.length(); i++){
-            set.add(s.charAt(i)); 
-        }
-        
-        for(char c: set){
-            int left = 0; 
-            int right = 0; 
-            int currentMax = 0; 
-            int currentK = k; 
+        while(right < s.length()){
+            map.put(s.charAt(right), map.getOrDefault(s.charAt(right), 0) + 1); 
             
-            while(right < s.length()){
-                if(s.charAt(right) != c)
-                    currentK--; 
-                
-                while(currentK < 0){
-                    if(s.charAt(left++) != c)
-                        currentK++; 
-                }
-                
-                currentMax = Math.max(currentMax, right - left + 1); 
-                right++; 
+            maxFreq = Math.max(maxFreq, map.get(s.charAt(right))); 
+            
+            while((right - left + 1) - maxFreq > k){
+                map.put(s.charAt(left), map.getOrDefault(s.charAt(left), 0) - 1);
+                left++; 
             }
             
-            max = Math.max(currentMax, max); 
+            max = Math.max(max, right - left + 1); 
+            
+            right++; 
         }
         
         return max; 
