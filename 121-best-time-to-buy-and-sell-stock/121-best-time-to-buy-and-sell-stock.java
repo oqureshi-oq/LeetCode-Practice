@@ -1,19 +1,17 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        if(prices == null)
+        if(prices == null || prices.length < 2)
             return 0;
         
-        int left = 0;
-        int right = 1; 
-        int maxProfit = 0;
+        int buy = prices[0];
+        int maxProfit = 0; 
         
-        while(right < prices.length){
-            maxProfit = Math.max(prices[right] - prices[left], maxProfit);
-            if(prices[right] < prices[left])
-                left = right; 
-            right++; 
+        for(int i = 1; i < prices.length; i++){
+            maxProfit = Math.max(prices[i] - buy, maxProfit);
+            if(prices[i] < buy)
+                buy = prices[i];
         }
         
-        return maxProfit;
+        return maxProfit; 
     }
 }
