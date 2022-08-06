@@ -12,9 +12,7 @@ class Solution {
             int hours = 0;
             
             for(int n: piles){
-                hours += n/mid;
-                if(n % mid != 0)
-                    hours += 1; 
+                hours += Math.ceil((double) n / mid);  
             }
             
             if(hours <= h)
