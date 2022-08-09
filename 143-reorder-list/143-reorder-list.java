@@ -10,33 +10,47 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        if(head == null)
+        if(head == null || head.next == null)
             return;
         
-        Deque<ListNode> stack = new ArrayDeque<ListNode>();
+        ListNode fast = head; 
+        ListNode slow = head; 
         
+        while(fast != null && fast.next != null){
+            fast = fast.next.next; 
+            slow = slow.next; 
+        }
+        
+        ListNode end = reverse(slow);
         ListNode iter = head; 
         
-        while(iter != null){
-            stack.push(iter);
-            iter = iter.next; 
+        while(iter != null && end != null){
+            ListNode nextStart = iter.next;
+            ListNode nextEnd = end.next; 
+            iter.next = end;
+            end.next = nextStart; 
+            iter = nextStart;
+            end = nextEnd; 
         }
         
-        iter = head; 
-        
-        while(iter != stack.peek() && iter.next != stack.peek()){
-            ListNode next = iter.next; 
-            ListNode nodeFromEnd = stack.pop(); 
-            iter.next = nodeFromEnd;
-            nodeFromEnd.next = next; 
-            iter = next; 
-        }
-        
-        if(iter.next == stack.peek())
-            iter.next.next = null; 
-        else
+        if(iter != null)
             iter.next = null; 
+    }
+    
+    public ListNode reverse(ListNode node){
+        if(node == null)
+            return null; 
         
-        //iter.next = null; 
+        ListNode current = node;
+        ListNode prev = null;
+        
+        while(current != null){
+            ListNode next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        }
+        
+        return prev; 
     }
 }
