@@ -1,28 +1,30 @@
 class Solution {
     public void duplicateZeros(int[] arr) {
-        if(arr == null) return; 
+        if(arr == null)
+            return;
         
-        int read = 0; 
-        int count = 0;
+        int zeroCount = 0;
         
-        while(count < arr.length){
-            count++; 
-            if(arr[read] == 0)
-                count++; 
-            read++; 
+        for(int n: arr){
+            if(n == 0)
+                zeroCount++; 
         }
         
-        read--;
-        int write = arr.length - 1; 
-        
-        if(count > arr.length){
-            arr[write--] = arr[read--]; 
-        }
+        int write = arr.length + zeroCount - 1; 
+        int read = arr.length - 1; 
         
         while(read >= 0){
-            arr[write--] = arr[read];
-            if(arr[read] == 0)
-                arr[write--] = 0;
+            if(write < arr.length)
+                arr[write] = arr[read];
+            
+            write--; 
+            
+            if(arr[read] == 0){
+                if(write < arr.length)
+                    arr[write] = 0;
+                write--; 
+            }
+            
             read--; 
         }
     }
