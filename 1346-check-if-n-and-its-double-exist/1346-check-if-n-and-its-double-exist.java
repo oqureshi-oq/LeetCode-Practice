@@ -3,12 +3,12 @@ class Solution {
         if(arr == null)
             return false; 
         
-        Set<Integer> set = new HashSet(); 
+        Set<Integer> seen = new HashSet(); 
         
         for(int n: arr){
-            if(set.contains(n*2) || n % 2 == 0 && set.contains(n/2))
-                return true; 
-            set.add(n); 
+            if(seen.contains(n * 2) || (n % 2 == 0 && seen.contains(n / 2)))
+                return true;
+            seen.add(n);
         }
         
         return false; 
