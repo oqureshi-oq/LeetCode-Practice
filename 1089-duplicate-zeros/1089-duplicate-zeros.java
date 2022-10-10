@@ -7,15 +7,16 @@ class Solution {
         
         for(int n: arr){
             if(n == 0)
-                zeroCount++; 
+                zeroCount++;
         }
         
-        int write = arr.length + zeroCount - 1; 
-        int read = arr.length - 1; 
+        int read = arr.length - 1;
+        int write = arr.length + zeroCount - 1;
         
         while(read >= 0){
-            if(write < arr.length)
-                arr[write] = arr[read];
+            if(write < arr.length){
+                arr[write] = arr[read]; 
+            }
             
             write--; 
             
