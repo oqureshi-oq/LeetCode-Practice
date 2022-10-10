@@ -3,23 +3,23 @@ class Solution {
         if(heights == null)
             return -1; 
         
-        int[] freq = new int[101];
+        int[] freqMap = new int[101]; 
         
         for(int h: heights){
-            freq[h]++; 
+            freqMap[h]++; 
         }
         
-        int count = 0; 
-        int expectedHeight = 0; 
+        int count = 0;
+        int expectedHeight = 1; 
         
         for(int actualHeight: heights){
-            while(freq[expectedHeight] == 0)
+            while(freqMap[expectedHeight] == 0)
                 expectedHeight++; 
             
             if(actualHeight != expectedHeight)
-                count++; 
+                count++;
             
-            freq[expectedHeight]--; 
+            freqMap[expectedHeight]--; 
         }
         
         return count; 
