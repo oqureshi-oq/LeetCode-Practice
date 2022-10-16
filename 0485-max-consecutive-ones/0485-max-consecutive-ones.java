@@ -1,7 +1,7 @@
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
         if(nums == null)
-            return 0;
+            return -1;
         
         int max = 0;
         int count = 0;
