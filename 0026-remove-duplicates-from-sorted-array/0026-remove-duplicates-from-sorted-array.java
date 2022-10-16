@@ -3,14 +3,11 @@ class Solution {
         if(nums == null)
             return -1;
         
-        if(nums.length == 0)
-            return 0; 
+        int k = nums.length >= 1 ? 1: 0; 
         
-        int k = 1; 
-        
-        for(int n: nums){
-            if(nums[k-1] != n)
-                nums[k++] = n; 
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] != nums[k-1])
+                nums[k++] = nums[i];
         }
         
         return k; 
