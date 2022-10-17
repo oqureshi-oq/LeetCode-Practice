@@ -1,25 +1,25 @@
 class Solution {
     public int heightChecker(int[] heights) {
-        if(heights == null)
-            return -1; 
+        if(heights == null) 
+            return -1;
         
-        int[] freqMap = new int[101]; 
+        int[] freq = new int[101]; 
         
         for(int h: heights){
-            freqMap[h]++; 
+            freq[h]++; 
         }
         
-        int count = 0;
+        int count = 0; 
         int expectedHeight = 1; 
         
-        for(int actualHeight: heights){
-            while(freqMap[expectedHeight] == 0)
+        for(int i = 0; i < heights.length; i++){
+            while(freq[expectedHeight] == 0)
                 expectedHeight++; 
             
-            if(actualHeight != expectedHeight)
-                count++;
+            if(heights[i] != expectedHeight)
+                count++; 
             
-            freqMap[expectedHeight]--; 
+            freq[expectedHeight]--; 
         }
         
         return count; 
