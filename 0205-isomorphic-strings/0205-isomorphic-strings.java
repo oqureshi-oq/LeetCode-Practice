@@ -1,23 +1,26 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         if(s == null || t == null || s.length() != t.length())
-            return false; 
+            return false;
         
-        Map<Character, Character> map = new HashMap(); 
-        Set<Character> mapped = new HashSet(); 
+        return transformString(s).compareTo(transformString(t)) == 0; 
+    }
+    
+    public String transformString(String s){
+        if(s == null)
+            return new String(); 
+        
+        Map<Character, Integer> map = new HashMap(); 
+        StringBuilder str = new StringBuilder(); 
         
         for(int i = 0; i < s.length(); i++){
-            if(map.containsKey(s.charAt(i)) 
-               && map.get(s.charAt(i)) != t.charAt(i))
-                return false; 
-            else if(!map.containsKey(s.charAt(i)) && mapped.contains(t.charAt(i))) 
-                return false; 
-            else {
-                map.put(s.charAt(i), t.charAt(i));
-                mapped.add(t.charAt(i)); 
-            } 
+            if(!map.containsKey(s.charAt(i)))
+                map.put(s.charAt(i), i); 
+            
+            str.append(map.get(s.charAt(i))); 
+            str.append(' '); 
         }
-        
-        return true; 
+
+        return str.toString(); 
     }
 }
