@@ -5,10 +5,14 @@ class Solution {
         
         Map<String, List<String>> map = new HashMap(); 
         
-        for(String s: strs){
-            char[] arr = s.toCharArray(); 
-            Arrays.sort(arr);
-            String sortedString = new String(arr); 
+        for(String s: strs){            
+            char[] sortedArr = new char[26]; 
+            
+            for(int i = 0; i < s.length(); i++){
+                sortedArr[s.charAt(i) - 'a']++; 
+            }
+            
+            String sortedString = new String(sortedArr); 
             
             if(!map.containsKey(sortedString))
                 map.put(sortedString, new ArrayList()); 
