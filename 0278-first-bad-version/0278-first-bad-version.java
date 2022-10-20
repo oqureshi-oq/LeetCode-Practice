@@ -8,7 +8,7 @@ public class Solution extends VersionControl {
         
         int left = 1;
         int right = n; 
-        int mid = left + (right - left)/2;
+        int mid; 
         
         while(left < right){
             mid = left + (right - left)/2; 
