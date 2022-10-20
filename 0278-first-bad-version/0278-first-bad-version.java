@@ -20,6 +20,6 @@ public class Solution extends VersionControl {
             }
         }
         
-        return left + (right - left)/2; 
+        return right; 
     }
 }
