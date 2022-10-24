@@ -3,12 +3,11 @@ class Solution {
         if(nums == null)
             return false; 
         
-        Set<Integer> seen = new HashSet(); 
+        Set<Integer> set = new HashSet(); 
         
         for(int n: nums){
-            if(seen.contains(n))
-                return true; 
-            seen.add(n); 
+            if(!set.add(n))
+                return true;
         }
         
         return false; 
