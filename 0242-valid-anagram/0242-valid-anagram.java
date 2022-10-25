@@ -12,9 +12,7 @@ class Solution {
         }
         
         for(Character c: mapS.keySet()){
-            if(!mapS.get(c).equals(mapT.getOrDefault(c, 0))){
-                System.out.println(mapT.getOrDefault(c, 0));
-                System.out.println(mapS.get(c)); 
+            if(!mapS.get(c).equals(mapT.getOrDefault(c, 0))){ 
                 return false; 
             }
         }
