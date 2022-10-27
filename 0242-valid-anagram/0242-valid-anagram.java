@@ -3,16 +3,15 @@ class Solution {
         if(s == null || t == null || s.length() != t.length())
             return false; 
         
-        int[] map = new int[26]; 
-        int n = s.length(); 
+        int[] map = new int[26];
         
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < s.length(); i++){
             map[s.charAt(i) - 'a']++;
-            map[t.charAt(i) - 'a']--;
+            map[t.charAt(i) - 'a']--; 
         }
         
-        for(int x: map){
-            if(x != 0)
+        for(int i = 0; i < 26; i++){
+            if(map[i] != 0)
                 return false; 
         }
         
