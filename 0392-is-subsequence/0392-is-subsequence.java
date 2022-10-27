@@ -1,23 +1,21 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
-        if(s == null || t == null)
+        if(s == null || t == null || s.length() > t.length())
             return false; 
         
-        int sIter = 0;
-        int tIter = 0;
+        int i = 0; 
+        int j = 0; 
         
-        while(sIter < s.length() && tIter < t.length()){
-            char c = s.charAt(sIter); 
+        while(i < s.length() && j < t.length()){
+            while(j < t.length() && s.charAt(i) != t.charAt(j))
+                j++; 
             
-            while(tIter < t.length() && t.charAt(tIter) != c)
-                tIter++; 
-            
-            if(tIter < t.length() && t.charAt(tIter) == c){
-                sIter++; 
-                tIter++; 
+            if(j < t.length() && s.charAt(i) == t.charAt(j)){
+                i++; 
+                j++; 
             }
         }
         
-        return sIter == s.length(); 
+        return i == s.length(); 
     }
 }
