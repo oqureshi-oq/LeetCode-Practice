@@ -4,7 +4,6 @@ class Solution {
             return 0;
         
         Set<String> seen = new HashSet(); 
-        int count = 0; 
         
         for(String s: emails){
             StringBuilder str = new StringBuilder(); 
