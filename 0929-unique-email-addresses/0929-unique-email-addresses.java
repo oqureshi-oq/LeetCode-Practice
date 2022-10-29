@@ -21,10 +21,9 @@ class Solution {
                     str.append(c); 
             }
             
-            if(seen.add(str.toString()))
-                count++; 
+            seen.add(str.toString());
         }
         
-        return count; 
+        return seen.size(); 
     }
 }
