@@ -1,7 +1,7 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
-        if(nums == null) 
-            return -1;
+        if(nums == null)
+            return 0;
         
         int k = 0;
         
