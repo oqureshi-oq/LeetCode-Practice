@@ -10,15 +10,14 @@ class Solution {
             char sChar = s.charAt(i);
             char tChar = t.charAt(i); 
             
-            if(sTot.containsKey(sChar) && tTos.containsKey(tChar)){
-                if(sTot.get(sChar) != tChar || tTos.get(tChar) != sChar)
-                    return false; 
-            } else if(sTot.containsKey(sChar) || tTos.containsKey(tChar)){
+            if(sTot.containsKey(sChar) && sTot.get(sChar) != tChar)
                 return false; 
-            } else {
-                sTot.put(sChar, tChar); 
-                tTos.put(tChar, sChar); 
-            }
+            
+            if(tTos.containsKey(tChar) && tTos.get(tChar) != sChar)
+                return false; 
+            
+            sTot.put(sChar, tChar);
+            tTos.put(tChar, sChar); 
         }
         
         return true; 
