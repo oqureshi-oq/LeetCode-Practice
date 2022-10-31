@@ -3,15 +3,16 @@ class Solution {
         if(s == null || t == null || s.length() != t.length())
             return false; 
         
-        int[] map = new int[26];
+        int[] counts = new int[26]; 
+        int n = s.length(); 
         
-        for(int i = 0; i < s.length(); i++){
-            map[s.charAt(i) - 'a']++;
-            map[t.charAt(i) - 'a']--; 
+        for(int i = 0; i < n; i++){
+            counts[s.charAt(i) - 'a']++;
+            counts[t.charAt(i) - 'a']--;
         }
         
-        for(int i = 0; i < 26; i++){
-            if(map[i] != 0)
+        for(int c: counts){
+            if(c != 0)
                 return false; 
         }
         
