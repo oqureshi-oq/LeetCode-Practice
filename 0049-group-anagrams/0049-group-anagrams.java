@@ -5,27 +5,17 @@ class Solution {
         
         Map<String, List<String>> map = new HashMap(); 
         
-        for(String s: strs){            
-            char[] sortedArr = new char[26]; 
-            
-            for(int i = 0; i < s.length(); i++){
-                sortedArr[s.charAt(i) - 'a']++; 
+        for(String str: strs){
+            char[] letters = new char[26];
+            for(int i = 0; i < str.length(); i++){
+                letters[str.charAt(i) - 'a']++; 
             }
-            
-            String sortedString = new String(sortedArr); 
-            
-            if(!map.containsKey(sortedString))
-                map.put(sortedString, new ArrayList()); 
-            
-            map.get(sortedString).add(s); 
+            String key = String.valueOf(letters);
+            if(!map.containsKey(key))
+                map.put(key, new ArrayList()); 
+            map.get(key).add(str); 
         }
         
-        List<List<String>> list = new ArrayList(); 
-        
-        for(String s: map.keySet()){
-            list.add(map.get(s)); 
-        }
-        
-        return list; 
+        return new ArrayList(map.values()); 
     }
 }
