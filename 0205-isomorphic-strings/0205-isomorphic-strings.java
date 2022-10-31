@@ -4,7 +4,7 @@ class Solution {
             return false; 
         
         Map<Character, Character> sTot = new HashMap(); 
-        Map<Character, Character> tTos = new HashMap(); 
+        Map<Character, Character> tTos = new HashMap();
         
         for(int i = 0; i < s.length(); i++){
             char sChar = s.charAt(i);
