@@ -3,14 +3,11 @@ class Solution {
         if(s == null || t == null || s.length() > t.length())
             return false; 
         
-        int i = 0; 
-        int j = 0; 
+        int i = 0;
         
-        while(i < s.length() && j < t.length()){            
+        for(int j = 0; i < s.length() && j < t.length(); j++){
             if(s.charAt(i) == t.charAt(j))
-                i++; 
-            
-            j++; 
+                i++;
         }
         
         return i == s.length(); 
