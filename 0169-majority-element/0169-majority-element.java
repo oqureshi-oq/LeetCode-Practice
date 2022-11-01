@@ -3,14 +3,17 @@ class Solution {
         if(nums == null)
             return Integer.MIN_VALUE; 
         
-        Map<Integer, Integer> map = new HashMap(); 
+        int candidate = nums[0];
+        int count = 1; 
         
-        for(int n: nums){
-            map.put(n, map.getOrDefault(n, 0) + 1); 
-            if(map.get(n) > nums.length/2)
-                return n; 
+        for(int i = 1; i < nums.length; i++){
+            if(count == 0){
+                candidate = nums[i]; 
+            }
+            
+            count += nums[i] == candidate ? 1: -1;  
         }
         
-        return Integer.MIN_VALUE;
+        return candidate; 
     }
 }
