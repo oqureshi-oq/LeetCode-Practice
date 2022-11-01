@@ -11,8 +11,8 @@ class Solution {
             boolean isRightEmpty = i == flowerbed.length-1 ? true: flowerbed[i+1] == 0;
             
             if(isLeftEmpty && isRightEmpty){
-                flowerbed[i] = 1; 
                 n--; 
+                i++; 
             }
         }
         
