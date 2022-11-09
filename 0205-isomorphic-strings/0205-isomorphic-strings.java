@@ -3,21 +3,21 @@ class Solution {
         if(s == null || t == null || s.length() != t.length())
             return false; 
         
-        Map<Character, Character> sTot = new HashMap(); 
-        Map<Character, Character> tTos = new HashMap();
+        Map<Character, Character> stMap = new HashMap(); 
+        Map<Character, Character> tsMap = new HashMap(); 
         
         for(int i = 0; i < s.length(); i++){
             char sChar = s.charAt(i);
             char tChar = t.charAt(i); 
             
-            if(sTot.containsKey(sChar) && sTot.get(sChar) != tChar)
+            if(stMap.containsKey(sChar) && stMap.get(sChar) != tChar)
                 return false; 
             
-            if(tTos.containsKey(tChar) && tTos.get(tChar) != sChar)
-                return false; 
+            if(tsMap.containsKey(tChar) && tsMap.get(tChar) != sChar)
+                return false;
             
-            sTot.put(sChar, tChar);
-            tTos.put(tChar, sChar); 
+            stMap.put(sChar, tChar);
+            tsMap.put(tChar, sChar); 
         }
         
         return true; 
