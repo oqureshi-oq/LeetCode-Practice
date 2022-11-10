@@ -12,7 +12,7 @@ class Solution {
             }
             String key = String.valueOf(letters); 
             if(!map.containsKey(key))
-                map.put(key, new ArrayList());
+                map.put(key, new ArrayList()); 
             map.get(key).add(str); 
         }
         
