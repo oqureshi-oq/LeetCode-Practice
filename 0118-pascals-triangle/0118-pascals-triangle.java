@@ -10,9 +10,9 @@ class Solution {
             
             for(int j = 0; j <= i; j++){
                 if(j == 0 || j == i)
-                    row.add(1);
+                    row.add(1); 
                 else
-                    row.add(list.get(i-1).get(j) + list.get(i-1).get(j-1)); 
+                    row.add(list.get(i-1).get(j-1) + list.get(i-1).get(j)); 
             }
             
             list.add(row); 
