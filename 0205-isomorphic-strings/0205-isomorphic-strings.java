@@ -5,8 +5,9 @@ class Solution {
         
         Map<Character, Character> stMap = new HashMap(); 
         Map<Character, Character> tsMap = new HashMap(); 
+        int n = s.length(); 
         
-        for(int i = 0; i < s.length(); i++){
+        for(int i = 0; i < n; i++){
             char sChar = s.charAt(i);
             char tChar = t.charAt(i); 
             
@@ -14,7 +15,7 @@ class Solution {
                 return false; 
             
             if(tsMap.containsKey(tChar) && tsMap.get(tChar) != sChar)
-                return false;
+                return false; 
             
             stMap.put(sChar, tChar);
             tsMap.put(tChar, sChar); 
