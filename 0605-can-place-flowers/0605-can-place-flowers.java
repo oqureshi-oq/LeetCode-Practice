@@ -1,21 +1,23 @@
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
-        if(flowerbed == null || flowerbed.length < n)
+        if(flowerbed == null || n > flowerbed.length)
             return false; 
         
-        for(int i = 0; i < flowerbed.length; i++){
-            if(flowerbed[i] == 1)
-                continue; 
-            
-            boolean isLeftEmpty = i == 0 ? true: flowerbed[i-1] == 0;
+        int i = 0;
+        int count = 0;
+        
+        while(i < flowerbed.length){
+            boolean isLeftEmpty = i == 0 ? true: flowerbed[i-1] == 0; 
             boolean isRightEmpty = i == flowerbed.length-1 ? true: flowerbed[i+1] == 0;
             
-            if(isLeftEmpty && isRightEmpty){
-                n--; 
+            if(flowerbed[i] == 0 && isLeftEmpty && isRightEmpty){
+                count++; 
                 i++; 
             }
+            
+            i++;
         }
         
-        return n <= 0; 
+        return count >= n; 
     }
 }
