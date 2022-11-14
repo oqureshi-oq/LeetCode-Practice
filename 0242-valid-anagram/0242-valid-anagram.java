@@ -1,18 +1,21 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
         if(s == null || t == null || s.length() != t.length())
-            return false; 
+            return false;
         
-        int[] letters = new int[26];
+        Map<Character, Integer> map = new HashMap(); 
         int n = s.length(); 
         
         for(int i = 0; i < n; i++){
-            letters[s.charAt(i) - 'a']++;
-            letters[t.charAt(i) - 'a']--;
+            char sChar = s.charAt(i);
+            char tChar = t.charAt(i); 
+            
+            map.put(sChar, map.getOrDefault(sChar, 0) + 1);
+            map.put(tChar, map.getOrDefault(tChar, 0) - 1); 
         }
         
-        for(int i: letters){
-            if(i != 0)
+        for(char c: map.keySet()){
+            if(map.get(c) != 0)
                 return false; 
         }
         
