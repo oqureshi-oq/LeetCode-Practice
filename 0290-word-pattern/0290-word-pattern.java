@@ -1,35 +1,36 @@
 class Solution {
     public boolean wordPattern(String pattern, String s) {
-        Map<Character, String> mapPS = new HashMap(); 
-        Map<String, Character> mapSP = new HashMap();
+        if(pattern == null || s == null)
+            return false; 
         
         int i = 0; 
         int j = 0; 
+        Map<Character, String> mapFoward = new HashMap(); 
+        Map<String, Character> mapBackward = new HashMap(); 
         
         while(i < pattern.length() && j < s.length()){
-            char c = pattern.charAt(i); 
-            
             int begin = j; 
             
-            while(j < s.length() && s.charAt(j) != ' '){
-                j++; 
-            }
+            while(j < s.length() && s.charAt(j) != ' ')
+                j++;
             
-            String word = s.substring(begin, j); 
+            char key = pattern.charAt(i); 
+            String value = s.substring(begin, j); 
             
-            if(mapPS.containsKey(c) && !mapPS.get(c).equals(word))
+            if(mapFoward.containsKey(key) && !mapFoward.get(key).equals(value))
                 return false; 
             
-            if(mapSP.containsKey(word) && mapSP.get(word) != c)
+            if(mapBackward.containsKey(value) && 
+               mapBackward.get(value) != key)
                 return false; 
             
-            mapPS.put(c, word);
-            mapSP.put(word, c); 
+            mapFoward.put(key, value);
+            mapBackward.put(value, key);
             
             i++; 
             j++; 
         }
         
-        return i == pattern.length() && j > s.length(); 
+        return i == pattern.length() && j >= s.length(); 
     }
 }
