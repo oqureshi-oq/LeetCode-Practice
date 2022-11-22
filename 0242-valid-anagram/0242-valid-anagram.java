@@ -1,21 +1,20 @@
 class Solution {
+    int NUMBER_OF_LETTERS = 26; 
+    
     public boolean isAnagram(String s, String t) {
         if(s == null || t == null || s.length() != t.length())
-            return false;
+            return false; 
         
-        Map<Character, Integer> map = new HashMap(); 
-        int n = s.length(); 
+        int[] lettersFreq = new int[NUMBER_OF_LETTERS];
+        int length = s.length(); 
         
-        for(int i = 0; i < n; i++){
-            char sChar = s.charAt(i);
-            char tChar = t.charAt(i); 
-            
-            map.put(sChar, map.getOrDefault(sChar, 0) + 1);
-            map.put(tChar, map.getOrDefault(tChar, 0) - 1); 
+        for(int i = 0; i < length; i++){
+            lettersFreq[s.charAt(i) - 'a']++;
+            lettersFreq[t.charAt(i) - 'a']--;
         }
         
-        for(char c: map.keySet()){
-            if(map.get(c) != 0)
+        for(int n: lettersFreq){
+            if(n != 0)
                 return false; 
         }
         
