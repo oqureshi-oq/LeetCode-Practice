@@ -1,7 +1,7 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        if(nums == null || nums.length < 2)
-            return new int[]{-1,-1};
+        if(nums == null)
+            return new int[]{-1, -1}; 
         
         Map<Integer, Integer> map = new HashMap(); 
         
@@ -14,6 +14,6 @@ class Solution {
             map.put(nums[i], i); 
         }
         
-        return new int[]{-1, -1}; 
+        return new int[]{-1,-1}; 
     }
 }
