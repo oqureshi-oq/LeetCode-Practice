@@ -11,10 +11,10 @@ class Solution {
         }
         
         for(int n: nums){
-            if(set.contains(n+1))
+            if(set.contains(n-1))
                 continue; 
             int count = 1; 
-            while(set.contains(n-count))
+            while(set.contains(n+count))
                 count++; 
             max = Math.max(max, count); 
         }
