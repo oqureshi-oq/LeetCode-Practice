@@ -6,20 +6,23 @@ class Solution {
         Map<Integer, Integer> map = new HashMap(); 
         
         for(int i = 0; i < wall.size(); i++){
+            if(wall.get(i) == null)
+                return 0; 
+            
             int edgeAccumulator = 0;
+            
             for(int j = 0; j < wall.get(i).size(); j++){
                 edgeAccumulator += wall.get(i).get(j); 
                 map.put(edgeAccumulator, map.getOrDefault(edgeAccumulator,0) + 1); 
             }
+            
             map.put(edgeAccumulator, 0); 
         }
         
-        Integer max = null; 
+        int max = 0; 
         
         for(int edge: map.keySet()){
-            int numEdgesCrossed = map.get(edge); 
-            if(max == null || numEdgesCrossed > max)
-                max = numEdgesCrossed; 
+            max = Math.max(max, map.get(edge));
         }
         
         return wall.size()-max; 
