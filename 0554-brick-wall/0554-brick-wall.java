@@ -11,12 +11,11 @@ class Solution {
             
             int edgeAccumulator = 0;
             
-            for(int j = 0; j < wall.get(i).size(); j++){
+            for(int j = 0; j < wall.get(i).size()-1; j++){
                 edgeAccumulator += wall.get(i).get(j); 
                 map.put(edgeAccumulator, map.getOrDefault(edgeAccumulator,0) + 1); 
             }
-            
-            map.put(edgeAccumulator, 0); 
+             
         }
         
         int max = 0; 
