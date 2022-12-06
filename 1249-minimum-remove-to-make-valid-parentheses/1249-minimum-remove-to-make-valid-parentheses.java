@@ -3,35 +3,43 @@ class Solution {
         if(s == null)
             return "";
         
+        StringBuilder forward = new StringBuilder(); 
+        StringBuilder backward = new StringBuilder(); 
         int stack = 0; 
-        StringBuilder str = new StringBuilder(); 
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i); 
             
-            if(c == '('){
-                stack++; 
-                str.append(c); 
-            } else if(c == ')'){
-                if(stack > 0){
-                    stack--;
-                    str.append(c); 
-                }
-            } else {
-                str.append(c); 
+            if(c != ')')
+                forward.append(c);
+            
+            if(c == '(')
+                stack++;
+            
+            if(c == ')' && stack > 0){
+                forward.append(c);
+                stack--;
             }
         }
         
-        int i = str.length()-1; 
+        String forwardStr = forward.toString(); 
+        stack = 0; 
         
-        while(stack > 0){
-            if(str.charAt(i) == '('){
-                str.deleteCharAt(i);
+        for(int i = forwardStr.length()-1; i >= 0; i--){
+            char c = forwardStr.charAt(i);
+            
+            if(c != '(')
+                backward.append(c);
+            
+            if(c == ')')
+                stack++;
+            
+            if(c == '(' && stack > 0){
+                backward.append(c);
                 stack--; 
             }
-            i--; 
-        } 
+        }
         
-        return str.toString(); 
+        return backward.reverse().toString(); 
     }
 }
