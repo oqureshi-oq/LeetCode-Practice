@@ -3,21 +3,22 @@ class Solution {
         if(s == null)
             return 0;
         
-        int stack = 0; 
-        int count = 0; 
+        int count = 0;
+        int stack = 0;
         
         for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == ')')
-                stack++; 
-            else
-                stack--; 
+            char c = s.charAt(i);
             
-            if(stack > 0){
-                count += stack;
-                stack = 0; 
+            if(c == '('){
+                stack++; 
+            } else {
+                if(stack == 0)
+                    count++; 
+                else
+                    stack--; 
             }
         }
         
-        return count + Math.abs(stack); 
+        return count + stack; 
     }
 }
