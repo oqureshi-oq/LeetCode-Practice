@@ -3,10 +3,10 @@ class Solution {
         if(nums == null)
             return false; 
         
-        Set<Integer> set = new HashSet(); 
+        Set<Integer> seen = new HashSet(nums.length); 
         
         for(int n: nums){
-            if(!set.add(n))
+            if(!seen.add(n))
                 return true;
         }
         
