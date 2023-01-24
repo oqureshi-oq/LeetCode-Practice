@@ -15,7 +15,7 @@ class Solution {
             int count = freq.get(n);
             
             if(buckets[count] == null)
-                buckets[count] = new ArrayList(); 
+                buckets[count] = new ArrayList<Integer>(); 
             
             buckets[count].add(n);
         }
