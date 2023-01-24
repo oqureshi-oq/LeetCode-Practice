@@ -9,13 +9,13 @@ class Solution {
             freq.put(n, freq.getOrDefault(n, 0) + 1);
         }
         
-        List[] buckets = new List[nums.length+1]; 
+        List<Integer>[] buckets = new List[nums.length+1]; 
         
         for(int n: freq.keySet()){
             int count = freq.get(n);
             
             if(buckets[count] == null)
-                buckets[count] = new ArrayList<Integer>(); 
+                buckets[count] = new ArrayList(); 
             
             buckets[count].add(n);
         }
@@ -27,7 +27,7 @@ class Solution {
                 continue; 
             
             for(int j = 0; k > 0 && j < buckets[i].size(); j++){
-                ans[k-1] = (int) buckets[i].get(j);
+                ans[k-1] = buckets[i].get(j);
                 k--; 
             }
         }
