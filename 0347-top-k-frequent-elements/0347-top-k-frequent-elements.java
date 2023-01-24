@@ -1,33 +1,35 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        if(nums == null || k > nums.length)
+        if(nums == null || k <=0 || k > nums.length)
             return new int[0];
         
-        Map<Integer, Integer> map = new HashMap(); 
+        Map<Integer, Integer> freq = new HashMap(); 
         
-        for(int n:nums){
-            map.put(n, map.getOrDefault(n,0)+1); 
+        for(int n: nums){
+            freq.put(n, freq.getOrDefault(n, 0) + 1);
         }
         
-        List[] list = new List[nums.length+1]; 
+        List[] buckets = new List[nums.length+1]; 
         
-        for(int n: map.keySet()){
-            if(list[map.get(n)] == null)
-                list[map.get(n)] = new ArrayList(); 
-            list[map.get(n)].add(n); 
+        for(int n: freq.keySet()){
+            int count = freq.get(n);
+            
+            if(buckets[count] == null)
+                buckets[count] = new ArrayList(); 
+            
+            buckets[count].add(n);
         }
         
         int[] ans = new int[k];
-        k--;
-        int i = list.length-1; 
         
-        while(k >= 0 && i >= 0){
+        for(int i = buckets.length-1; k > 0 && i >= 0; i--){
+            if(buckets[i] == null)
+                continue; 
             
-            for(int j = 0; k >= 0 && list[i] != null && j < list[i].size(); j++){
-                ans[k--] = (int) list[i].get(j); 
+            for(int j = 0; k > 0 && j < buckets[i].size(); j++){
+                ans[k-1] = (int) buckets[i].get(j);
+                k--; 
             }
-            
-            i--; 
         }
         
         return ans; 
