@@ -5,7 +5,7 @@ class Solution {
         if(strs == null)
             return new ArrayList(); 
         
-        Map<String, List> map = new HashMap();
+        Map<String, List> map = new HashMap(); 
         
         for(String str: strs){
             char[] letters = new char[NUMBER_OF_LETTERS]; 
@@ -14,10 +14,10 @@ class Solution {
                 letters[str.charAt(i) - 'a']++; 
             }
             
-            String key = new String(letters);
+            String key = new String(letters); 
             
             if(!map.containsKey(key))
-                map.put(key, new ArrayList()); 
+                map.put(key, new ArrayList());
             
             map.get(key).add(str); 
         }
