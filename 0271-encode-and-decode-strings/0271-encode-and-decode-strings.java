@@ -2,39 +2,37 @@ public class Codec {
 
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
-        if(strs == null)
-            return null; 
-        
-        StringBuilder encodedSB = new StringBuilder(); 
+        StringBuilder sb = new StringBuilder(); 
         
         for(String str: strs){
-            encodedSB.append(str.length()); 
-            encodedSB.append(' '); 
-            encodedSB.append(str); 
+            sb.append(str.length() + "#" + str);
         }
         
-        return encodedSB.toString(); 
+        return sb.toString(); 
     }
 
     // Decodes a single string to a list of strings.
     public List<String> decode(String s) {
-        if(s == null)
-            return null; 
+        if(s == null || s.length() == 0)
+            return new ArrayList(); 
         
         List<String> list = new ArrayList(); 
         
         int i = 0;
+        int j = 0;
+        
         while(i < s.length()){
-            StringBuilder str = new StringBuilder(); 
-            int nextSpaceIndex = s.indexOf(' ', i); 
-            int length = Integer.parseInt(s.substring(i, nextSpaceIndex));
-            i = nextSpaceIndex + 1; 
+            while(s.charAt(j) != '#')
+                j++; 
             
-            for(int j = 0; j < length; j++){
-                str.append(s.charAt(i++));
-            }
+            int length = Integer.parseInt(s.substring(i, j));
             
-            list.add(str.toString()); 
+            i = j+1; 
+            j += length+1; 
+            
+            list.add(s.substring(i, j)); 
+            
+            i = j; 
         }
         
         return list; 
