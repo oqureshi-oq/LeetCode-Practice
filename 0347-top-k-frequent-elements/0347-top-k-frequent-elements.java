@@ -9,7 +9,7 @@ class Solution {
             map.put(n, map.getOrDefault(n,0) + 1); 
         }
         
-        List[] buckets = new List[nums.length+1]; 
+        List<Integer>[] buckets = new List[nums.length+1]; 
         
         for(int n: map.keySet()){
             int count = map.get(n);
@@ -27,7 +27,7 @@ class Solution {
                 continue; 
             
             for(int j = 0; j < buckets[i].size() && k > 0; j++){
-                ans[k-1] = (int) buckets[i].get(j); 
+                ans[k-1] = buckets[i].get(j); 
                 k--; 
             }
         }
