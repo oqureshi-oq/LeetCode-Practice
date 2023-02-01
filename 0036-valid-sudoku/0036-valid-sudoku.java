@@ -3,22 +3,25 @@ class Solution {
         if(board == null)
             return false; 
         
-        Set<String> seen = new HashSet(); 
+        Set[] rows = new Set[9];
+        Set[] cols = new Set[9];
+        Set[] boxes = new Set[9];
         
-        for(int row = 0; row < board.length; row++){
-            for(int col = 0; col < board[row].length; col++){
-                char c = board[row][col]; 
-                if(c == '.')
+        for(int i = 0; i < 9; i++){
+            rows[i] = new HashSet();
+            cols[i] = new HashSet(); 
+            boxes[i] = new HashSet(); 
+        }
+        
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){                
+                char value = board[i][j]; 
+                
+                if(value == '.')
                     continue; 
                 
-                if(seen.contains("value: " + c + ", row: " + row) ||
-                   seen.contains("value: " + c + ", col: " + col) ||
-                   seen.contains("value: " + c + ", row: " + (row/3) + ", col: " + (col/3)))
-                    return false; 
-                
-                seen.add("value: " + c + ", row: " + row);
-                seen.add("value: " + c + ", col: " + col);
-                seen.add("value: " + c + ", row: " + (row/3) + ", col: " + (col/3)); 
+                if(!rows[i].add(value) || !cols[j].add(value) || !boxes[i/3 * 3 + j/3].add(value))
+                    return false;
             }
         }
         
