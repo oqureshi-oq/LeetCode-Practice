@@ -4,13 +4,17 @@ class Solution {
             return new ArrayList(); 
         
         Set<List<Integer>> ans = new HashSet(); 
-        Map<Integer, Integer> map = new HashMap(); 
+        Map<Integer, Integer> map = new HashMap();
+        Set<Integer> seen = new HashSet(); 
         
         for(int i = 0; i < nums.length; i++){
             map.put(nums[i], i); 
         }
         
         for(int i = 0; i < nums.length; i++){
+            if(!seen.add(nums[i]))
+                continue; 
+            
             for(int j = i+1; j < nums.length; j++){
                 int sum = nums[i] + nums[j]; 
                 if(map.containsKey(-sum) && j < map.get(-sum)){
