@@ -3,22 +3,28 @@ class Solution {
         if(nums == null)
             return 0;
         
-        Set<Integer> set = new HashSet(); 
-        int max = 0; 
+        Set<Integer> seen = new HashSet(); 
         
         for(int n: nums){
-            set.add(n);
+            seen.add(n);
         }
         
+        int lcs = 0;
+        
         for(int n: nums){
-            if(set.contains(n-1))
-                continue; 
-            int count = 1; 
-            while(set.contains(n+count))
+            if(seen.contains(n-1))
+                continue;
+            
+            int count = 0;
+            
+            while(seen.contains(n)){
                 count++; 
-            max = Math.max(max, count); 
+                n++; 
+            }
+            
+            lcs = Math.max(lcs, count); 
         }
         
-        return max; 
+        return lcs; 
     }
 }
