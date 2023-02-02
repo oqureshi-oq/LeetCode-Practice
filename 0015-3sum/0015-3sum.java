@@ -5,17 +5,23 @@ class Solution {
         
         Set<List<Integer>> ans = new HashSet(); 
         Map<Integer, Integer> map = new HashMap();
-        Set<Integer> seen = new HashSet(); 
+        Set<Integer> seen1 = new HashSet(); 
+        Set<Integer> seen2 = new HashSet();
         
         for(int i = 0; i < nums.length; i++){
             map.put(nums[i], i); 
         }
         
         for(int i = 0; i < nums.length; i++){
-            if(!seen.add(nums[i]))
+            if(!seen1.add(nums[i]))
                 continue; 
             
+            seen2.clear(); 
+            
             for(int j = i+1; j < nums.length; j++){
+                if(!seen2.add(nums[j]))
+                    continue; 
+                
                 int sum = nums[i] + nums[j]; 
                 if(map.containsKey(-sum) && j < map.get(-sum)){
                     List<Integer> list = new ArrayList(); 
