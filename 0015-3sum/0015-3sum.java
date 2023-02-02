@@ -6,7 +6,7 @@ class Solution {
         Set<List<Integer>> ans = new HashSet(); 
         Map<Integer, Integer> map = new HashMap();
         Set<Integer> seen1 = new HashSet(); 
-        Set<Integer> seen2 = new HashSet();
+        Set<Integer> seen2; 
         
         for(int i = 0; i < nums.length; i++){
             map.put(nums[i], i); 
@@ -16,7 +16,7 @@ class Solution {
             if(!seen1.add(nums[i]))
                 continue; 
             
-            seen2.clear(); 
+            seen2 = new HashSet();  
             
             for(int j = i+1; j < nums.length; j++){
                 if(!seen2.add(nums[j]))
