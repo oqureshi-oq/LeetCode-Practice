@@ -3,9 +3,9 @@ class Solution {
     
     public boolean isAnagram(String s, String t) {
         if(s == null || t == null || s.length() != t.length())
-            return false; 
+            return false;
         
-        int[] letters = new int[NUMBER_OF_LETTERS];
+        int[] letters = new int[NUMBER_OF_LETTERS]; 
         
         for(int i = 0; i < s.length(); i++){
             letters[s.charAt(i) - 'a']++;
