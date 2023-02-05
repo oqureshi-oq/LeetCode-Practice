@@ -5,10 +5,10 @@ class Solution {
         if(strs == null)
             return new ArrayList(); 
         
-        Map<String, List> map = new HashMap(); 
+        Map<String, List> groups = new HashMap(); 
         
         for(String str: strs){
-            char[] letters = new char[NUMBER_OF_LETTERS]; 
+            char[] letters = new char[NUMBER_OF_LETTERS];
             
             for(int i = 0; i < str.length(); i++){
                 letters[str.charAt(i) - 'a']++; 
@@ -16,12 +16,12 @@ class Solution {
             
             String key = new String(letters); 
             
-            if(!map.containsKey(key))
-                map.put(key, new ArrayList());
+            if(!groups.containsKey(key))
+                groups.put(key, new ArrayList());
             
-            map.get(key).add(str); 
+            groups.get(key).add(str); 
         }
         
-        return new ArrayList(map.values()); 
+        return new ArrayList(groups.values()); 
     }
 }
