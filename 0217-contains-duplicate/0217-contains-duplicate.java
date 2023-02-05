@@ -1,7 +1,7 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         if(nums == null)
-            return false; 
+            return false;
         
         Set<Integer> seen = new HashSet(); 
         
