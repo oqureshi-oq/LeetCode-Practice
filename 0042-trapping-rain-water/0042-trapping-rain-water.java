@@ -3,41 +3,24 @@ class Solution {
         if(height == null)
             return 0;
         
-        int left = 0;
-        int right = 0; 
-        int rain = 0; 
+        Deque<Integer> stack = new ArrayDeque(); 
+        int current = 0;
+        int rain = 0;
         
-        while(right < height.length){
-            while(right < height.length && (left == right || height[left] > height[right]))
-                right++;
-            
-            if(right == height.length)
-                break; 
-            
-            int wallHeight = height[left];
-            
-            while(left < right){
-                rain += wallHeight - height[left];
-                left++;
+        while(current < height.length){
+            while(!stack.isEmpty() && height[stack.peek()] <= height[current]){
+                int middle = stack.pop(); 
+                
+                if(stack.isEmpty())
+                    break;
+                
+                int h = Math.min(height[stack.peek()], height[current]) - height[middle]; 
+                int l = current - stack.peek() - 1; 
+                
+                rain += h*l; 
             }
-        }
-        
-        int leftEnd = left;
-        left = right = height.length-1; 
-        
-        while(leftEnd <= left){
-            while(leftEnd <= left && (left == right || height[left] < height[right]))
-                left--;
             
-            if(left < leftEnd)
-                break; 
-            
-            int wallHeight = height[right];
-            
-            while(left < right){
-                rain += wallHeight - height[right];
-                right--; 
-            }
+            stack.push(current++); 
         }
         
         return rain; 
