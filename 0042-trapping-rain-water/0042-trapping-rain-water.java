@@ -3,38 +3,20 @@ class Solution {
         if(height == null)
             return 0;
         
+        int leftMax = height[0];
+        int rightMax = height[height.length-1];
         int left = 0;
-        int right = 0 ;
-        int rain = 0;
-        int max = 0;
+        int right = height.length-1; 
+        int rain = 0; 
         
-        while(right < height.length){
-            while(right < height.length && (left == right || height[left] > height[right]))
-                right++;
-            
-            if(right == height.length)
-                break;
-            
-            int wallHeight = height[left]; 
-            
-            while(left < right)
-                rain += wallHeight - height[left++]; 
-        }
-        
-        int leftEnd = left; 
-        left = right = height.length - 1;
-        
-        while(leftEnd <= left){
-            while(leftEnd <= left && (left == right || height[left] < height[right]))
-                left--;
-            
-            if(left < leftEnd)
-                break; 
-            
-            int wallHeight = height[right];
-            
-            while(left < right)
-                rain += wallHeight - height[right--]; 
+        while(left < right){
+            if(leftMax < rightMax){
+                rain += leftMax - height[left];
+                leftMax = Math.max(leftMax, height[++left]); 
+            } else {
+                rain += rightMax - height[right];
+                rightMax = Math.max(rightMax, height[--right]); 
+            }
         }
         
         return rain; 
