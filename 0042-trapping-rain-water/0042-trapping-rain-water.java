@@ -4,8 +4,8 @@ class Solution {
             return 0;
         
         int left = 0;
-        int right = 0;
-        int max = 0;
+        int right = 0; 
+        int rain = 0; 
         
         while(right < height.length){
             while(right < height.length && (left == right || height[left] > height[right]))
@@ -17,8 +17,8 @@ class Solution {
             int wallHeight = height[left];
             
             while(left < right){
-                max += wallHeight - height[left];
-                left++; 
+                rain += wallHeight - height[left];
+                left++;
             }
         }
         
@@ -35,11 +35,11 @@ class Solution {
             int wallHeight = height[right];
             
             while(left < right){
-                max += wallHeight - height[right];
-                right--;
+                rain += wallHeight - height[right];
+                right--; 
             }
         }
         
-        return max; 
+        return rain; 
     }
 }
