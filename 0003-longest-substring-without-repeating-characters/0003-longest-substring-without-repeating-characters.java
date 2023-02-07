@@ -3,10 +3,10 @@ class Solution {
         if(s == null)
             return 0;
         
-        Set<Character> seen = new HashSet();
-        int maxLength = 0;  
         int left = 0;
         int right = 0;
+        Set<Character> seen = new HashSet(); 
+        int max = 0;
         
         while(right < s.length()){
             char c = s.charAt(right);
@@ -16,11 +16,11 @@ class Solution {
             
             seen.add(c); 
             
-            maxLength = Math.max(maxLength, right - left + 1); 
+            max = Math.max(max, right - left + 1);
             
             right++; 
         }
         
-        return maxLength; 
+        return max; 
     }
 }
