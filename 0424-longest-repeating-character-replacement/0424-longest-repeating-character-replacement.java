@@ -1,22 +1,22 @@
 class Solution {
     public int characterReplacement(String s, int k) {
-        if(s == null)
-            return 0;
+        if(s == null || k < 0)
+            return 0; 
         
-        int[] freq = new int[26]; 
-        int maxFreq = 0;
         int left = 0;
-        int right = 0;
+        int right = 0; 
+        Map<Character, Integer> map = new HashMap(); 
+        int max = 0;
         
         while(right < s.length()){
-            char c = s.charAt(right);
+            char c = s.charAt(right); 
             
-            freq[c - 'A']++; 
+            map.put(c, map.getOrDefault(c, 0) + 1); 
             
-            maxFreq = Math.max(maxFreq, freq[c - 'A']); 
+            max = Math.max(max, map.get(c)); 
             
-            if(right - left + 1 - maxFreq > k){
-                freq[s.charAt(left) - 'A']--;
+            if(right - left + 1 - max > k){
+                map.put(s.charAt(left), map.get(s.charAt(left)) - 1); 
                 left++; 
             }
             
