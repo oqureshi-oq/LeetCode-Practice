@@ -5,16 +5,17 @@ class Solution {
         
         int left = 0;
         int right = 0;
-        Set<Character> seen = new HashSet(); 
+        Map<Character, Integer> map = new HashMap(); 
         int max = 0;
         
         while(right < s.length()){
             char c = s.charAt(right);
             
-            while(seen.contains(c))
-                seen.remove(s.charAt(left++)); 
+            if(map.getOrDefault(c, -1) >= left){
+                left = map.get(c) + 1; 
+            }
             
-            seen.add(c); 
+            map.put(c, right); 
             
             max = Math.max(max, right - left + 1);
             
