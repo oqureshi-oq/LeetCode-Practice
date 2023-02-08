@@ -14,7 +14,7 @@ class Solution {
         int left = 0;
         int right = 0;
         int minLeft = 0;
-        int minRight = t.length() + s.length(); 
+        int minRight = s.length()+1; 
         
         while(right < s.length()){
             char c = s.charAt(right);
@@ -47,8 +47,7 @@ class Solution {
             
             right++; 
         }
-        if(minRight == t.length() + s.length())
-            return ""; 
-        return s.substring(minLeft, minRight + 1); 
+        
+        return minRight == s.length() + 1 ? "": s.substring(minLeft, minRight + 1);
     }
 }
