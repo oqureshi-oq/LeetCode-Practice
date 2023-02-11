@@ -17,7 +17,6 @@ class Solution {
         
         Arrays.sort(sortedMap); 
         
-        // 
         Deque<Integer> stack = new ArrayDeque(); 
         
         for(int j = 0; j < sortedMap.length; j++){
