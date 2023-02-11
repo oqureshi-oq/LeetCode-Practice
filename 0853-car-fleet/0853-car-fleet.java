@@ -1,44 +1,46 @@
 class Solution {
     public int carFleet(int target, int[] position, int[] speed) {
-        Map<Integer,Integer> map = new HashMap(); 
+        // map initial position to speed
+        Map<Integer, Integer> map = new HashMap(); 
         
         for(int i = 0; i < position.length; i++){
             map.put(position[i], speed[i]); 
         }
         
-        int[] sortedPositions = new int[position.length];
-        int i = 0; 
+        // sort the key set  
+        int[] sortedMap = new int[map.size()]; 
         
-        for(int n: map.keySet()){
-            sortedPositions[i++] = n; 
+        int i = 0; 
+        for(int p: map.keySet()){
+            sortedMap[i++] = p;  
         }
         
-        Arrays.sort(sortedPositions); 
+        Arrays.sort(sortedMap); 
         
+        // 
         Deque<Integer> stack = new ArrayDeque(); 
         
-        for(int j = 0; j < sortedPositions.length; j++){
+        for(int j = 0; j < sortedMap.length; j++){
             while(!stack.isEmpty()){
-                int p1 = stack.peek(); 
+                int p1 = sortedMap[stack.peek()];
                 int s1 = map.get(p1); 
-                int p2 = sortedPositions[j];
+                int p2 = sortedMap[j];
                 int s2 = map.get(p2); 
                 
-                if(s1 - s2 != 0){
-                    double intersectionTime = (p2 - p1) / ((double)s1 - s2);
-                    double intersectionPosition = p1 + s1 * intersectionTime; 
-                    
-                    if(intersectionTime > 0 && 
-                       target >= intersectionPosition && intersectionPosition >= p2)
-                        stack.pop(); 
-                    else
-                        break; 
-                } else {
+                double intersectionTime = (p2 - p1) / (1.0 * s1 - s2); 
+                
+                if(intersectionTime < 0)
                     break; 
-                }
-            } 
+                
+                double intersectionPosition = p1 + s1 * intersectionTime; 
+                
+                if(p2 < intersectionPosition && intersectionPosition <= target)
+                    stack.pop();  
+                else
+                    break; 
+            }
             
-            stack.push(sortedPositions[j]); 
+            stack.push(j); 
         }
         
         return stack.size(); 
