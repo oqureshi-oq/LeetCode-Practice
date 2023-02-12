@@ -1,39 +1,23 @@
-class Solution {
+public class Solution {
     public int largestRectangleArea(int[] heights) {
-        if(heights == null)
-            return 0;
-        
-        int[] lessFromLeft = new int[heights.length];
-        int[] lessFromRight = new int[heights.length];
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.push(-1);
+        int length = heights.length;
         int maxArea = 0;
-        
-        lessFromLeft[0] = 0;
-        
-        for(int i = 1; i < heights.length; i++){
-            int p = i; 
-            
-            while(p > 0 && heights[p-1] >= heights[i])
-                p = lessFromLeft[p-1];
-            
-            lessFromLeft[i] = p ;
+        for (int i = 0; i < length; i++) {
+            while ((stack.peek() != -1)
+                    && (heights[stack.peek()] >= heights[i])) {
+                int currentHeight = heights[stack.pop()];
+                int currentWidth = i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, currentHeight * currentWidth);
+            }
+            stack.push(i);
         }
-        
-        lessFromRight[heights.length-1] = heights.length-1;
-        
-        for(int i = heights.length-2; i >= 0; i--){
-            int p = i; 
-            
-            while(p < heights.length-1 && heights[i] <= heights[p+1])
-                p = lessFromRight[p+1];
-            
-            lessFromRight[i] = p; 
+        while (stack.peek() != -1) {
+            int currentHeight = heights[stack.pop()];
+            int currentWidth = length - stack.peek() - 1;
+            maxArea = Math.max(maxArea, currentHeight * currentWidth);
         }
-        
-        for(int i = 0; i < heights.length; i++){
-            int area = heights[i] * (lessFromRight[i] - lessFromLeft[i] + 1); 
-            maxArea = Math.max(maxArea, area); 
-        }
-        
-        return maxArea; 
+        return maxArea;
     }
 }
