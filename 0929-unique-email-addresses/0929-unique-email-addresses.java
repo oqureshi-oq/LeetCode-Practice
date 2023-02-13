@@ -1,29 +1,31 @@
 class Solution {
     public int numUniqueEmails(String[] emails) {
         if(emails == null)
-            return 0;
+            return 0; 
         
-        Set<String> normalizedEmails = new HashSet(); 
+        Set<String> uniqueEmails = new HashSet(); 
         
         for(String email: emails){
-            StringBuilder processedEmail = new StringBuilder(); 
-            int i = 0;
+            StringBuilder sb = new StringBuilder();
+            int i = 0; 
             
             while(i < email.length()){
-                char c = email.charAt(i); 
+                char c = email.charAt(i);
+                
                 if(c == '@' || c == '+')
                     break;
                 
                 if(c != '.')
-                    processedEmail.append(c); 
+                    sb.append(c);
                 
                 i++; 
             }
             
-            processedEmail.append(email.substring(email.indexOf('@')));
-            normalizedEmails.add(processedEmail.toString()); 
+            sb.append(email.substring(email.indexOf('@'))); 
+            
+            uniqueEmails.add(sb.toString()); 
         }
-        
-        return normalizedEmails.size(); 
+
+        return uniqueEmails.size(); 
     }
 }
