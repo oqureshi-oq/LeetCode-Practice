@@ -8,7 +8,7 @@ class Solution {
         
         for(int i = 0; i < s.length(); i++){
             char sChar = s.charAt(i);
-            char tChar = t.charAt(i);
+            char tChar = t.charAt(i); 
             
             if(stMap.containsKey(sChar) && stMap.get(sChar) != tChar)
                 return false; 
@@ -17,7 +17,7 @@ class Solution {
                 return false;
             
             stMap.put(sChar, tChar);
-            tsMap.put(tChar, sChar);
+            tsMap.put(tChar, sChar); 
         }
         
         return true; 
