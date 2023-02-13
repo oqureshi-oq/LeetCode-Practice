@@ -3,17 +3,18 @@ class Solution {
         if(s == null)
             return 0;
         
-        int i = s.length()-1; 
-        int length = 0; 
+        int left = s.length()-1; 
         
-        while(i >= 0 && s.charAt(i) == ' ')
-            i--; 
+        while(left >= 0 && s.charAt(left) == ' ')
+            left--; 
         
-        while(i >= 0 && s.charAt(i) != ' '){
-            i--;
-            length++; 
+        int count = 0;
+        
+        while(left >= 0 && s.charAt(left) != ' '){
+            count++;
+            left--;
         }
         
-        return length; 
+        return count; 
     }
 }
