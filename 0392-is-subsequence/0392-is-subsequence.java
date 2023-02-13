@@ -3,13 +3,22 @@ class Solution {
         if(s == null || t == null || s.length() > t.length())
             return false; 
         
-        int i = 0;
+        int sP = 0;
+        int tP = 0;
         
-        for(int j = 0; i < s.length() && j < t.length(); j++){
-            if(s.charAt(i) == t.charAt(j))
-                i++; 
+        while(sP < s.length()){
+            char c = s.charAt(sP); 
+            
+            while(tP < t.length() && t.charAt(tP) != c)
+                tP++; 
+            
+            if(tP == t.length())
+                return false; 
+            
+            tP++; 
+            sP++; 
         }
         
-        return i == s.length(); 
+        return true; 
     }
 }
