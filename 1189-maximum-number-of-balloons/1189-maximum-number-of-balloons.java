@@ -1,33 +1,30 @@
 class Solution {
     public int maxNumberOfBalloons(String text) {
-        return maxNumberOfWords(text, "balloon");
+        return maxNumberOfAWord(text, "balloon"); 
     }
     
-    private int maxNumberOfWords(String text, String word){
-        if(text == null)
+    private int maxNumberOfAWord(String text, String word){
+        if(text == null || word == null)
             return 0; 
         
-        Map<Character, Integer> textMap = new HashMap(); 
-        Map<Character, Integer> wordMap = new HashMap();
-        Integer count = null; 
+        int[] textLetters = new int[26];
+        int[] wordLetters = new int[26]; 
+        int count = text.length() + 1; 
         
         for(int i = 0; i < text.length(); i++){
-            char c = text.charAt(i); 
-            textMap.put(c, textMap.getOrDefault(c, 0) + 1);
+            textLetters[text.charAt(i) - 'a']++;
         }
         
         for(int i = 0; i < word.length(); i++){
-            char c = word.charAt(i);
-            wordMap.put(c, wordMap.getOrDefault(c, 0) + 1); 
+            wordLetters[word.charAt(i) - 'a']++; 
         }
         
-        for(int i = 0; i < word.length(); i++){
-            char c = word.charAt(i); 
-            int charCount = textMap.getOrDefault(c, 0) / wordMap.get(c);
-            if(count == null || count > charCount)
-                count = charCount; 
+        for(int i = 0; i < 26; i++){
+            if(wordLetters[i] != 0){
+                count = Math.min(count, textLetters[i] / wordLetters[i]);  
+            }
         }
         
-        return count == null ? 0: count; 
+        return count == text.length() + 1 ? 0: count;
     }
 }
