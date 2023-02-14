@@ -3,32 +3,34 @@ class Solution {
         if(pattern == null || s == null)
             return false; 
         
-        Map<Character, String> map = new HashMap(); 
-        Map<String, Character> reverseMap = new HashMap(); 
-        int j = 0; 
-        int i = 0; 
-        for(i = 0; i < pattern.length() && j < s.length(); i++){
-            char c = pattern.charAt(i);
+        Map<Character, String> mapPS = new HashMap(); 
+        Map<String, Character> mapSP = new HashMap();
+        
+        int pP = 0;
+        int sP = 0; 
+        
+        while(pP < pattern.length() && sP < s.length()){
+            char c = pattern.charAt(pP); 
             StringBuilder sb = new StringBuilder(); 
             
-            while(j < s.length() && s.charAt(j) != ' '){
-                 sb.append(s.charAt(j++)); 
-            }
-                    
+            while(sP < s.length() && s.charAt(sP) != ' ')
+                sb.append(s.charAt(sP++));
+            
             String word = sb.toString(); 
             
-            j++; 
+            if(mapPS.containsKey(c) && !mapPS.get(c).equals(word))
+                return false; 
             
-            if(map.containsKey(c) && !map.get(c).equals(word))
-                return false;
+            if(mapSP.containsKey(word) && mapSP.get(word) != c)
+                return false; 
             
-            if(reverseMap.containsKey(word) && reverseMap.get(word) != c)
-                return false;
+            mapPS.put(c, word);
+            mapSP.put(word, c); 
             
-            map.put(c, word); 
-            reverseMap.put(word, c);
+            sP++;
+            pP++; 
         }
         
-        return i == pattern.length() && j > s.length();  
+        return pP == pattern.length() && sP > s.length(); 
     }
 }
