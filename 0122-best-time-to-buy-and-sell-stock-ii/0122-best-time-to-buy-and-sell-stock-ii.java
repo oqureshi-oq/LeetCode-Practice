@@ -3,18 +3,18 @@ class Solution {
         if(prices == null || prices.length < 2)
             return 0;
         
-        int profit = 0;
-        int buy = prices[0];
+        int buyPrice = prices[0]; 
+        int maxProfit = 0;
         
-        for(int price: prices){
-            if(price < buy){
-                buy = price; 
+        for(int i = 1; i < prices.length; i++){ 
+            if(buyPrice > prices[i]){
+                buyPrice = prices[i];
             } else {
-                profit += price - buy; 
-                buy = price; 
+                maxProfit += prices[i] - buyPrice; 
+                buyPrice = prices[i]; 
             }
         }
         
-        return profit; 
+        return maxProfit; 
     }
 }
