@@ -20,11 +20,12 @@ class Solution {
             int j = i+1; 
             while(j < map.get(c)){
                 StringBuilder sb = new StringBuilder();
-                sb.append(c);
-                sb.append(s.charAt(j)); 
-                sb.append(c);
+                sb.append("" + c + s.charAt(j++) + c);
+                //System.out.println(sb.toString());
+                // sb.append(s.charAt(j)); 
+                // sb.append(c);
                 set.add(sb.toString()); 
-                j++; 
+                //j++; 
             }
         }
         
