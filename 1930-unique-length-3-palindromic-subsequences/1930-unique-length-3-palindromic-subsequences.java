@@ -3,27 +3,31 @@ class Solution {
         if(s == null)
             return 0;
         
-        Map<Character, Integer> map = new HashMap(); 
-        int count = 0; 
-        Set<Character> seen = new HashSet();
+        int[] left = new int[26];
+        int[] right = new int[26]; 
         
-        for(int i = 0; i < s.length(); i++){
-            map.put(s.charAt(i), i); 
-        }
+        Arrays.fill(left, s.length());
+        Arrays.fill(right, -1); 
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i); 
             
-            if(!seen.add(c) || map.get(c) == i)
-                continue;
+            if(left[c - 'a'] == s.length())
+                left[c- 'a'] = i;
             
-            int j = i+1; 
-            Set<Character> set = new HashSet(); 
+            right[c - 'a'] = i; 
+        }
+        
+        int count = 0; 
+        
+        for(int i = 0; i < 26; i++){
+            Set<Character> seen = new HashSet(); 
             
-            while(j < map.get(c)){ 
-                if(set.add(s.charAt(j++)))
-                    count++; 
+            for(int j = left[i]+1; j < right[i]; j++){
+                seen.add(s.charAt(j)); 
             }
+            
+            count += seen.size(); 
         }
         
         return count; 
