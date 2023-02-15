@@ -4,7 +4,8 @@ class Solution {
             return 0;
         
         Map<Character, Integer> map = new HashMap(); 
-        Set<String> set = new HashSet();
+        //Set<String> set = new HashSet();
+        int count = 0; 
         Set<Character> seen = new HashSet();
         
         for(int i = 0; i < s.length(); i++){
@@ -18,16 +19,20 @@ class Solution {
                 continue;
             
             int j = i+1; 
+            Set<Character> set = new HashSet(); 
             while(j < map.get(c)){
-                StringBuilder sb = new StringBuilder();
-                sb.append(c);
-                sb.append(s.charAt(j)); 
-                sb.append(c);
-                set.add(sb.toString()); 
-                j++; 
+                //Set<Character> set = new HashSet(); 
+                if(set.add(s.charAt(j++)))
+                    count++; 
+                // StringBuilder sb = new StringBuilder();
+                // sb.append(c);
+                // sb.append(s.charAt(j)); 
+                // sb.append(c);
+                // set.add(sb.toString()); 
+                // j++; 
             }
         }
-        
-        return set.size(); 
+        return count; 
+        //return set.size(); 
     }
 }
