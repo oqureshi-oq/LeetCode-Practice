@@ -3,33 +3,31 @@ class Solution {
         if(s == null)
             return 0;
         
-        int[] start = new int[26];
-        int[] end = new int[26]; 
-        Arrays.fill(start, -1);
-        Arrays.fill(end, -1); 
+        Map<Character, Integer> map = new HashMap(); 
+        Set<String> set = new HashSet();
+        Set<Character> seen = new HashSet();
+        
+        for(int i = 0; i < s.length(); i++){
+            map.put(s.charAt(i), i); 
+        }
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i); 
-            if(start[c - 'a'] == -1)
-                start[c - 'a'] = i; 
-            end[c - 'a'] = i; 
-        }
-        
-        int count = 0; 
-        
-        for(int i = 0; i < 26; i++){
-            if(start[i] == -1)
-                continue; 
             
-            Set<Character> uniqueChars = new HashSet(); 
+            if(!seen.add(c) || map.get(c) == i)
+                continue;
             
-            for(int j = start[i] + 1; j < end[i]; j++){
-                uniqueChars.add(s.charAt(j));
+            int j = i+1; 
+            while(j < map.get(c)){
+                StringBuilder sb = new StringBuilder();
+                sb.append(c);
+                sb.append(s.charAt(j)); 
+                sb.append(c);
+                set.add(sb.toString()); 
+                j++; 
             }
-            
-            count += uniqueChars.size(); 
         }
         
-        return count; 
+        return set.size(); 
     }
 }
