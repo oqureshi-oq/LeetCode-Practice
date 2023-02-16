@@ -3,17 +3,20 @@ class Solution {
         if(s == null)
             return -1;
         
-        Deque<Character> stack = new ArrayDeque(); 
+        int stack = 0;
+        int misMatch = 0;
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i); 
             
-            if(c == ']' && !stack.isEmpty() && stack.peek() == '[')
-                stack.pop(); 
-            else
-                stack.push(c); 
+            if(stack <= 0 && c == ']')
+                misMatch++; 
+            else if(c == '[')
+                stack++; 
+            else if(stack > 0 && c == ']')
+                stack--; 
         }
         
-        return ((stack.size() / 2) + 1) /2;
+        return (misMatch + 1) /2;
     }
 }
