@@ -1,18 +1,31 @@
 class Solution {
     public int minSwaps(String s) {
         if(s == null)
-            return 0;
+            return -1;
         
-        int stack = 0;
-        int max = 0; 
+        Deque<Character> stack = new ArrayDeque(); 
         
         for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == ']')
-                max = Math.max(max, ++stack); 
+            char c = s.charAt(i); 
+            
+            if(c == ']' && !stack.isEmpty() && stack.peek() == '[')
+                stack.pop(); 
             else
-                stack--; 
+                stack.push(c); 
         }
         
-        return (max+1)/2; 
+        return ((stack.size() / 2) + 1) /2;
+        //System.out.println(stack.size()); 
+        //return 0;
     }
 }
+
+// ][ -> []
+
+// ]][[ - > [][]
+
+// ]]][[[ -> []][[] -> [][][]
+// ]]]][[[[ -> []]][[[]
+
+
+//]]]]][]][[]]
