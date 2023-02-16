@@ -1,15 +1,17 @@
 class Solution {
     public long interchangeableRectangles(int[][] rectangles) {
-        if(rectangles == null)
-            return 0; 
-        
         Map<Double, Integer> map = new HashMap(); 
-        long count = 0; 
         
         for(int i = 0; i < rectangles.length; i++){
             double ratio = (double) rectangles[i][0] / rectangles[i][1]; 
-            count += map.getOrDefault(ratio, 0); 
             map.put(ratio, map.getOrDefault(ratio, 0) + 1); 
+        }
+        
+        long count = 0; 
+        
+        for(double n: map.keySet()){
+            double total = map.get(n); 
+            count += (total * (total-1))/2; 
         }
         
         return count; 
