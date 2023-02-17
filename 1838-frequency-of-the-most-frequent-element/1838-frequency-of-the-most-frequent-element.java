@@ -11,7 +11,7 @@ class Solution {
         for(int left = nums.length-1, right = nums.length-1; left >=0 ; left--){
             sum += nums[left]; 
             
-            if((right - left+1) * nums[right] - sum > k)
+            while((right - left+1) * nums[right] - sum > k)
                 sum -= nums[right--]; 
             
             ans = Math.max(ans, right - left + 1); 
