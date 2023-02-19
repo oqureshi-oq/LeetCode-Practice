@@ -4,30 +4,31 @@ class Solution {
             return 0;
         
         Deque<Integer> stack = new ArrayDeque(); 
+        int sum = 0; 
+        int newScore = 0; 
         
         for(String op: operations){
             switch(op){
                 case "+":
                     int prev = stack.pop(); 
-                    int newScore = stack.peek() + prev; 
+                    newScore = stack.peek() + prev; 
                     stack.push(prev);
                     stack.push(newScore); 
+                    sum += newScore; 
                     break;
                 case "D":
-                    stack.push(stack.peek() * 2); 
+                    newScore = stack.peek() * 2; 
+                    sum += newScore; 
+                    stack.push(newScore); 
                     break;
                 case "C":
-                    stack.pop(); 
+                    sum -= stack.pop(); 
                     break;
                 default: 
-                    stack.push(Integer.parseInt(op)); 
+                    newScore = Integer.parseInt(op); 
+                    sum += newScore; 
+                    stack.push(newScore); 
             }
-        }
-        
-        int sum = 0; 
-        
-        while(!stack.isEmpty()){
-            sum += stack.pop(); 
         }
         
         return sum; 
