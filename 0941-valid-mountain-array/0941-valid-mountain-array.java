@@ -11,6 +11,7 @@ class Solution {
         while(right-1 > 0 && arr[right-1] > arr[right])
             right--; 
         
+        
         return left == right; 
     }
 }
