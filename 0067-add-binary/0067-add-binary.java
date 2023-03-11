@@ -1,25 +1,27 @@
 class Solution {
     public String addBinary(String a, String b) {
         if(a == null || b == null)
-            return new String();
+            return null; 
         
-        int i = a.length() - 1; 
-        int j = b.length() - 1; 
+        int pA = a.length()-1; 
+        int pB = b.length()-1;
         int carry = 0; 
-        StringBuilder str = new StringBuilder(); 
+        StringBuilder sb = new StringBuilder(); 
         
-        while(i >= 0 || j >= 0 || carry == 1){
-            int sum = carry; 
+        while(pA >= 0 || pB >= 0 || carry == 1){
+            int sum = carry;
             
-            if(i >= 0)
-                sum += a.charAt(i--) - '0';
-            if(j >= 0)
-                sum += b.charAt(j--) - '0';
+            if(pA >= 0)
+                sum += a.charAt(pA--) - '0';  
             
-            str.append(sum % 2); 
+            if(pB >= 0)
+                sum += b.charAt(pB--) - '0'; 
+            
+            sb.append(sum % 2); 
+            
             carry = sum / 2; 
         }
         
-        return str.reverse().toString(); 
+        return sb.reverse().toString(); 
     }
 }
