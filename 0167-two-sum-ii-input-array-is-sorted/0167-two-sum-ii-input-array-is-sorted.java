@@ -1,7 +1,7 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
         if(numbers == null)
-            return new int[]{0, 0};
+            return null; 
         
         int left = 0;
         int right = numbers.length-1; 
@@ -17,6 +17,6 @@ class Solution {
                 right--; 
         }
         
-        return new int[]{0, 0}; 
+        return null; 
     }
 }
