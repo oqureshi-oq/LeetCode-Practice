@@ -1,19 +1,16 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        if(nums == null)
-            return Integer.MIN_VALUE; 
-        
-        Map<Integer, Integer> counts = new HashMap(); 
+        Set<Integer> seen = new HashSet(); 
         
         for(int n: nums){
-            counts.put(n, counts.getOrDefault(n, 0) + 1); 
+            if(!seen.add(n))
+                seen.remove(n);
         }
         
-        for(int n: nums){
-            if(counts.get(n) == 1)
-                return n; 
+        for(int n: seen){
+            return n; 
         }
         
-        return Integer.MIN_VALUE; 
+        return 0; 
     }
 }
