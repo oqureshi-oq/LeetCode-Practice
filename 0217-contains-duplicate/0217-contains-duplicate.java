@@ -7,7 +7,7 @@ class Solution {
         
         for(int n: nums){
             if(!seen.add(n))
-                return true;
+                return true; 
         }
         
         return false; 
