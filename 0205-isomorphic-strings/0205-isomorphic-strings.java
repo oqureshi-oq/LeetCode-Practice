@@ -3,21 +3,23 @@ class Solution {
         if(s == null || t == null || s.length() != t.length())
             return false; 
         
-        Map<Character, Character> stMap = new HashMap(); 
-        Map<Character, Character> tsMap = new HashMap(); 
+        int[] sMapT = new int[256];
+        int[] tMapS = new int[256]; 
+        Arrays.fill(sMapT, -1);
+        Arrays.fill(tMapS, -1); 
         
         for(int i = 0; i < s.length(); i++){
-            char sChar = s.charAt(i);
-            char tChar = t.charAt(i); 
-            
-            if(stMap.containsKey(sChar) && stMap.get(sChar) != tChar)
+            if(sMapT[s.charAt(i)] != -1 && 
+               sMapT[s.charAt(i)] != t.charAt(i))
                 return false; 
             
-            if(tsMap.containsKey(tChar) && tsMap.get(tChar) != sChar)
-                return false;
+            if(tMapS[t.charAt(i)] != -1 && 
+               tMapS[t.charAt(i)] != s.charAt(i))
+                return false; 
             
-            stMap.put(sChar, tChar);
-            tsMap.put(tChar, sChar); 
+            
+            sMapT[s.charAt(i)] = t.charAt(i);
+            tMapS[t.charAt(i)] = s.charAt(i); 
         }
         
         return true; 
