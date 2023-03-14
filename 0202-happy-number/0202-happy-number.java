@@ -3,21 +3,25 @@ class Solution {
         if(n <= 0)
             return false; 
         
-        Set<Integer> seen = new HashSet(); 
+        int fast = nextNumber(nextNumber(n));
+        int slow = n; 
         
-        while(!seen.contains(n)){   
-            seen.add(n); 
-            
-            int sum = 0; 
-            
-            while(n != 0){
-                sum += (n % 10) * (n % 10); 
-                n /= 10;
-            }
-            
-            n = sum; 
+        while(fast != 1 && fast != slow){
+            fast = nextNumber(nextNumber(fast));
+            slow = nextNumber(slow); 
         }
         
-        return n == 1; 
+        return fast == 1; 
+    }
+    
+    public int nextNumber(int n){
+        int sum = 0;
+        
+        while(n != 0){
+            sum += (n % 10) * (n % 10);
+            n /= 10; 
+        }
+        
+        return sum; 
     }
 }
