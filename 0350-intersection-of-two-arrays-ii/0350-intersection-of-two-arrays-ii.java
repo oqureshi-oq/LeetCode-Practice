@@ -18,6 +18,6 @@ class Solution {
             }
         }
         
-        return Arrays.copyOf(nums1, write); 
+        return Arrays.copyOfRange(nums1, 0, write);  
     }
 }
