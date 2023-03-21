@@ -1,15 +1,15 @@
 class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        if(nums == null)
+        if(nums == null || k <= 0)
             return false;
         
-        Set<Integer> seen = new HashSet(); 
+        Set<Integer> seenRange = new HashSet(k); 
         
-        for(int i = 0; i < nums.length; i++){
-            if(i - k - 1 >= 0)
-                seen.remove(nums[i-k-1]);
+        for(int left = 0, right = 0; right < nums.length; right++){
+            if(right - left > k)
+                seenRange.remove(nums[left++]); 
             
-            if(!seen.add(nums[i]))
+            if(!seenRange.add(nums[right]))
                 return true;
         }
         
