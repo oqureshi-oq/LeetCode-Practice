@@ -5,10 +5,13 @@ class Solution {
         if(strs == null)
             return new ArrayList(); 
         
-        for(String str: strs){
-            char[] arr = str.toCharArray(); 
-            Arrays.sort(arr);
-            String sortedKey = new String(arr); 
+        for(String str: strs){ 
+            char[] letters = new char[26]; 
+            for(int i = 0; i < str.length(); i++){
+                letters[str.charAt(i) - 'a']++; 
+            }
+            String sortedKey = String.valueOf(letters); 
+            
             if(!map.containsKey(sortedKey))
                 map.put(sortedKey, new ArrayList());
             map.get(sortedKey).add(str); 
