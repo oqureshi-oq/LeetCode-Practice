@@ -9,16 +9,16 @@ class Solution {
             if(str == null || str.length() == 0)
                 continue; 
             
-            StringBuilder sb = new StringBuilder(); 
-            
+            char[] strArr = str.toCharArray(); 
+                       
             int diff = str.charAt(0) - 'a';
             
             for(int i = 0; i < str.length(); i++){
                 int c = (str.charAt(i) - diff) % 26;  
-                sb.append((char) c); 
+                strArr[i] = (char) c;  
             }
             
-            String key = sb.toString(); 
+            String key = String.valueOf(strArr); 
             
             if(!map.containsKey(key))
                 map.put(key, new ArrayList()); 
