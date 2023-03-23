@@ -26,6 +26,12 @@ class Solution {
             map.get(key).add(str); 
         }
         
-        return new ArrayList(map.values()); 
+        //return new ArrayList(map.values()); 
+        List<List<String>> groups = new ArrayList<>();
+        for (List<String> group : map.values()) {
+            groups.add(group);
+        }
+        
+        return groups;
     }
 }
