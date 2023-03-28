@@ -1,41 +1,27 @@
 class Solution {
-    char shiftLetter(char letter, int shift) {
-        return (char) ((letter - shift + 26) % 26 + 'a');
-    }
-    
-    // Create a hash value
-    String getHash(String s) {
-        char[] chars = s.toCharArray();
-        
-        // Calculate the number of shifts to make the first character to be 'a'
-        int shift = chars[0];
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] = shiftLetter(chars[i], shift);
-        }
-        
-        String hashKey = String.valueOf(chars);
-        return hashKey;
-    }
-    
     public List<List<String>> groupStrings(String[] strings) {
-        Map<String, List<String>> mapHashToList = new HashMap<>();
+        if(strings == null)
+            return new ArrayList(); 
         
-        // Create a hash_value (hashKey) for each string and append the string
-        // to the list of hash values i.e. mapHashToList["abc"] = ["abc", "bcd"]
-        for (String str : strings) {
-            String hashKey = getHash(str);
-            if (mapHashToList.get(hashKey) == null) {
-                mapHashToList.put(hashKey, new ArrayList<>());
-            } 
-            mapHashToList.get(hashKey).add(str);
+        Map<String, List<String>> map = new HashMap(); 
+        
+        for(String str: strings){
+            int diff = str.charAt(0) - 'a';
+            
+            char[] arr = new char[str.length()]; 
+            
+            for(int i = 0; i < str.length(); i++){
+                arr[i] = (char) ((str.charAt(i) - diff) % 26);
+            }
+            
+            String key = String.valueOf(arr); 
+            
+            if(!map.containsKey(key))
+                map.put(key, new ArrayList());
+            
+            map.get(key).add(str); 
         }
         
-        // Iterate over the map, and add the values to groups
-        List<List<String>> groups = new ArrayList<>();
-        for (List<String> group : mapHashToList.values()) {
-            groups.add(group);
-        }
-        
-        return groups;
+        return new ArrayList(map.values()); 
     }
 }
