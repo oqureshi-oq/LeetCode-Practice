@@ -12,7 +12,7 @@ class Solution {
                 if(board[i][j] == '.')
                     continue; 
                 
-                int index = board[i][j] - '0'- 1;  
+                int index = board[i][j] - '1';  
 
                 if(rows[i][index] || cols[j][index] || boxes[i/3 * 3 + j/3][index])
                     return false; 
