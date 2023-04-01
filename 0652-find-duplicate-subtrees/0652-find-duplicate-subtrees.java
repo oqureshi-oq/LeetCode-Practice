@@ -14,31 +14,31 @@
  * }
  */
 class Solution {
-    Map<String, Integer> seenCount; 
-    List<TreeNode> list; 
-    
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
-        seenCount = new HashMap(); 
-        list = new ArrayList(); 
+        if(root == null)
+            return new ArrayList(); 
         
-        findDuplicateSubtreesHelper(root);
+        List<TreeNode> list = new ArrayList(); 
+        Map<String, Integer> seen = new HashMap(); 
         
-        return list; 
+        findDuplicateSubtrees(root, list, seen); 
+        
+        return new ArrayList(list); 
     }
     
-    public String findDuplicateSubtreesHelper(TreeNode node){
-        if(node == null)
-            return "null";
+    private String findDuplicateSubtrees(TreeNode root, List<TreeNode> list, Map<String, Integer> seen){
+        if(root == null)
+            return "null"; 
         
-        String left = findDuplicateSubtreesHelper(node.left);
-        String right = findDuplicateSubtreesHelper(node.right); 
-        String subTree = node.val + ", " + left + ", " + right;
+        String left = "left: " + findDuplicateSubtrees(root.left, list, seen); 
+        String right = "right: " + findDuplicateSubtrees(root.right, list, seen); 
+        String currentSubTree = "root: " + root.val + left + right; 
         
-        seenCount.put(subTree, seenCount.getOrDefault(subTree, 0) + 1); 
+        seen.put(currentSubTree, seen.getOrDefault(currentSubTree, 0) + 1); 
         
-        if(seenCount.get(subTree) == 2)
-            list.add(node); 
+        if(seen.get(currentSubTree) == 2)
+            list.add(root);
         
-        return subTree;  
+        return currentSubTree; 
     }
 }
