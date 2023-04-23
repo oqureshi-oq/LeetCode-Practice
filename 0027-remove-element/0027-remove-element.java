@@ -7,7 +7,7 @@ class Solution {
         
         for(int n: nums){
             if(n != val)
-                nums[k++] = n; 
+                nums[k++] = n;
         }
         
         return k; 
