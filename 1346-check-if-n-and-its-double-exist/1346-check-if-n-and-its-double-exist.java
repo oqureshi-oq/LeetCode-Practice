@@ -9,9 +9,9 @@ class Solution {
             if(seen.contains(n*2) || n % 2 == 0 && seen.contains(n/2))
                 return true;
             
-            seen.add(n); 
+            seen.add(n);
         }
         
-        return false;
+        return false; 
     }
 }
