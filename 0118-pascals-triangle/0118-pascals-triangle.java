@@ -12,10 +12,10 @@ class Solution {
                 if(j == 0 || j == i)
                     row.add(1);
                 else
-                    row.add(list.get(i-1).get(j) + list.get(i-1).get(j-1)); 
+                    row.add(list.get(i-1).get(j) + list.get(i-1).get(j-1));
             }
             
-            list.add(row); 
+            list.add(row);
         }
         
         return list; 
