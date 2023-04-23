@@ -11,6 +11,6 @@ class Solution {
         }
         
         while(write < nums.length)
-            nums[write++] = 0; 
+            nums[write++] = 0;
     }
 }
