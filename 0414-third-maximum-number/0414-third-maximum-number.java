@@ -1,6 +1,6 @@
 class Solution {
     public int thirdMax(int[] nums) {
-        if(nums == null)
+        if(nums == null || nums.length == 0)
             return Integer.MIN_VALUE;
         
         Integer first = null;
