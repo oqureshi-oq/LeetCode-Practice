@@ -5,7 +5,7 @@ class Solution {
         
         int rightSum = 0;
         for(int n: nums){
-            rightSum += n;
+            rightSum += n; 
         }
         
         int leftSum = 0;
