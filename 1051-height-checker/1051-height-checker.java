@@ -1,25 +1,24 @@
 class Solution {
     public int heightChecker(int[] heights) {
         if(heights == null)
-            return -1;
+            return 0;
         
-        int[] eH = new int[101];
-        
+        int[] expected = new int[101];
         for(int h: heights){
-            eH[h]++; 
+            expected[h]++; 
         }
         
         int count = 0;
-        int expected = 1;
+        int eH = 1; 
         
-        for(int actual: heights){
-            while(eH[expected] == 0)
-                expected++;
+        for(int h: heights){
+            while(expected[eH] == 0)
+                eH++; 
             
-            if(actual != expected)
+            if(h != eH)
                 count++;
             
-            eH[expected]--; 
+            expected[eH]--; 
         }
         
         return count; 
