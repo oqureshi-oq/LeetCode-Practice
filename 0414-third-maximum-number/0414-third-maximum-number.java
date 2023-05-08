@@ -1,10 +1,10 @@
 class Solution {
     public int thirdMax(int[] nums) {
-        if(nums == null || nums.length == 0)
-            return Integer.MIN_VALUE; 
+        if(nums == null || nums.length < 1)
+            return Integer.MIN_VALUE;
         
         Integer first = null;
-        Integer second = null; 
+        Integer second = null;
         Integer third = null; 
         
         for(Integer n: nums){
@@ -19,7 +19,7 @@ class Solution {
                 third = second;
                 second = n;
             } else if(third == null || n > third){
-                third = n; 
+                third = n;
             }
         }
         
