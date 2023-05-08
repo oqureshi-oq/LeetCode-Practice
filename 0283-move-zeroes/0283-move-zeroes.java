@@ -1,7 +1,7 @@
 class Solution {
     public void moveZeroes(int[] nums) {
         if(nums == null)
-            return; 
+            return;
         
         int write = 0;
         
@@ -11,6 +11,6 @@ class Solution {
         }
         
         while(write < nums.length)
-            nums[write++] = 0; 
+            nums[write++] = 0;
     }
 }
