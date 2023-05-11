@@ -3,13 +3,13 @@ class Solution {
         if(nums == null)
             return -1;
         
-        int k = 0;
+        int write = 0;
         
         for(int n: nums){
             if(n != val)
-                nums[k++] = n;
+                nums[write++] = n;
         }
         
-        return k; 
+        return write; 
     }
 }
