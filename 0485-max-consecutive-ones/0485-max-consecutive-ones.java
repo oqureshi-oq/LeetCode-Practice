@@ -4,15 +4,15 @@ class Solution {
             return 0;
         
         int count = 0;
-        int maxCount = 0;
+        int max = 0;
         
         for(int n: nums){
             if(n == 1)
-                maxCount = Math.max(maxCount, ++count);
+                max = Math.max(max, ++count);
             else
                 count = 0;
         }
         
-        return maxCount; 
+        return max; 
     }
 }
