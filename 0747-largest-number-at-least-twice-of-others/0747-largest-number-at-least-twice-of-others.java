@@ -3,20 +3,18 @@ class Solution {
         if(nums == null || nums.length == 0)
             return Integer.MIN_VALUE;
         
-        int first = Integer.MIN_VALUE;
-        int index = -1;
-        int second = Integer.MIN_VALUE; 
+        int firstIndex = -1;
+        int secondIndex = -1; 
         
         for(int i = 0; i < nums.length; i++){
-            if(nums[i] >= first){
-                second = first;
-                first = nums[i];
-                index = i; 
-            } else if(nums[i] >= second){
-                second = nums[i];
+            if(firstIndex == -1 || nums[i] >= nums[firstIndex]){
+                secondIndex = firstIndex;
+                firstIndex = i; 
+            } else if(secondIndex == -1 || nums[i] >= nums[secondIndex]){
+                secondIndex = i;
             }
         }
         
-        return first >= 2 * second ? index: -1; 
+        return nums[firstIndex] >= 2 * nums[secondIndex] ? firstIndex: -1; 
     }
 }
