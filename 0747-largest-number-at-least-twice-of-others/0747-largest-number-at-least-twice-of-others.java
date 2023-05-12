@@ -1,7 +1,7 @@
 class Solution {
     public int dominantIndex(int[] nums) {
         if(nums == null || nums.length == 0)
-            return Integer.MIN_VALUE;
+            return -1;
         
         int firstIndex = -1;
         int secondIndex = -1; 
