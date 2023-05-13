@@ -11,7 +11,7 @@ class Solution {
     }
     
     public void rotate(int[] arr, int start, int end){
-        if(arr == null)
+        if(arr == null || start < 0 || end >= arr.length)
             return;
         
         while(start < end){
