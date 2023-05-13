@@ -1,40 +1,54 @@
 class Solution {
     public String reverseWords(String s) {
-        if(s == null)
-            return "";
+       if(s == null)
+           return "";
+        
+        int left = 0;
+        while(left < s.length() && s.charAt(left) == ' ')
+            left++;
+        
+        int right = s.length()-1;
+        while(right >= 0 && s.charAt(right) == ' ')
+            right--;
         
         char[] arr = s.toCharArray(); 
         
-        reverse(arr, 0, arr.length - 1); 
+        reverse(arr, left, right);
         
-        int read = 0; 
-        int write = 0;
+        int l = left;
+        int r = left;
+        StringBuilder sb = new StringBuilder(); 
         
-        while(read < arr.length){
-            while(read < arr.length && arr[read] == ' ')
-                read++; 
+        while(r < arr.length){
+            while(r < arr.length && arr[r] != ' ')
+                r++;
             
-            if(write > 0 && read < arr.length)
-                arr[write++] = ' '; 
+            reverse(arr, l, r-1);
             
-            int begin = write; 
+            while(l < r)
+                sb.append(arr[l++]);
             
-            while(read < arr.length && arr[read] != ' ')
-                arr[write++] = arr[read++]; 
+            sb.append(' ');
             
-            reverse(arr, begin, write-1); 
+            while(r < arr.length && arr[r] == ' ')
+                r++;
+            
+            l = r; 
         }
         
-        return new String(arr, 0, write); 
+        return sb.substring(0, sb.length()-1);
     }
     
     public void reverse(char[] arr, int left, int right){
+        if(arr == null || left < 0 || right >= arr.length)
+            return;
+        
         while(left < right){
             char temp = arr[left];
             arr[left] = arr[right];
             arr[right] = temp;
             left++;
-            right--; 
+            right--;
         }
     }
 }
