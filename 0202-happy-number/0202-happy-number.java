@@ -3,25 +3,25 @@ class Solution {
         if(n <= 0)
             return false; 
         
-        int fast = nextNumber(nextNumber(n));
-        int slow = n; 
-        
-        while(fast != 1 && fast != slow){
-            fast = nextNumber(nextNumber(fast));
-            slow = nextNumber(slow); 
+        int slow = n;
+        int fast = next(next(n));
+        while(fast != slow && fast != 1){
+            slow = next(slow);
+            fast = next(next(fast));
         }
         
         return fast == 1; 
     }
     
-    public int nextNumber(int n){
+    public int next(int n){
         int sum = 0;
         
         while(n != 0){
-            sum += (n % 10) * (n % 10);
+            int digit = n % 10; 
+            sum += digit * digit; 
             n /= 10; 
         }
         
-        return sum; 
+        return sum;
     }
 }
