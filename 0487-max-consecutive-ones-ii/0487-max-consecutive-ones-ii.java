@@ -3,21 +3,20 @@ class Solution {
         if(nums == null)
             return 0;
         
-        int k = 1;
-        int max = 0;
+        int zeroCount = 0;
+        int left = 0;
+        int right = 0;
         
-        for(int left = 0, right = 0; right < nums.length; right++){
+        while(right < nums.length){
             if(nums[right] == 0)
-                k--;
+                zeroCount++;
             
-            while(k < 0){
-                if(nums[left++] == 0)
-                    k++;
-            }
+            right++;
             
-            max = Math.max(max, right - left + 1);
+            if(zeroCount > 1 && nums[left++] == 0)
+                zeroCount-- ; 
         }
         
-        return max;
+        return right - left; 
     }
 }
