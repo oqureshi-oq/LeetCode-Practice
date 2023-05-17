@@ -5,17 +5,17 @@ class Solution {
         
         int[] expected = new int[101];
         for(int h: heights){
-            expected[h]++;
+            expected[h]++; 
         }
-        
+    
         int count = 0;
-        int eH = 1;
+        int eH = 1; 
         
         for(int aH: heights){
             while(expected[eH] == 0)
                 eH++;
             
-            if(eH != aH)
+            if(aH != eH)
                 count++;
             
             expected[eH]--;
