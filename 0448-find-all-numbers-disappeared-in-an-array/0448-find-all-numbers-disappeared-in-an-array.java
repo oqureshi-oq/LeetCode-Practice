@@ -14,7 +14,7 @@ class Solution {
             if(nums[i] > 0)
                 list.add(i+1);
             else
-                nums[i] *= -1; 
+                nums[i] *= -1;
         }
         
         return list; 
