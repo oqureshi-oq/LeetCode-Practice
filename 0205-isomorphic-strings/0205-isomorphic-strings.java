@@ -9,14 +9,17 @@ class Solution {
         Arrays.fill(tToS, -1);
         
         for(int i = 0; i < s.length(); i++){
-            if(sToT[s.charAt(i)] == -1)
-                sToT[s.charAt(i)] = t.charAt(i);
+            char sChar = s.charAt(i);
+            char tChar = t.charAt(i); 
             
-            if(tToS[t.charAt(i)] == -1)
-                tToS[t.charAt(i)] = s.charAt(i);
+            if(sToT[sChar] == -1)
+                sToT[sChar] = tChar;
             
-            if(sToT[s.charAt(i)] != t.charAt(i) || 
-              tToS[t.charAt(i)] != s.charAt(i))
+            if(tToS[tChar] == -1)
+                tToS[tChar] = sChar;
+            
+            if(sToT[sChar] != tChar || 
+              tToS[tChar] != sChar)
                 return false; 
         }
         
