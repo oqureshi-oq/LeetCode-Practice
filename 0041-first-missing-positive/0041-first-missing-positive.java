@@ -12,9 +12,7 @@ class Solution {
                     i--; 
             }
         }
-        for(int n: nums){
-            System.out.println(n);
-        }
+        
         for(int i = 0; i < nums.length; i++){
             if(i+1 != nums[i])
                 return i+1; 
