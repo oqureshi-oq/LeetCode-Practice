@@ -3,17 +3,14 @@ class Solution {
         if(nums == null)
             return -1;
         
-        int expectedSum = (nums.length+1) * nums.length / 2;
-                
+        int expectedSum = nums.length;
         int actualSum = 0;
-        for(int n: nums){
-            actualSum += n;
+        
+        for(int i = 0; i < nums.length; i++){
+            expectedSum += i;
+            actualSum += nums[i];
         }
         
         return expectedSum - actualSum; 
     }
-    
-    ///0, 1, 2, 3
-    
-
 }
