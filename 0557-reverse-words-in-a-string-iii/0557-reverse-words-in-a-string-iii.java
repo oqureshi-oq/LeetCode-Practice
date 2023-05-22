@@ -11,7 +11,7 @@ class Solution {
             while(right < s.length() && s.charAt(right) != ' ')
                 right++;
             
-            for(int i = right-1; i >= left; i--){
+            for(int i = right-1; left <= i; i--){
                 sb.append(s.charAt(i));
             }
             
@@ -20,6 +20,6 @@ class Solution {
             left = ++right; 
         }
         
-        return sb.substring(0, sb.length()-1); 
+        return sb.toString().substring(0, sb.length()-1);
     }
 }
