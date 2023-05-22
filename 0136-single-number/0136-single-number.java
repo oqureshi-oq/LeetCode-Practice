@@ -1,19 +1,18 @@
 class Solution {
     public int singleNumber(int[] nums) {
         if(nums == null)
-            return Integer.MIN_VALUE; 
+            return Integer.MIN_VALUE;
         
-        Map<Integer, Integer> map = new HashMap(); 
-        
-        for(int n: nums){
-            map.put(n, map.getOrDefault(n, 0)  +1);
-        }
+        int actualSum = 0;
+        int expectedSum = 0;
+        Set<Integer> set = new HashSet(); 
         
         for(int n: nums){
-            if(map.get(n) == 1)
-                return n; 
+            actualSum += n;
+            if(set.add(n))
+                expectedSum += 2 * n;
         }
         
-        return Integer.MAX_VALUE;
+        return expectedSum - actualSum; 
     }
 }
