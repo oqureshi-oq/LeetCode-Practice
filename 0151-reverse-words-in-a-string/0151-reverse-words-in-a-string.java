@@ -1,54 +1,47 @@
 class Solution {
     public String reverseWords(String s) {
-       if(s == null)
-           return "";
-        
-        int left = 0;
-        while(left < s.length() && s.charAt(left) == ' ')
-            left++;
-        
-        int right = s.length()-1;
-        while(right >= 0 && s.charAt(right) == ' ')
-            right--;
+        if(s == null)
+            return "";
         
         char[] arr = s.toCharArray(); 
         
-        reverse(arr, left, right);
+        reverse(arr, 0, arr.length-1);
         
-        int l = left;
-        int r = left;
+        int left = 0;
+        int right = 0;
         StringBuilder sb = new StringBuilder(); 
         
-        while(r < arr.length){
-            while(r < arr.length && arr[r] != ' ')
-                r++;
+        while(right < arr.length){
+            while(right < arr.length && arr[right] == ' '){
+                right++;
+            }
             
-            reverse(arr, l, r-1);
+            if(right == arr.length)
+                break;
             
-            while(l < r)
-                sb.append(arr[l++]);
+            left = right; 
             
-            sb.append(' ');
+            while(right < arr.length && arr[right] != ' ')
+                right++;
             
-            while(r < arr.length && arr[r] == ' ')
-                r++;
+            reverse(arr, left, right-1);
             
-            l = r; 
+            while(left < right)
+                sb.append(arr[left++]);
+            
+            sb.append(' '); 
         }
         
-        return sb.substring(0, sb.length()-1);
+        return sb.toString().substring(0, sb.length()-1); 
     }
     
     public void reverse(char[] arr, int left, int right){
-        if(arr == null || left < 0 || right >= arr.length)
-            return;
-        
         while(left < right){
             char temp = arr[left];
             arr[left] = arr[right];
-            arr[right] = temp;
+            arr[right] = temp; 
             left++;
-            right--;
+            right--; 
         }
     }
 }
