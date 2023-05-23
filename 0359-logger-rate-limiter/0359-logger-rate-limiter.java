@@ -1,8 +1,6 @@
 class Logger {
-
-    private Map<String, Integer> map;  
-        
-        
+    private Map<String, Integer> map; 
+    
     public Logger() {
         map = new HashMap(); 
     }
@@ -10,10 +8,11 @@ class Logger {
     public boolean shouldPrintMessage(int timestamp, String message) {
         boolean shouldPrint = false; 
         
-        if(!map.containsKey(message) || timestamp >= map.get(message) + 10){
+        if(!map.containsKey(message) || map.get(message)+10 <= timestamp)
             shouldPrint = true;
-            map.put(message, timestamp); 
-        }
+        
+        if(shouldPrint)
+            map.put(message, timestamp);
         
         return shouldPrint; 
     }
