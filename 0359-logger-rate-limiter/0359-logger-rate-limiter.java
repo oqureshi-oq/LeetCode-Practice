@@ -8,11 +8,10 @@ class Logger {
     public boolean shouldPrintMessage(int timestamp, String message) {
         boolean shouldPrint = false; 
         
-        if(!map.containsKey(message) || map.get(message)+10 <= timestamp)
+        if(!map.containsKey(message) || map.get(message)+10 <= timestamp){
             shouldPrint = true;
-        
-        if(shouldPrint)
             map.put(message, timestamp);
+        }
         
         return shouldPrint; 
     }
