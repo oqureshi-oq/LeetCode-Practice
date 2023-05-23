@@ -6,20 +6,19 @@ class Solution {
         Map<String, List<String>> map = new HashMap(); 
         
         for(String str: strings){
-            int diff = str.charAt(0) - 'a';
+            int shift = str.charAt(0) - 'a';
+            char[] arr = str.toCharArray(); 
             
-            char[] arr = new char[str.length()]; 
-            
-            for(int i = 0; i < str.length(); i++){
-                arr[i] = (char) ((str.charAt(i) - diff) % 26);
+            for(int i = 0; i < arr.length; i++){
+                arr[i] = (char) ((arr[i] - shift) % 26 + 'a'); 
             }
             
-            String key = String.valueOf(arr); 
+            String key = new String(arr);
             
             if(!map.containsKey(key))
                 map.put(key, new ArrayList());
             
-            map.get(key).add(str); 
+            map.get(key).add(str);
         }
         
         return new ArrayList(map.values()); 
