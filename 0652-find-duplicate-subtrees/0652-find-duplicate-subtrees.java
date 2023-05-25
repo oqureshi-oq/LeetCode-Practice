@@ -14,11 +14,13 @@
  * }
  */
 class Solution {
-    private Map<String, Integer> subtrees; 
+    private Map<String, Integer> subTreeToId;
+    private Map<Integer, Integer> subtrees; 
     private List<TreeNode> duplicates; 
     
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         subtrees = new HashMap(); 
+        subTreeToId = new HashMap(); 
         duplicates = new ArrayList();
         helper(root); 
         return duplicates; 
@@ -31,9 +33,15 @@ class Solution {
         String left = helper(node.left);
         String right = helper(node.right);
         String subTree = "left: " + left + ", current: " + node.val + ", right: " + right;
-        subtrees.put(subTree, subtrees.getOrDefault(subTree, 0) + 1);
         
-        if(subtrees.get(subTree) == 2)
+        if(!subTreeToId.containsKey(subTree))
+            subTreeToId.put(subTree, subTreeToId.size() + 1);
+        
+        int id = subTreeToId.get(subTree); 
+        
+        subtrees.put(id, subtrees.getOrDefault(id, 0) + 1);
+        
+        if(subtrees.get(id) == 2)
             duplicates.add(node);
         
         return subTree; 
