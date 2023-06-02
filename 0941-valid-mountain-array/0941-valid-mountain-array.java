@@ -4,11 +4,11 @@ class Solution {
             return false; 
         
         int left = 0;
-        while(left+1 < arr.length - 1 && arr[left] < arr[left+1])
+        while(left+1 < arr.length-1 && arr[left] < arr[left+1])
             left++;
         
         int right = arr.length - 1;
-        while(0 < right-1 && arr[right-1] > arr[right])
+        while(right-1 > 0 && arr[right-1] > arr[right])
             right--;
         
         return left == right; 
