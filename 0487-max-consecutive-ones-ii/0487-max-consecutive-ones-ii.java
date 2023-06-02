@@ -4,7 +4,7 @@ class Solution {
             return 0;
         
         int max = 0;
-        int k = 1;
+        int k = 1; 
         
         for(int left = 0, right = 0; right < nums.length; right++){
             if(nums[right] == 0)
@@ -12,10 +12,10 @@ class Solution {
             
             while(k < 0){
                 if(nums[left++] == 0)
-                    k++;
+                    k++; 
             }
             
-            max = Math.max(right - left + 1, max);
+            max = Math.max(max, right - left + 1);
         }
         
         return max; 
