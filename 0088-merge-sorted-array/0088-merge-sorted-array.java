@@ -1,9 +1,6 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(nums1 == null || nums1.length != m+n)
-            return;
-        
-        if(nums2 == null || nums2.length != n)
+        if(nums1 == null || nums1.length != m+n || nums2 == null || nums2.length != n)
             return;
         
         int read1 = m-1;
@@ -16,7 +13,7 @@ class Solution {
             else
                 nums1[write] = nums2[read2--];
             
-            write--;
+            write--; 
         }
         
         while(read2 >= 0)
