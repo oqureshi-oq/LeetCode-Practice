@@ -13,7 +13,7 @@ class Solution {
         
         for(int aH: heights){
             while(expected[eH] == 0)
-                eH++; 
+                eH++;
             
             if(eH != aH)
                 count++;
