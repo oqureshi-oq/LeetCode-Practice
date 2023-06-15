@@ -1,15 +1,15 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
         if(nums == null)
-            return 0;
+            return -1;
         
-        int k = 0;
+        int write = 0;
         
-        for(int n: nums){
+        for(int n : nums){
             if(n != val)
-                nums[k++] = n;
+                nums[write++] = n;
         }
         
-        return k; 
+        return write; 
     }
 }
