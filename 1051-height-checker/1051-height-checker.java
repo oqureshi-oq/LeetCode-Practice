@@ -18,7 +18,7 @@ class Solution {
             if(eH != aH)
                 count++;
             
-            expected[eH]--;
+            expected[eH]--; 
         }
         
         return count; 
