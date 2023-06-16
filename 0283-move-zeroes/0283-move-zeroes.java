@@ -1,7 +1,7 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-       if(nums == null)
-           return;
+        if(nums == null)
+            return;
         
         int write = 0;
         
