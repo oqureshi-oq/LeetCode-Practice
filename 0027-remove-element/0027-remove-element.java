@@ -1,11 +1,11 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
         if(nums == null)
-            return -1;
+            return 0;
         
         int write = 0;
         
-        for(int n : nums){
+        for(int n: nums){
             if(n != val)
                 nums[write++] = n;
         }
