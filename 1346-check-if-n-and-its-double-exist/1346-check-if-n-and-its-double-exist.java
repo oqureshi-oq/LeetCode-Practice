@@ -1,14 +1,14 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
-        if(arr == null)
+        if(arr == null || arr.length < 2)
             return false;
         
-        Set<Integer> set = new HashSet();
+        Set<Integer> seen = new HashSet(); 
         
         for(int n: arr){
-            if(set.contains(n*2) || n % 2 == 0 && set.contains(n/2))
+            if(seen.contains(n*2) || n%2 == 0 && seen.contains(n/2))
                 return true;
-            set.add(n);
+            seen.add(n);
         }
         
         return false; 
