@@ -4,7 +4,7 @@ class Solution {
             return 0;
         
         int count = 0;
-        int max = 0; 
+        int max = 0;
         
         for(int n: nums){
             if(n == 1)
