@@ -8,8 +8,8 @@ class Solution {
             left++;
         
         int right = arr.length - 1;
-        while(right-1 > 0 && arr[right-1] > arr[right])
-            right--;
+        while(0 < right-1 && arr[right-1] > arr[right])
+            right--; 
         
         return left == right; 
     }
