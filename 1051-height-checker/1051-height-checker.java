@@ -8,17 +8,17 @@ class Solution {
             expected[h]++;
         }
         
-        int count = 0; 
-        int h = 1;
+        int count = 0;
+        int eH = 1; 
         
         for(int aH: heights){
-            while(expected[h] == 0)
-                h++;
+            while(expected[eH] == 0)
+                eH++;
             
-            if(h != aH)
+            if(eH != aH)
                 count++;
             
-            expected[h]--; 
+            expected[eH]--;
         }
         
         return count; 
