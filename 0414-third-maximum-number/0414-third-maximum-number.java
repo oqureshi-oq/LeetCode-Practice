@@ -9,7 +9,7 @@ class Solution {
         
         for(Integer n: nums){
             if(n.equals(first) || n.equals(second) || n.equals(third))
-                continue;
+                continue; 
             
             if(first == null || n > first){
                 third = second;
@@ -23,6 +23,6 @@ class Solution {
             }
         }
         
-        return third != null ? third: first; 
+        return third != null ? third : first; 
     }
 }
