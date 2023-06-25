@@ -3,7 +3,7 @@ class Solution {
         if(nums1 == null || nums1.length != m+n || nums2 == null || nums2.length != n)
             return;
         
-        int read1 = m-1; 
+        int read1 = m-1;
         int read2 = n-1;
         int write = m+n-1;
         
