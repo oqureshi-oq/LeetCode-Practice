@@ -7,14 +7,12 @@ class Solution {
         int max = 0; 
         
         for(int n: nums){
-            if(n == 1){
-                count++; 
-            } else{
-                max = Math.max(count, max);
+            if(n == 1)
+                max = Math.max(++count, max);  
+            else
                 count = 0; 
-            }
         }
         
-        return Math.max(max, count); 
+        return max; 
     }
 }
