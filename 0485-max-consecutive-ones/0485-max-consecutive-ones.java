@@ -7,9 +7,9 @@ class Solution {
         int max = 0; 
         
         for(int n: nums){
-            if(n == 1 && ++count > max){
-                max = count;   
-            } else if (n == 0)
+            if(n == 1)
+                max = Math.max(++count, max);
+            else
                 count = 0; 
         }
         
