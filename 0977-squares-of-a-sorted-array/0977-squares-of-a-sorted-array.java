@@ -3,15 +3,15 @@ class Solution {
         if(nums == null)
             return null;
         
+        int[] ans = new int[nums.length];
         int left = 0;
         int right = nums.length-1;
-        int[] ans = new int[nums.length];
         
         for(int i = nums.length-1; i >= 0; i--){
-            if(Math.abs(Math.abs(nums[left])) > Math.abs(Math.abs(nums[right])))
-                ans[i] = nums[left] * nums[left++];
-            else
+            if(Math.abs(nums[left]) < Math.abs(nums[right]))
                 ans[i] = nums[right] * nums[right--];
+            else
+                ans[i] = nums[left] * nums[left++];
         }
         
         return ans; 
