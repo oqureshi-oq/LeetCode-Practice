@@ -10,7 +10,7 @@ class Solution {
         }
         
         int write = arr.length + zeroCount - 1;
-        int read = arr.length - 1; 
+        int read = arr.length - 1;
         
         while(read >= 0){
             if(write < arr.length)
