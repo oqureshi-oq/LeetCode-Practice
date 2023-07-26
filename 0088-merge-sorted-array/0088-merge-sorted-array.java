@@ -12,8 +12,7 @@ class Solution {
                 nums1[write] = nums1[read1--];
             else
                 nums1[write] = nums2[read2--];
-            
-            write--;
+            write--; 
         }
         
         while(read2 >= 0)
