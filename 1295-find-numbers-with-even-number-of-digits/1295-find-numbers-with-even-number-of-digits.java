@@ -1,7 +1,7 @@
 class Solution {
     public int findNumbers(int[] nums) {
-      if(nums == null)
-          return 0;
+        if(nums == null)
+            return 0;
         
         int count = 0;
         
