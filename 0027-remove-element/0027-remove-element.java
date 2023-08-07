@@ -10,6 +10,6 @@ class Solution {
                 nums[k++] = n;
         }
         
-        return k; 
+        return k;
     }
 }
