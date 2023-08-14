@@ -9,7 +9,7 @@ class Solution {
             if(nums[i] % 2 == 0){
                 int temp = nums[evenIndex];
                 nums[evenIndex] = nums[i];
-                nums[i] = temp; 
+                nums[i] = temp;
                 evenIndex++; 
             }
         }
