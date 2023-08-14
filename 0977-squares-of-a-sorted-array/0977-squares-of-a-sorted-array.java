@@ -1,7 +1,7 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
         if(nums == null)
-            return null; 
+            return null;
         
         int[] ans = new int[nums.length];
         int left = 0;
