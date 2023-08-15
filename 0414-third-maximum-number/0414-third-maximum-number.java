@@ -4,8 +4,8 @@ class Solution {
             return Integer.MIN_VALUE;
         
         Integer first = null;
-        Integer second = null;
-        Integer third = null;
+        Integer second = null; 
+        Integer third = null; 
         
         for(Integer n: nums){
             if(n.equals(first) || n.equals(second) || n.equals(third))
