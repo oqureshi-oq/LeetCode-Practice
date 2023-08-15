@@ -9,7 +9,7 @@ class Solution {
         }
         
         int count = 0;
-        int eH = 1;
+        int eH = 1; 
         
         for(int aH: heights){
             while(expected[eH] == 0)
