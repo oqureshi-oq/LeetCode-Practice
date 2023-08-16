@@ -8,32 +8,32 @@ class Solution {
         int[] ans = new int[m*n];
         int row = 0;
         int col = 0;
-        boolean goingUp = true;
+        boolean goingUp = true; 
         
         for(int i = 0; i < m*n; i++){
             ans[i] = mat[row][col];
             
-            if(goingUp){ 
+            if(goingUp){
                 if(row-1 >= 0 && col+1 < n){
                     row--;
                     col++;
-                } else if(col+1 < n){
+                } else if(row-1 < 0 && col+1 < n){
                     col++;
-                    goingUp = false; 
-                } else{
+                    goingUp = false;
+                } else {
                     row++;
-                    goingUp = false; 
+                    goingUp = false;
                 }
             } else {
                 if(row+1 < m && col-1 >= 0){
                     row++;
                     col--;
-                } else if(row+1 < m){
+                } else if(col-1 < 0 && row+1 < m){
                     row++;
                     goingUp = true;
                 } else {
-                    col++; 
-                    goingUp = true; 
+                    col++;
+                    goingUp = true;
                 }
             }
         }
