@@ -8,7 +8,7 @@ class Solution {
         int index = -1;
         
         for(int i = 0; i < nums.length; i++){
-            Integer n = nums[i];
+            int n = nums[i];
             if(first == null || n >= first){
                 second = first;
                 first = n;
