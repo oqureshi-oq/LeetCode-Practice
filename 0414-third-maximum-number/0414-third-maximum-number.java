@@ -1,19 +1,20 @@
 class Solution {
     public int thirdMax(int[] nums) {
-        Arrays.sort(nums);
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        Set<Integer> taken = new HashSet<Integer>();
         
-        int count = 1;
-        int prev = nums[nums.length-1];
-        for(int i = nums.length-2; i >= 0; i--){
-            if(nums[i] != prev){
-                count++;
-                prev = nums[i];
+        for(int n: nums){
+            if(!taken.contains(n)){
+                taken.add(n);
+                maxHeap.add(n);
             }
-            
-            if(count == 3)
-                return nums[i];
         }
         
-        return nums[nums.length-1]; 
+        if(maxHeap.size() < 3)
+            return maxHeap.poll(); 
+        
+        maxHeap.poll();
+        maxHeap.poll();
+        return maxHeap.poll(); 
     }
 }
