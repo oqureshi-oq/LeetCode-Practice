@@ -8,13 +8,12 @@ class Solution {
         int index = -1;
         
         for(int i = 0; i < nums.length; i++){
-            int n = nums[i];
-            if(first == null || n >= first){
+            if(first == null || nums[i] >= first){
                 second = first;
-                first = n;
+                first = nums[i];
                 index = i;
-            } else if(second == null || n >= second){
-                second = n;
+            } else if(second == null || nums[i] >= second){
+                second = nums[i];
             }
         }
         
