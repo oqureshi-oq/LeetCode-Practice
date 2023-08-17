@@ -14,12 +14,13 @@ class Solution {
             
             String key = new String(letters);
             
-            if(!map.containsKey(key))
+            if(!map.containsKey(key)){
                 map.put(key, new ArrayList());
+            }
             
             map.get(key).add(str);
         }
         
-        return new ArrayList(map.values());
+        return new ArrayList(map.values()); 
     }
 }
