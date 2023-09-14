@@ -4,13 +4,14 @@ class Solution {
             return;
         
         int zeroCount = 0;
+        
         for(int n: arr){
             if(n == 0)
-                zeroCount++;
+                zeroCount++; 
         }
         
-        int write = arr.length + zeroCount - 1;
-        int read = arr.length - 1;
+        int read = arr.length-1;
+        int write = arr.length+zeroCount-1;
         
         while(read >= 0){
             if(write < arr.length)
@@ -21,7 +22,7 @@ class Solution {
             if(arr[read] == 0){
                 if(write < arr.length)
                     arr[write] = 0;
-                write--;
+                write--; 
             }
             
             read--; 
