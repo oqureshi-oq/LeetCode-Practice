@@ -3,15 +3,22 @@ class Solution {
         if(nums == null)
             return null;
         
-        int left = 0;
-        int right = nums.length-1;
         int[] ans = new int[nums.length];
+        int left = 0;
+        int right = nums.length - 1;
         
         for(int i = nums.length-1; i >= 0; i--){
-            if(Math.abs(nums[left]) > Math.abs(nums[right]))
-                ans[i] = nums[left] * nums[left++];
-            else
-                ans[i] = nums[right] * nums[right--];
+            int square; 
+            
+            if(Math.abs(nums[left]) > Math.abs(nums[right])){
+                square = nums[left];
+                left++;
+            } else {
+                square = nums[right];
+                right--;
+            }
+            
+            ans[i] = square * square; 
         }
         
         return ans; 
