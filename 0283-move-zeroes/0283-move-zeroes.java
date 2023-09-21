@@ -7,10 +7,10 @@ class Solution {
         
         for(int n: nums){
             if(n != 0)
-                nums[write++] = n;
+              nums[write++] = n;  
         }
         
         while(write < nums.length)
-            nums[write++] = 0;
+            nums[write++] = 0; 
     }
 }
