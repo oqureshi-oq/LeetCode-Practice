@@ -10,7 +10,7 @@ class Solution {
             if(n == 1)
                 max = Math.max(++count, max);
             else
-                count = 0;
+                count = 0; 
         }
         
         return max; 
