@@ -3,7 +3,7 @@ class Solution {
         if(mat == null)
             return null;
         
-        int m = mat.length; 
+        int m = mat.length;
         int n = mat[0].length; 
         int[] ans = new int[m*n];
         int row = 0;
@@ -17,23 +17,23 @@ class Solution {
                 if(row-1 >= 0 && col+1 < n){
                     row--;
                     col++;
-                } else if(row-1 < 0 && col+1 < n){
-                    col++;
-                    goingUp = false;
-                } else {
+                } else if(col+1 >= n){
                     row++;
                     goingUp = false;
+                } else {
+                    col++;
+                    goingUp = false; 
                 }
             } else {
                 if(row+1 < m && col-1 >= 0){
                     row++;
                     col--;
-                } else if(col-1 < 0 && row+1 < m){
-                    row++;
+                } else if(row+1 >= m){
+                    col++; 
                     goingUp = true;
                 } else {
-                    col++;
-                    goingUp = true;
+                    row++; 
+                    goingUp = true; 
                 }
             }
         }
