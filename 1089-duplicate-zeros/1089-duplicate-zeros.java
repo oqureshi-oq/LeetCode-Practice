@@ -21,13 +21,10 @@ class Solution {
             if(arr[read] == 0){
                 if(write < arr.length)
                     arr[write] = 0;
-                write--;
+                write--; 
             }
             
             read--; 
         }
     }
 }
-
-// [1,0,2,3,0,4,5,0]
-// [1,0,0,2,3,0,0,4,5,0,0]
