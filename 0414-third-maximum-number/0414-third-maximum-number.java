@@ -5,7 +5,7 @@ class Solution {
         
         Integer first = null;
         Integer second = null;
-        Integer third = null;
+        Integer third = null; 
         
         for(Integer n: nums){
             if(n.equals(first) || n.equals(second) || n.equals(third))
@@ -19,7 +19,7 @@ class Solution {
                 third = second;
                 second = n;
             } else if(third == null || n > third){
-                third = n; 
+                third = n;
             }
         }
         
