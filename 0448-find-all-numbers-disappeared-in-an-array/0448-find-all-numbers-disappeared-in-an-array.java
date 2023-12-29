@@ -9,7 +9,7 @@ class Solution {
                 nums[index] *= -1; 
         }
         
-        List<Integer> list = new ArrayList(); 
+        List<Integer> list = new LinkedList(); 
         
         for(int i = 0; i < nums.length; i++){
             if(nums[i] > 0)
