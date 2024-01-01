@@ -8,16 +8,12 @@ class Solution {
         int right = nums.length-1;
         
         for(int i = nums.length-1; i >= 0; i--){
-            int square; 
-            
             if(Math.abs(nums[left]) > Math.abs(nums[right]))
-                square = nums[left++];
+                ans[i] = nums[left] * nums[left++]; 
             else
-                square = nums[right--];
-            
-            ans[i] = square * square; 
+                ans[i] = nums[right] * nums[right--];
         }
         
-        return ans; 
+        return ans;
     }
 }
