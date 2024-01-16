@@ -3,18 +3,29 @@ class Solution {
         if(arr == null)
             return;
         
-        int[] ans = new int[arr.length];
-        
-        for(int read = 0, write = 0; write < arr.length; read++){
-            ans[write++] = arr[read];
-            if(write < arr.length && arr[read] == 0)
-                ans[write++] = arr[read];
+        int zeroCount = 0;
+        for(int n: arr){
+            if(n == 0)
+                zeroCount++;
         }
         
-        for(int i = 0; i < arr.length; i++){
-            arr[i] = ans[i];
+        int read = arr.length - 1;
+        int write = arr.length + zeroCount - 1;
+        
+        while(read >= 0){
+            if(write < arr.length)
+                arr[write] = arr[read];
+            
+            write--;
+            
+            if(arr[read] == 0){
+                if(write < arr.length)
+                    arr[write] = 0;
+                
+                write--; 
+            }
+            
+            read--; 
         }
     }
 }
-
-
