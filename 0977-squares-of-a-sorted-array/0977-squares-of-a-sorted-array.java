@@ -5,15 +5,19 @@ class Solution {
         
         int[] ans = new int[nums.length];
         int left = 0;
-        int right = nums.length-1;
+        int right = nums.length-1; 
         
         for(int i = nums.length-1; i >= 0; i--){
+            int square; 
+            
             if(Math.abs(nums[left]) > Math.abs(nums[right]))
-                ans[i] = nums[left] * nums[left++]; 
+                square = nums[left++];
             else
-                ans[i] = nums[right] * nums[right--];
+                square = nums[right--];
+            
+            ans[i] = square * square; 
         }
         
-        return ans;
+        return ans;  
     }
 }
