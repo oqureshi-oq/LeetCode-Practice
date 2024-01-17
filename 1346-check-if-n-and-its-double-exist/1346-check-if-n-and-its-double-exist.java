@@ -8,6 +8,7 @@ class Solution {
         for(int n: arr){
             if(seen.contains(n*2) || n % 2 == 0 && seen.contains(n/2))
                 return true;
+            
             seen.add(n);
         }
         
