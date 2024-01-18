@@ -21,11 +21,10 @@ class Solution {
             if(arr[read] == 0){
                 if(write < arr.length)
                     arr[write] = 0;
-                
                 write--; 
             }
             
-            read--; 
+            read--;
         }
     }
 }
