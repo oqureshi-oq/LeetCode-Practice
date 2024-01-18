@@ -1,7 +1,7 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
         if(arr == null)
-            return false; 
+            return false;
         
         Set<Integer> seen = new HashSet(); 
         
