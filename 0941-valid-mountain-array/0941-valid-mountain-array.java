@@ -9,7 +9,7 @@ class Solution {
         
         int j = arr.length-1;
         while(0 < j-1 && arr[j-1] > arr[j])
-            j--; 
+            j--;
         
         return i == j; 
     }
