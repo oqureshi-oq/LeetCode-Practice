@@ -17,22 +17,22 @@ class Solution {
                 if(row-1 >= 0 && col+1 < n){
                     row--;
                     col++;
-                } else if(col+1 >= n){
-                    row++;
+                } else if(row-1 < 0 && col+1 < n){
+                    col++;
                     goingUp = false;
                 } else {
-                    col++;
+                    row++;
                     goingUp = false; 
                 }
             } else {
                 if(row+1 < m && col-1 >= 0){
                     row++;
                     col--;
-                } else if(row+1 >= m){
-                    col++; 
+                } else if(row+1 < m && col-1 < 0){
+                    row++;
                     goingUp = true;
                 } else {
-                    row++; 
+                    col++;
                     goingUp = true; 
                 }
             }
