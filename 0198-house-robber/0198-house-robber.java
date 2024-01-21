@@ -4,11 +4,17 @@ class Solution {
             return 0;
         
         int[] dp = new int[nums.length+2];
+        int currentMax = 0; 
+        int nextDoorMax = 0;
+        int nextNextDoorMax = 0; 
         
         for(int i = nums.length-1; i >= 0; i--){
-            dp[i] = Math.max(nums[i] + dp[i+2], dp[i+1]); 
+            currentMax = Math.max(nums[i] + nextNextDoorMax, nextDoorMax);
+            
+            nextNextDoorMax = nextDoorMax; 
+            nextDoorMax = currentMax; 
         }
         
-        return dp[0]; 
+        return currentMax; 
     }
 }
