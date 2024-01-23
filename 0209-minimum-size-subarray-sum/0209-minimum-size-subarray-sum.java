@@ -5,18 +5,21 @@ class Solution {
         
         int left = 0;
         int right = 0;
+        int min = nums.length+1;
         int sum = 0;
-        int min = nums.length+1; 
         
         while(right < nums.length){
-            sum += nums[right++];
+            sum += nums[right];
             
-            while(sum >= target){
-                min = Math.min(min, right-left);
+            while(sum - nums[left] >= target)
                 sum -= nums[left++];
-            }
+            
+            if(sum >= target)
+                min = Math.min(min, right - left + 1);
+            
+            right++;
         }
         
-        return min != nums.length+1 ? min: 0; 
+        return min == nums.length+1 ? 0: min; 
     }
 }
