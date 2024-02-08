@@ -1,38 +1,28 @@
 class Solution {
     public int thirdMax(int[] nums) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue();
-        Set<Integer> taken = new HashSet<Integer>();
+        if(nums == null || nums.length == 0)
+            return Integer.MIN_VALUE;
         
-        for (int index = 0; index < nums.length; ++index) {
-            // If current number was already taken, skip it.
-            if (taken.contains(nums[index])) {
+        Integer first = null;
+        Integer second = null;
+        Integer third = null;
+        
+        for(Integer n: nums){
+            if(n.equals(first) || n.equals(second) || n.equals(third))
                 continue;
-            }
             
-            // If min heap already has three numbers in it.
-            // Pop the smallest if current number is bigger than it.
-            if (minHeap.size() == 3) {
-                if (minHeap.peek() < nums[index]) {
-                    taken.remove(minHeap.poll());
-                    
-                    minHeap.add(nums[index]);
-                    taken.add(nums[index]);
-                }
-            } 
-            // If min heap does not have three numbers we can push it.
-            else {
-                minHeap.add(nums[index]);
-                taken.add(nums[index]);
+            if(first == null || n > first){
+                third = second;
+                second = first;
+                first = n;
+            } else if(second == null || n > second){
+                third = second;
+                second = n;
+            } else if(third == null || n > third){
+                third = n;
             }
         }
         
-        // 'nums' has only one distinct element it will be the maximum.
-        if (minHeap.size() <= 2) {
-            while(minHeap.size() != 1)
-                minHeap.poll(); 
-            return minHeap.peek();
-        }
-        
-        return minHeap.peek();
+        return third != null ? third: first; 
     }
 }
