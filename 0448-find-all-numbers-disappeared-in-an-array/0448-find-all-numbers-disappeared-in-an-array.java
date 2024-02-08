@@ -6,10 +6,10 @@ class Solution {
         for(int i = 0; i < nums.length; i++){
             int index = Math.abs(nums[i]) - 1;
             if(nums[index] > 0)
-                nums[index] *= -1;
+                nums[index] *= -1; 
         }
         
-        List<Integer> list = new LinkedList(); 
+        List<Integer> list = new LinkedList();
         
         for(int i = 0; i < nums.length; i++){
             if(nums[i] > 0)
