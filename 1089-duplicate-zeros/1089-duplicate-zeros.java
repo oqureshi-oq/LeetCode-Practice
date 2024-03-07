@@ -6,7 +6,7 @@ class Solution {
         int zeroCount = 0;
         for(int n: arr){
             if(n == 0)
-                zeroCount++; 
+                zeroCount++;
         }
         
         int read = arr.length-1;
@@ -28,3 +28,6 @@ class Solution {
         }
     }
 }
+
+// [1,0,2,3,0,4,5,0]
+// [1,0,0,2,3,0,0,4,5,0]
