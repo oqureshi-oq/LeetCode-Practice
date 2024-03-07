@@ -3,14 +3,17 @@ class Solution {
         if(arr == null || arr.length < 3)
             return false; 
         
-        int left = 0;
-        while(left+1 < arr.length-1 && arr[left] < arr[left+1])
-            left++;
+        int i = 0;
         
-        int right = arr.length-1;
-        while(0 < right-1 && arr[right-1] > arr[right])
-            right--;
+        while(i+1 < arr.length && arr[i] < arr[i+1])
+            i++;
         
-        return left == right; 
+        if(i == 0 || i == arr.length-1)
+            return false; 
+        
+        while(i+1 < arr.length && arr[i] > arr[i+1])
+            i++;
+        
+        return i == arr.length-1; 
     }
 }
