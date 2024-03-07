@@ -5,9 +5,9 @@ class Solution {
         
         int left = 0;
         int right = nums.length-1;
-        int[] ans = new int[nums.length];
+        int[] squaredNums = new int[nums.length];
         
-        for(int i = nums.length-1; i >= 0; i--){
+        for(int write = nums.length-1; write >= 0; write--){
             int square; 
             
             if(Math.abs(nums[left]) > Math.abs(nums[right]))
@@ -15,9 +15,9 @@ class Solution {
             else
                 square = nums[right--];
             
-            ans[i] = square * square; 
+            squaredNums[write] = square * square; 
         }
         
-        return ans; 
+        return squaredNums; 
     }
 }
