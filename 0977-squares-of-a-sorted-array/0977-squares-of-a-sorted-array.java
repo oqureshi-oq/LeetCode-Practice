@@ -3,9 +3,9 @@ class Solution {
         if(nums == null)
             return null;
         
+        int[] ans = new int[nums.length];
         int left = 0;
-        int right = nums.length-1;
-        int[] squaredNums = new int[nums.length];
+        int right = nums.length-1; 
         
         for(int write = nums.length-1; write >= 0; write--){
             int square; 
@@ -15,9 +15,9 @@ class Solution {
             else
                 square = nums[right--];
             
-            squaredNums[write] = square * square; 
+            ans[write] = square * square; 
         }
         
-        return squaredNums; 
+        return ans; 
     }
 }
