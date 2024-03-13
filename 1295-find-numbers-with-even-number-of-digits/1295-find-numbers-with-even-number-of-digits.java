@@ -6,13 +6,7 @@ class Solution {
         int count = 0;
         
         for(int n: nums){
-            int numDigits = n == 0 ? 1: 0;
-            
-            while(n != 0){
-                numDigits++; 
-                n /= 10; 
-            }
-            
+            int numDigits = n == 0 ? 1: (int) Math.log10(Math.abs(n)) + 1; 
             if(numDigits % 2 == 0)
                 count++; 
         }
