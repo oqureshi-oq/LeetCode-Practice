@@ -6,11 +6,16 @@ class Solution {
         int count = 0;
         
         for(int n: nums){
-            int numDigits = n == 0 ? 1: (int) Math.log10(Math.abs(n)) + 1; 
-            if(numDigits % 2 == 0)
-                count++; 
+            if(hasEvenNumberOfDigits(n))
+                count++;
         }
         
         return count; 
+    }
+    
+    private boolean hasEvenNumberOfDigits(int n){
+        n = Math.abs(n);
+        
+        return 10 <= n && n <= 99 || 1000 <= n && n <= 9999 || n == 100000;
     }
 }
