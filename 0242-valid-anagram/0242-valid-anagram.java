@@ -4,11 +4,10 @@ class Solution {
             return false; 
         
         int[] letters = new int[26];
-        int length = s.length(); 
         
-        for(int i = 0; i < length; i++){
+        for(int i = 0; i < s.length(); i++){
             letters[s.charAt(i) - 'a']++;
-            letters[t.charAt(i)- 'a']--;
+            letters[t.charAt(i) - 'a']--;
         }
         
         for(int n: letters){
