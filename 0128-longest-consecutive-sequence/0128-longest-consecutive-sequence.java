@@ -4,27 +4,24 @@ class Solution {
             return 0;
         
         Set<Integer> seen = new HashSet(); 
+        int max = 0;
         
         for(int n: nums){
             seen.add(n);
         }
         
-        int lcs = 0;
-        
-        for(int n: seen){
-            if(seen.contains(n-1))
-                continue;
-            
+        for(int n: nums){
             int count = 0;
             
-            while(seen.contains(n)){
-                count++; 
-                n++; 
-            }
+            if(seen.contains(n-1))
+                continue; 
             
-            lcs = Math.max(lcs, count); 
+            while(seen.contains(n+count))
+                count++; 
+            
+            max = Math.max(count, max);
         }
         
-        return lcs; 
+        return max; 
     }
 }
