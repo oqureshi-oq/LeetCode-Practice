@@ -4,17 +4,19 @@ class Solution {
             return 0;
         
         Set<Character> seen = new HashSet(); 
-        int max = 0;
-    
+        int maxLength = 0;
+        
         for(int left = 0, right = 0; right < s.length(); right++){
-            while(seen.contains(s.charAt(right)))
-                  seen.remove(s.charAt(left++));
+            char c = s.charAt(right);
             
-            seen.add(s.charAt(right));
+            while(seen.contains(c))
+                seen.remove(s.charAt(left++)); 
             
-            max = Math.max(max, right - left + 1);
+            seen.add(c); 
+            
+            maxLength = Math.max(maxLength, right - left + 1); 
         }
         
-        return max; 
+        return maxLength; 
     }
 }
