@@ -27,7 +27,8 @@ class Solution {
         
         if(list1 != null)
             iter.next = list1; 
-        else if(list2 != null)
+        
+        if(list2 != null)
             iter.next = list2;
         
         return sentinel.next; 
