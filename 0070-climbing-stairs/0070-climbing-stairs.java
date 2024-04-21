@@ -5,15 +5,16 @@ class Solution {
         if(n == 1)
             return 1; 
         
-        int[] dp = new int[n+1];
-        dp[1] = 1;
-        dp[2] = 2;
+        int first = 1;
+        int second = 2;
         
         for(int i = 3; i < n+1; i++){
-            dp[i] = dp[i-2] + dp[i-1];
+            int third = second + first;
+            first = second;
+            second = third; 
         }
         
-        return dp[n]; 
+        return second; 
     }
 }
 
