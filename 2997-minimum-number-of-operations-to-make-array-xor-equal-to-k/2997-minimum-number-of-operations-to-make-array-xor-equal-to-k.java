@@ -7,7 +7,6 @@ class Solution {
         }
         
         int count = 0;
-        System.out.println(x); 
         while(x != 0){
             if((x & 1) == 1)
                 count++; 
