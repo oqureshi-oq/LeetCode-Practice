@@ -4,16 +4,12 @@ class Solution {
             return -1;
         
         Set<Integer> seen = new HashSet(); 
-        
-        for(int n: nums){
-            if(n < 0)
-                seen.add(n);
-        }
-        
         int max = -1; 
+        
         for(int n: nums){
-            if(n > 0 && seen.contains(-1 * n) && n > max)
-                max = n; 
+            seen.add(n); 
+            if(seen.contains(-1 * n) && Math.abs(n) > max)
+                max = Math.abs(n); 
         }
         
         return max; 
