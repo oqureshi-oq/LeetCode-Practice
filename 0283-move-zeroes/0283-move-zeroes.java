@@ -5,12 +5,13 @@ class Solution {
         
         int write = 0;
         
-        for(int n: nums){
-            if(n != 0)
-                nums[write++] = n;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                int temp = nums[write];
+                nums[write] = nums[i];
+                nums[i] = temp; 
+                write++; 
+            }
         }
-        
-        while(write < nums.length)
-            nums[write++] = 0; 
     }
 }
