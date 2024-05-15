@@ -7,15 +7,11 @@ class Solution {
         int left = 0;
         int right = nums.length-1;
         
-        for(int write = nums.length-1; write >= 0; write--){
-            int square;
-            
-            if(Math.abs(nums[left]) > Math.abs(nums[right]))
-                square = nums[left++];
+        for(int i = nums.length-1; i >= 0; i--){
+            if(Math.abs(nums[left]) < Math.abs(nums[right]))
+                ans[i] = nums[right] * nums[right--];
             else
-                square = nums[right--];
-            
-            ans[write] = square * square; 
+                ans[i] = nums[left] * nums[left++];
         }
         
         return ans; 
