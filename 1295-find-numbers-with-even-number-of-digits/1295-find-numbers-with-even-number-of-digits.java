@@ -7,7 +7,6 @@ class Solution {
         
         for(int n: nums){
             int numDigits = (int) Math.log10(Math.abs(n)) + 1;
-            
             if(numDigits % 2 == 0)
                 count++;
         }
