@@ -4,11 +4,11 @@ class Solution {
             return false; 
         
         int i = 0;
-        while(i < arr.length-2 && arr[i] < arr[i+1])
+        while(i+1 < arr.length-1 && arr[i] < arr[i+1])
             i++;
         
         int j = arr.length-1;
-        while(1 < j && arr[j-1] > arr[j])
+        while(0 < j-1 && arr[j-1] > arr[j])
             j--; 
         
         return i == j; 
