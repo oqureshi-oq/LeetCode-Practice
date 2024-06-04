@@ -4,12 +4,12 @@ class Solution {
             return false; 
         
         int i = 0;
-        while(i+1 < arr.length-1 && arr[i] < arr[i+1])
-            i++; 
+        while(i < arr.length-2 && arr[i] < arr[i+1])
+            i++;
         
         int j = arr.length-1;
-        while(0 < j-1 && arr[j-1] > arr[j])
-            j--;
+        while(1 < j && arr[j-1] > arr[j])
+            j--; 
         
         return i == j; 
     }
