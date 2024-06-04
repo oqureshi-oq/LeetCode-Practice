@@ -3,29 +3,38 @@ class Solution {
         if(arr == null)
             return;
         
-        int zeroCount = 0;
-        for(int n: arr){
-            if(n == 0)
-                zeroCount++;
-        }
+        int zeroCount = zeroCount(arr);
+        int read = arr.length-1;
+        int write = arr.length+zeroCount-1;
         
-        int write = arr.length+zeroCount-1; 
-        
-        for(int read = arr.length-1; read >= 0; read--){
+        while(read >= 0){
             if(write < arr.length)
                 arr[write] = arr[read];
             
-            write--; 
+            write--;
             
             if(arr[read] == 0){
                 if(write < arr.length)
-                    arr[write] = 0; 
+                    arr[write] = arr[read];
                 
-                write--; 
+                write--;
             }
+            
+            read--; 
         }
     }
+    
+    private int zeroCount(int[] arr){
+        if(arr == null)
+            return 0;
+        
+        int zeroCount = 0; 
+        
+        for(int n: arr){
+            if(n == 0)
+                zeroCount++; 
+        }
+        
+        return zeroCount; 
+    }
 }
-
-//[1,0,2,3,0,4,5,0]
-//[1,0,0,2,3,0,0,4,5,0,0]
