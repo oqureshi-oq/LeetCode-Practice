@@ -9,9 +9,11 @@ class Solution {
         
         while(read1 >= 0 && read2 >= 0){
             if(nums1[read1] > nums2[read2])
-                nums1[write--] = nums1[read1--];
+                nums1[write] = nums1[read1--];
             else
-                nums1[write--] = nums2[read2--];
+                nums1[write] = nums2[read2--];
+            
+            write--; 
         }
         
         while(read2 >= 0)
