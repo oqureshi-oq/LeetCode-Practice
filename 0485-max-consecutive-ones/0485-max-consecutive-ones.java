@@ -8,7 +8,7 @@ class Solution {
         
         for(int n: nums){
             if(n == 1)
-                max = Math.max(++current, max);
+                max = Math.max(max, ++current);
             else
                 current = 0;
         }
