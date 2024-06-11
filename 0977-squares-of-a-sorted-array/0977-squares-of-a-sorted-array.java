@@ -2,7 +2,7 @@ class Solution {
     public int[] sortedSquares(int[] nums) {
         if(nums == null)
             return null;
-         
+        
         int[] ans = new int[nums.length];
         int left = 0;
         int right = nums.length-1;
