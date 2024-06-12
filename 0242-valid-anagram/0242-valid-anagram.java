@@ -3,15 +3,16 @@ class Solution {
         if(s == null || t == null || s.length() != t.length())
             return false; 
         
-        int[] letters = new int[26];
+        int[] freqMap = new int[26];
+        int n = s.length(); 
         
-        for(int i = 0; i < s.length(); i++){
-            letters[s.charAt(i) - 'a']++;
-            letters[t.charAt(i) - 'a']--;
+        for(int i = 0; i < n; i++){
+            freqMap[s.charAt(i) - 'a']++;
+            freqMap[t.charAt(i) - 'a']--;
         }
         
-        for(int n: letters){
-            if(n != 0)
+        for(int f: freqMap){
+            if(f != 0)
                 return false; 
         }
         
