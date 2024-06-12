@@ -3,13 +3,18 @@ class Solution {
         if(nums == null)
             return null;
         
-        int evenPointer = 0;
+        int i = 0; 
+        int j = nums.length-1;
         
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] % 2 == 0){
+        while(i < j){
+            if(nums[i] % 2 == 0)
+                i++;
+            else if(nums[j] % 2 != 0)
+                j--;
+            else{
                 int temp = nums[i];
-                nums[i] = nums[evenPointer];
-                nums[evenPointer++] = temp;
+                nums[i] = nums[j];
+                nums[j] = temp; 
             }
         }
         
