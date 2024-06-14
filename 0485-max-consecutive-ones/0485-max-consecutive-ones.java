@@ -3,16 +3,16 @@ class Solution {
         if(nums == null)
             return 0;
         
-        int max = 0;
-        int current = 0;
+        int maxCount = 0;
+        int currentCount = 0;
         
         for(int n: nums){
             if(n == 1)
-                max = Math.max(max, ++current);
+                maxCount = Math.max(++currentCount, maxCount);
             else
-                current = 0;
+                currentCount = 0;
         }
         
-        return max; 
+        return maxCount; 
     }
 }
