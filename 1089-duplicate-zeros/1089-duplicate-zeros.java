@@ -8,10 +8,8 @@ class Solution {
             if(n == 0)
                 zeroCount++;
         }
-    
-        int write = arr.length+zeroCount-1;
         
-        for(int read = arr.length-1; read >= 0; read--){
+        for(int read = arr.length-1, write = arr.length+zeroCount-1; read >= 0; read--){
             if(write < arr.length)
                 arr[write] = arr[read];
             
