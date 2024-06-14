@@ -3,7 +3,7 @@ class Solution {
         if(nums == null)
             return null;
         
-        int[] ans = new int[nums.length];
+        int[] squaredNums = new int[nums.length];
         int left = 0;
         int right = nums.length-1;
         
@@ -15,9 +15,9 @@ class Solution {
             else
                 square = nums[right--];
             
-            ans[i] = square * square; 
+            squaredNums[i] = square * square; 
         }
         
-        return ans; 
+        return squaredNums; 
     }
 }
