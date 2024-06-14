@@ -8,13 +8,17 @@ class Solution {
         int write = m+n-1;
         
         while(read1 >= 0 && read2 >= 0){
+            int element; 
+            
             if(nums1[read1] > nums2[read2])
-                nums1[write--] = nums1[read1--];
+                element = nums1[read1--];
             else
-                nums1[write--] = nums2[read2--];
+                element = nums2[read2--];
+            
+            nums1[write--] = element;
         }
         
         while(read2 >= 0)
-            nums1[write--] = nums2[read2--];
+            nums1[write--] = nums2[read2--]; 
     }
 }
