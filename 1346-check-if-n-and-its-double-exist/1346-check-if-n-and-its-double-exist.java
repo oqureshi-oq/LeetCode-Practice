@@ -1,6 +1,6 @@
 /*
  * Time: O(n)
- * Space: O(1)
+ * Space: O(n)
  */
 class Solution {
     public boolean checkIfExist(int[] arr) {
