@@ -1,3 +1,7 @@
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */
 class Solution {
     public void duplicateZeros(int[] arr) {
         if(arr == null)
