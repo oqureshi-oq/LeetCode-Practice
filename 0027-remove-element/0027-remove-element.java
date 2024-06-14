@@ -15,6 +15,6 @@ class Solution {
             }
         }
         
-        return k; 
+        return n; 
     }
 }
