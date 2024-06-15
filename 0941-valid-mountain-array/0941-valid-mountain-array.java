@@ -1,3 +1,7 @@
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */
 class Solution {
     public boolean validMountainArray(int[] arr) {
         if(arr == null || arr.length < 3)
