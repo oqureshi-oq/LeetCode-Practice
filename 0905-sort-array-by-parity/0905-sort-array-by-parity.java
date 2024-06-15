@@ -3,21 +3,16 @@ class Solution {
         if(nums == null)
             return null;
         
-        int i = 0; 
-        int j = nums.length-1;
+        int evenIndex = 0;
         
-        while(i < j){
-            if(nums[i] % 2 == 0)
-                i++;
-            else if(nums[j] % 2 != 0)
-                j--;
-            else{
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp; 
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] % 2 == 0){
+                int temp = nums[evenIndex];
+                nums[evenIndex++] = nums[i];
+                nums[i] = temp; 
             }
         }
         
-        return nums;
+        return nums; 
     }
 }
