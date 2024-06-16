@@ -1,3 +1,8 @@
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */ 
+
 class Solution {
     public int thirdMax(int[] nums) {
         if(nums == null || nums.length == 0)
