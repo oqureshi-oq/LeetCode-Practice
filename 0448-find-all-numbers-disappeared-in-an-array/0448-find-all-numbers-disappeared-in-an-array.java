@@ -1,3 +1,7 @@
+/*
+ * Time: O(n)
+ * Space: O(1) if output list is not considered 
+ */
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         if(nums == null)
