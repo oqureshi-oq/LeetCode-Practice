@@ -1,3 +1,7 @@
+/*
+ * Time: O(n+k) where n is number of elements and k is the range of the elements
+ * Space: O(n+k)
+ */ 
 class Solution {
     public int heightChecker(int[] heights) {
         if(heights == null)
