@@ -3,9 +3,9 @@ class Solution {
         if(nums == null || nums.length == 0)
             return Integer.MIN_VALUE;
         
-        Integer first = null; 
+        Integer first = null;
         Integer second = null;
-        Integer third = null; 
+        Integer third = null;
         
         for(Integer n: nums){
             if(n.equals(first) || n.equals(second) || n.equals(third))
