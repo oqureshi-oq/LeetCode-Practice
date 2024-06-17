@@ -1,3 +1,7 @@
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */ 
 class Solution {
     public int dominantIndex(int[] nums) {
         if(nums == null || nums.length == 0)
