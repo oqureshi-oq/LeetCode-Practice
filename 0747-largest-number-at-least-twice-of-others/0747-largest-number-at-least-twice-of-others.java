@@ -8,15 +8,17 @@ class Solution {
         Integer second = null;
         
         for(int i = 0; i < nums.length; i++){
-            if(first == null || nums[i] > first){
+            int n = nums[i];
+            
+            if(first == null || n >= first){
                 second = first;
-                first = nums[i];
+                first = n; 
                 index = i;
-            } else if(second == null || nums[i] > second){
-                second = nums[i]; 
+            } else if(second == null || n >= second){
+                second = n; 
             }
         }
         
-        return first >= 2 * second ? index: -1; 
+        return second == null || first >= 2*second ? index: -1; 
     }
 }
