@@ -1,3 +1,7 @@
+/*
+ * Time: O(m*n)
+ * Space: O(1) if output is not taken into account
+ */
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         if(matrix == null)
