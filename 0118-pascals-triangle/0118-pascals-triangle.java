@@ -1,3 +1,7 @@
+/*
+ * Time: O(numRows^2)
+ * Space: O(numRows^2) if output is taken into account
+ */ 
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         if(numRows <= 0)
