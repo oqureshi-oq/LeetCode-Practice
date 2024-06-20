@@ -1,7 +1,7 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         if(numRows <= 0)
-            return new ArrayList(); 
+            return new ArrayList(0);
         
         List<List<Integer>> list = new ArrayList(numRows);
         
@@ -12,7 +12,7 @@ class Solution {
                 if(j == 0 || j == i)
                     row.add(1);
                 else
-                    row.add(list.get(i-1).get(j) + list.get(i-1).get(j-1));
+                    row.add(list.get(i-1).get(j-1) + list.get(i-1).get(j));
             }
             
             list.add(row);
