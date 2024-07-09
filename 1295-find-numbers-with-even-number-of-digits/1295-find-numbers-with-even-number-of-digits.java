@@ -1,3 +1,7 @@
+/*
+ * Time: O(nlog(m)) where n is number of elements in nums and m is biggest number in nums
+ * Space: O(1)
+ */
 class Solution {
     public int findNumbers(int[] nums) {
         if(nums == null)
