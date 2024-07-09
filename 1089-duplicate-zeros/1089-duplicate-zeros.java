@@ -1,7 +1,3 @@
-/*
- * Time: O(n)
- * Space: O(1)
- */
 class Solution {
     public void duplicateZeros(int[] arr) {
         if(arr == null)
@@ -13,7 +9,9 @@ class Solution {
                 zeroCount++;
         }
         
-        for(int read = arr.length-1, write = arr.length+zeroCount-1; read >= 0; read--){
+        int write = arr.length + zeroCount - 1;
+        
+        for(int read = arr.length-1; read >= 0; read--){
             if(write < arr.length)
                 arr[write] = arr[read];
             
