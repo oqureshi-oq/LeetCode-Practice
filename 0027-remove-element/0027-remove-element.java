@@ -8,17 +8,12 @@ class Solution {
             return 0;
         
         int k = 0;
-        int n = nums.length; 
         
-        while(k < n){
-            if(nums[k] == val){
-                nums[k] = nums[n-1];
-                n--;
-            } else {
-                k++; 
-            }
+        for(int n: nums){
+            if(n != val)
+                nums[k++] = n;
         }
         
-        return n; 
+        return k;
     }
 }
