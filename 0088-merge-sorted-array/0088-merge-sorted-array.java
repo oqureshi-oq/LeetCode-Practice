@@ -1,3 +1,7 @@
+/*
+ * Time: O(m+n)
+ * Space: O(1)
+ */
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if(nums1 == null || nums1.length != m+n || nums2 == null || nums2.length != n)
