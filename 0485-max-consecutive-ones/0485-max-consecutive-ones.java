@@ -1,11 +1,9 @@
-/*
- * Time: O(n)
- * Space: O(1)
- */ 
+//Time: O(n)
+//Space: O(1)
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
-        if(nums == null)
-            return 0;
+       if(nums == null)
+           return 0;
         
         int count = 0;
         int max = 0;
