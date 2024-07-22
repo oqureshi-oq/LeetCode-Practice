@@ -1,13 +1,12 @@
-/*
- * Time: O(n)
- * Space: O(1)
- */
+// Time: O(n)
+// Space: O(1)
 class Solution {
     public void moveZeroes(int[] nums) {
         if(nums == null)
             return;
         
         int write = 0;
+        
         for(int n: nums){
             if(n != 0)
                 nums[write++] = n;
