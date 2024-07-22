@@ -1,5 +1,5 @@
-// Time: 
-// Space: 
+// Time: O(n+k) where n = # of elements in heights and k is max height
+// Space: O(k)
 class Solution {
     public int heightChecker(int[] heights) {
         if(heights == null)
