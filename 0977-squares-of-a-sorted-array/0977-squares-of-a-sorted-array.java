@@ -1,5 +1,5 @@
 // Time: O(n)
-// Space: O(1) but O(n) if output space is taken into account
+// Space: O(1) but O(n) if output is taken into account
 class Solution {
     public int[] sortedSquares(int[] nums) {
         if(nums == null)
