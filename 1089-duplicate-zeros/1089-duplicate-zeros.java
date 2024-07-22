@@ -1,21 +1,15 @@
-/*
- * Time: O(n)
- * Space: O(1)
- */ 
+// Time: O(n)
+// Space: O(1)
 class Solution {
     public void duplicateZeros(int[] arr) {
         if(arr == null)
             return;
         
-        int zeroCount = 0;
-        for(int n: arr){
-            if(n == 0)
-                zeroCount++;
-        }
+        int zeroCount = getZeroCount(arr);
+        int read = arr.length-1;
+        int write = arr.length+zeroCount-1;
         
-        int write = arr.length + zeroCount - 1;
-        
-        for(int read = arr.length-1; read >= 0; read--){
+        while(read >= 0){
             if(write < arr.length)
                 arr[write] = arr[read];
             
@@ -24,9 +18,24 @@ class Solution {
             if(arr[read] == 0){
                 if(write < arr.length)
                     arr[write] = 0;
-                
                 write--;
             }
+            
+            read--; 
         }
+    }
+    
+    private int getZeroCount(int[] arr){
+        if(arr == null)
+            return 0;
+        
+        int zeroCount = 0;
+        
+        for(int n: arr){
+            if(n == 0)
+                zeroCount++;
+        }
+        
+        return zeroCount; 
     }
 }
