@@ -1,7 +1,5 @@
-/*
- * Time: O(n)
- * Space: O(1)
- */ 
+// Time: O(n)
+// Space: O(1)
 class Solution {
     public int removeDuplicates(int[] nums) {
         if(nums == null)
