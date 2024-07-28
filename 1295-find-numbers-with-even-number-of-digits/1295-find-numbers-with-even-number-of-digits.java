@@ -1,4 +1,4 @@
-// Time: O(nlogn)
+// Time: O(nlogm)
 // Space: O(1)
 class Solution {
     public int findNumbers(int[] nums) {
