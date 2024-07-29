@@ -1,5 +1,5 @@
 // Time: O(n)
-// Space: O(1) but O(n) if output is taken into account
+// Space: O(1) if not taking into account output space
 class Solution {
     public int[] sortedSquares(int[] nums) {
         if(nums == null)
@@ -10,12 +10,12 @@ class Solution {
         int right = nums.length-1;
         
         for(int i = nums.length-1; i >= 0; i--){
-            int square;
+            int square; 
             
-            if(Math.abs(nums[left]) > Math.abs(nums[right]))
-                square = nums[left++];
-            else
+            if(Math.abs(nums[left]) < Math.abs(nums[right]))
                 square = nums[right--];
+            else
+                square = nums[left++];
             
             ans[i] = square * square; 
         }
