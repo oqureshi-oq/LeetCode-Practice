@@ -2,6 +2,9 @@
 // Space: O(1) 
 class Solution {
     public int countSeniors(String[] details) {
+        if(details == null)
+            return 0; 
+        
         int count = 0;
         
         for(String str: details){
