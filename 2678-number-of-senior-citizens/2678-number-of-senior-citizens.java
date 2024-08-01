@@ -3,8 +3,8 @@ class Solution {
         int count = 0;
         
         for(String str: details){
-            int age = Character.getNumericValue(str.charAt(11)) * 10 
-                + Character.getNumericValue(str.charAt(12));
+            int age = (str.charAt(11) - '0') * 10 
+                + (str.charAt(12) - '0');
             
             if(age > 60)
                 count++; 
