@@ -1,4 +1,4 @@
-// Time: O(nlogm)
+// Time: O(nlogm) where n is number of elements in nums and m is largest element in nums
 // Space: O(1)
 class Solution {
     public int findNumbers(int[] nums) {
