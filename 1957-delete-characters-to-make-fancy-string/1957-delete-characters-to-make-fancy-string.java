@@ -15,9 +15,7 @@ class Solution {
             }
             
             
-            if(count == 3){
-                count--;
-            } else{
+            if(count < 3){
                 str.append(c); 
             }
         }
