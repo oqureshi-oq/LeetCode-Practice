@@ -1,28 +1,25 @@
 class Solution {
-
     public String makeFancyString(String s) {
-        // If the size of the string is less than 3, return it.
-        if (s.length() < 3) {
-            return s;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        // Start by appending the first two characters to StringBuilder.
-        sb.append(s.charAt(0)).append(s.charAt(1));
-
-        // Iterate from the 3rd character onwards.
-        for (int i = 2; i < s.length(); ++i) {
-            // If the current character is not equal to the previously inserted
-            // two characters, then we can add it to the StringBuilder.
-            if (
-                s.charAt(i) != sb.charAt(sb.length() - 1) ||
-                s.charAt(i) != sb.charAt(sb.length() - 2)
-            ) {
-                sb.append(s.charAt(i));
+        StringBuilder str = new StringBuilder(); 
+        char c = s.charAt(0); 
+        int count = 1;
+        str.append(s.charAt(0));
+        
+        
+        for(int i = 1; i < s.length(); i++){
+            if(c == s.charAt(i)){
+                count++; 
+            } else {
+                count = 1;
+                c = s.charAt(i); 
+            }
+            
+            
+            if(count < 3){
+                str.append(c); 
             }
         }
-
-        // Convert StringBuilder back to String and return.
-        return sb.toString();
+        
+        return str.toString(); 
     }
 }
