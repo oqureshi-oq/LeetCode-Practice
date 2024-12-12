@@ -1,5 +1,6 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
+    	//test
         if(s == null || t == null || s.length() != t.length())
             return false; 
         
